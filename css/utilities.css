@@ -1,4 +1,4 @@
-/* ?This is where reusable styling of this template will be. 
+/* ?This is where reusable styling of this template will be.
    !Will contain things like:
    * Button styling
    * Background color styling
@@ -13,8 +13,8 @@
 
 h1::selection,
 h2::selection {
-  color: #111;
-  background: var(--primary-color);
+  background-color: var(--primary-color);
+  /* Removing the color property to maintain original text color when highlighted */
 }
 
 /* Buttons */
@@ -115,6 +115,10 @@ h2::selection {
   border-radius: 5px;
   transition: 0.4s ease-in-out;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.5s ease forwards;
+  animation-play-state: paused;
 }
 
 .card a {
@@ -128,44 +132,79 @@ h2::selection {
   color: var(--primary-color);
 }
 
-.card:hover {
+/* Removing hover effect as requested by user */
+/* .card:hover {
   box-shadow: inset 100px 100px 1000px 1000px rgba(0, 0, 0, 0.8);
-}
+} */
 
-.card:hover .project-info {
-  opacity: 1;
-}
 
 /* Project Images */
 
-/* project 1 */
-.card:nth-child(1) {
+/* Project 1 */
+.project-item:nth-child(1) .card {
   background: url(../assets/project/1-670.gif) center center/cover;
 }
 
 /* Project 2 */
-.card:nth-child(2) {
+.project-item:nth-child(2) .card {
   background: url(../assets/project/MyVideo4.gif) center center/cover;
 }
 
 /* Project 3 */
-.card:nth-child(3) {
+.project-item:nth-child(3) .card {
   background: url(../assets/project/16.jpg) center center/cover;
 }
 
 /* Project 4 */
-.card:nth-child(4) {
+.project-item:nth-child(4) .card {
   background: url(../assets/project/project-four.png) center center/cover;
 }
 
 /* Project 5 */
-.card:nth-child(5) {
+.project-item:nth-child(5) .card {
   background: url(../assets/project/project-five.png) center center/cover;
 }
 
 /* Project 6 */
 .card:nth-child(6) {
   background: url(../assets/project/project-six.png) center center/cover;
+}
+
+/* Scroll Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply staggered delays to project items */
+.project-item:nth-child(1) .card {
+  animation-delay: 0.3s;
+}
+
+.project-item:nth-child(2) .card {
+  animation-delay: 1.8s; /* 0.3s + 1.5s delay */
+}
+
+.project-item:nth-child(3) .card {
+  animation-delay: 3.3s; /* 1.8s + 1.5s delay */
+}
+
+.project-item:nth-child(4) .card {
+  animation-delay: 4.8s; /* 3.3s + 1.5s delay */
+}
+
+.project-item:nth-child(5) .card {
+  animation-delay: 6.3s; /* 4.8s + 1.5s delay */
+}
+
+.project-item:nth-child(6) .card {
+  animation-delay: 7.8s; /* 6.3s + 1.5s delay */
 }
 
 /* Media Queries */
@@ -178,4 +217,59 @@ h2::selection {
   .content-text h2 {
     font-size: 2.5rem;
   }
+}
+
+
+/* Highlight */
+.highlight {
+  background-color: var(--primary-color);
+  padding: 0 0.3rem;
+  border-radius: 3px;
+}
+
+/* Project text animations */
+.project-title-column h3,
+.project-title-column .project-timeframe,
+.project-description-column p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+  animation-play-state: paused;
+}
+
+/* Apply staggered delays to project text elements */
+.project-item:nth-child(1) .project-title-column h3 {
+  animation-delay: 0.1s;
+}
+
+.project-item:nth-child(1) .project-title-column .project-timeframe {
+  animation-delay: 0.3s;
+}
+
+.project-item:nth-child(1) .project-description-column p {
+  animation-delay: 0.5s;
+}
+
+.project-item:nth-child(2) .project-title-column h3 {
+  animation-delay: 1.6s;
+}
+
+.project-item:nth-child(2) .project-title-column .project-timeframe {
+  animation-delay: 1.8s;
+}
+
+.project-item:nth-child(2) .project-description-column p {
+  animation-delay: 2.0s;
+}
+
+.project-item:nth-child(3) .project-title-column h3 {
+  animation-delay: 3.1s;
+}
+
+.project-item:nth-child(3) .project-title-column .project-timeframe {
+  animation-delay: 3.3s;
+}
+
+.project-item:nth-child(3) .project-description-column p {
+  animation-delay: 3.5s;
 }

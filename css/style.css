@@ -73,6 +73,11 @@ html {
   box-sizing: border-box;
 }
 
+::selection {
+  background-color: var(--primary-color);
+  /* Removing the color property to maintain original text color when highlighted */
+}
+
 ul {
   list-style: none;
 }
@@ -192,10 +197,79 @@ body {
   margin: 2rem 0;
 }
 
-.project {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-  grid-gap: 0.9rem;
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Project items */
+.project-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-item .project-title-column h3 {
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.project-item:hover {
+  transform: translateX(10px);
+}
+
+.project-item:hover .project-title-column h3::after {
+  content: " \f061";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 8px;
+}
+
+.project-item .linkbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.project-title-column {
+  flex: 1;
+}
+
+.project-title-column h3 {
+  font-size: 2rem;
+  font-weight: var(--weight-small);
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.project-timeframe {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.project-description-column {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-description-column p {
+  font-size: 1rem;
+  color: var(--text-color);
 }
 
 .card .linkbox {
@@ -208,36 +282,26 @@ body {
   opacity: 0;
 }
 
-.card .project-bio p {
-  font-size: 1rem;
-}
-
-.card .project-bio h3 {
-  font-size: 3rem;
-}
-
-.project-info {
-  display: flex;
-  justify-content: space-between;
-  opacity: 0;
-  position: relative;
-  transition: 0.5s ease-in-out;
-}
-
-.project-bio {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  /* top: 60px;
-  left: 16px; */
-}
-
+/* Card styling updated for new layout */
 .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+@media (max-width: 768px) {
+  .project-header {
+    flex-direction: column;
+  }
+
+  .project-title-column,
+  .project-description-column {
+    width: 100%;
+  }
 }
 
 /* Footer */
@@ -291,6 +355,19 @@ body {
 }
 
 @media (max-width: 768px) {
+  .project-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .project-title-column,
+  .project-description-column {
+    width: 100%;
+  }
+  
+  .project-description-column {
+    margin-top: 0.25rem;
+  }
 }
 
 @media (max-width: 670px) {
