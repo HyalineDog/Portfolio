@@ -107,7 +107,7 @@ h2::selection {
 .card {
   aspect-ratio: 1.67 / 1;
   position: relative;
-  height: auto;
+  height: 100%;
   width: 100%;
   padding: 1rem;
   background: var(--card-background);
