@@ -231,45 +231,20 @@ h2::selection {
 .project-title-column h3,
 .project-title-column .project-timeframe,
 .project-description-column p {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
-  animation-play-state: paused;
+  opacity: 1; /* Changed from 0 to 1 to make text visible by default */
+  transform: translateY(0); /* Changed from translateY(20px) to remove the initial offset */
+  animation: none; /* Removed animation that was causing visibility issues */
 }
 
-/* Apply staggered delays to project text elements */
-.project-item:nth-child(1) .project-title-column h3 {
-  animation-delay: 0.1s;
-}
-
-.project-item:nth-child(1) .project-title-column .project-timeframe {
-  animation-delay: 0.3s;
-}
-
-.project-item:nth-child(1) .project-description-column p {
-  animation-delay: 0.5s;
-}
-
-.project-item:nth-child(2) .project-title-column h3 {
-  animation-delay: 1.6s;
-}
-
-.project-item:nth-child(2) .project-title-column .project-timeframe {
-  animation-delay: 1.8s;
-}
-
-.project-item:nth-child(2) .project-description-column p {
-  animation-delay: 2.0s;
-}
-
-.project-item:nth-child(3) .project-title-column h3 {
-  animation-delay: 3.1s;
-}
-
-.project-item:nth-child(3) .project-title-column .project-timeframe {
-  animation-delay: 3.3s;
-}
-
+/* Removing animation delays that were keeping content hidden */
+.project-item:nth-child(1) .project-title-column h3,
+.project-item:nth-child(1) .project-title-column .project-timeframe,
+.project-item:nth-child(1) .project-description-column p,
+.project-item:nth-child(2) .project-title-column h3,
+.project-item:nth-child(2) .project-title-column .project-timeframe,
+.project-item:nth-child(2) .project-description-column p,
+.project-item:nth-child(3) .project-title-column h3,
+.project-item:nth-child(3) .project-title-column .project-timeframe,
 .project-item:nth-child(3) .project-description-column p {
-  animation-delay: 3.5s;
+  animation-delay: 0s;
 }
