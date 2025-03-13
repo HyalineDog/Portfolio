@@ -1,0 +1,116 @@
+/* Animations CSS for fly-in effects */
+
+/* Base animation keyframes */
+@keyframes flyInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flyInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flyInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flyInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation classes */
+.animate {
+  opacity: 0;
+}
+
+.animate.fly-in-left {
+  animation: flyInLeft 0.6s ease forwards;
+}
+
+.animate.fly-in-right {
+  animation: flyInRight 0.6s ease forwards;
+}
+
+.animate.fly-in-up {
+  animation: flyInUp 0.6s ease forwards;
+}
+
+.animate.fly-in-down {
+  animation: flyInDown 0.6s ease forwards;
+}
+
+/* Staggered delays */
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* Animation for image carousels */
+.image-carousel {
+  overflow: hidden;
+}
+
+.image-carousel.animate {
+  animation: flyInUp 0.8s ease forwards;
+}
+
+/* Animation for profile image */
+.profile-image.animate {
+  animation: flyInDown 0.7s ease forwards;
+}
+
+/* Animation for section headers */
+.content-text h2.animate {
+  animation: flyInLeft 0.7s ease forwards;
+}
+
+.content-text p.animate {
+  animation: flyInRight 0.7s ease forwards;
+}
+
+/* Animation for project items */
+.project-item .project-header.animate {
+  animation: flyInUp 0.7s ease forwards;
+}

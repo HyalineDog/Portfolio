@@ -106,3 +106,27 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(projectsSection);
   }
 });
+
+// Intersection Observer for animations
+document.addEventListener('DOMContentLoaded', function() {
+  // Select all elements with the 'animate' class
+  const animatedElements = document.querySelectorAll('.animate');
+  
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // If the element is in the viewport
+      if (entry.isIntersecting) {
+        // Add the animation class that was previously applied
+        entry.target.style.opacity = '1';
+        // Unobserve the element after it's animated
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+  
+  // Observe all animated elements
+  animatedElements.forEach(element => {
+    observer.observe(element);
+  });
+});
