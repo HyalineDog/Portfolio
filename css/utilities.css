@@ -156,19 +156,19 @@ h2::selection {
 }
 
 /* Project 4 */
-.project-item:nth-child(4) .card {
+/* .project-item:nth-child(4) .card {
   background: url(../assets/project/project-four.png) center center/cover;
-}
+} */
 
 /* Project 5 */
-.project-item:nth-child(5) .card {
+/* .project-item:nth-child(5) .card {
   background: url(../assets/project/project-five.png) center center/cover;
-}
+} */
 
 /* Project 6 */
-.card:nth-child(6) {
+/* .card:nth-child(6) {
   background: url(../assets/project/project-six.png) center center/cover;
-}
+} */
 
 /* Scroll Animation */
 @keyframes fadeInUp {

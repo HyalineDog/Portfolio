@@ -446,3 +446,59 @@ body {
     width: 80%;
   }
 }
+.theme-switch {
+  border: 2px solid var(--text-color);
+  border-radius: 30px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-switch:hover {
+  background-color: var(--card-background);
+}
+
+/* Image Carousel */
+.image-carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  width: var(--width-medium);
+}
+
+.carousel-track img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-400px * 4));
+  }
+}
+
+/* Pause animation on hover */
+/* .carousel-track:hover {
+  animation-play-state: paused;
+} */
+#about.project-container {
+  padding-bottom: 4rem;
+}
+
+.btn.btn-secondary {
+  margin: 2rem auto 3rem;
+  display: block;
+  width: fit-content;
+}
