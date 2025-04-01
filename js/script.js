@@ -130,3 +130,12 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(element);
   });
 });
+const emailLink = document.querySelector('.nav-link[href="mailto:cjn259@gmail.com"]');
+emailLink.addEventListener('click', function(event) {
+  event.preventDefault();
+  const email = 'cjn259@gmail.com';
+  navigator.clipboard.writeText(email).then(() => {
+    alert('Email address copied to clipboard!');
+    window.open(emailLink.href, '_blank');
+  });
+});
