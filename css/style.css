@@ -126,9 +126,18 @@ body {
   font-weight: var(--weight-semibold);
 }
 
+.navbar #logo a {
+  display: inline-flex; /* Use inline-flex to keep link inline but allow flex properties */
+  align-items: center; /* Vertically center the image and text */
+  gap: 0.5rem; /* Add space between image and text */
+  text-decoration: none; /* Optional: remove underline if needed */
+  color: inherit; /* Inherit text color */
+}
+
 .navbar #logo img {
-  display: block;
+  /* display: block; */ /* Removed display: block */
   width: 40px;
+  height: auto; /* Maintain aspect ratio */
 }
 
 .navbar .btn {
