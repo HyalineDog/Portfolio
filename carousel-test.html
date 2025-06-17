@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Test - Zhike Case Study</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    
+    <!-- CSS Variables for testing -->
+    <style>
+        :root {
+            --primary-color: #ffcd42;
+            --secondary-color: #ff6b6b;
+            --text-color: #333;
+            --text-color-two: #fff;
+            --text-color-secondary: #666;
+            --card-background: #fff;
+            --border-color: #e0e0e0;
+            --background-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--background-color);
+            margin: 0;
+            padding: 2rem;
+            color: var(--text-color);
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .test-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .test-controls {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-controls h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .control-group {
+            margin-bottom: 1rem;
+        }
+        
+        .control-group label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+        
+        .control-group button {
+            background: var(--primary-color);
+            color: var(--text-color-two);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .control-group button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .status-display {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-family: monospace;
+        }
+        
+        .instructions {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .instructions ul {
+            line-height: 1.6;
+        }
+        
+        .instructions code {
+            background: #f0f0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+    
+    <!-- Include features slider styles -->
+    <link rel="stylesheet" href="css/features-slider.css">
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🎠 Carousel Test Page</h1>
+            <p>Test the enhanced carousel functionality for the Zhike Case Study</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Setup Instructions</h3>
+            <ol>
+                <li>Ensure all files are in the correct locations:
+                    <ul>
+                        <li><code>js/carousel.js</code> - Main carousel JavaScript</li>
+                        <li><code>css/carousel.css</code> - Enhanced carousel styles</li>
+                        <li><code>Zhike Classroom Platform.html</code> - Updated with new script includes</li>
+                    </ul>
+                </li>
+                <li>Open <code>Zhike Classroom Platform.html</code> in your browser</li>
+                <li>Navigate to the "Key Features" section</li>
+                <li>Test the following functionality:
+                    <ul>
+                        <li>Click previous/next buttons</li>
+                        <li>Click indicator dots</li>
+                        <li>Use arrow keys (when carousel is visible)</li>
+                        <li>Try touch/swipe gestures on mobile</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="test-controls">
+            <h3>🎮 Carousel API Test Controls</h3>
+            <div class="control-group">
+                <label>Navigation:</label>
+                <button onclick="testCarousel('next')">Next Slide</button>
+                <button onclick="testCarousel('prev')">Previous Slide</button>
+                <button onclick="testCarousel('goto', 0)">Go to Slide 1</button>
+                <button onclick="testCarousel('goto', 2)">Go to Slide 3</button>
+            </div>
+            
+            <div class="control-group">
+                <label>Auto-play:</label>
+                <button onclick="testCarousel('autoplay', true)">Enable Auto-play</button>
+                <button onclick="testCarousel('autoplay', false)">Disable Auto-play</button>
+            </div>
+            
+            <div class="control-group">
+                <label>Information:</label>
+                <button onclick="testCarousel('info')">Get Carousel Info</button>
+                <button onclick="testCarousel('destroy')">Destroy Carousel</button>
+            </div>
+            
+            <div class="status-display" id="statusDisplay">
+                Status: Ready for testing...
+            </div>
+        </div>
+        
+        <!-- Sample Carousel for Testing -->
+        <section id="key-features">
+            <div class="key-features-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="featuresTrack">
+                        <div class="feature-slide active">
+                            <div class="feature-visual">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMzAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSIxNSIgeT0iMTUiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiI+CjxwYXRoIGQ9Im0zIDkgOS03IDkgNy05IDEzLTkgN3oiLz4KPC9zdmc+Cjwvc3ZnPgo=" alt="Feature 1" class="feature-image">
+                            </div>
+                            <h3>Smart Analytics</h3>
+                            <p>Advanced data analytics and insights to help teachers understand student performance and engagement patterns.</p>
+                        </div>
+                        
+                        <div class="feature-slide">
+                            <div class="feature-visual">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMzAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSIxNSIgeT0iMTUiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiI+CjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiLz4KPHBhdGggZD0ibTEyIDEtNy41IDcuNUwxMiAyM2w3LjUtNy41TDEyIDFaIi8+CjxwYXRoIGQ9Im0yMS4yIDEzLjEtNi42LTMuOCIvPgo8cGF0aCBkPSJtMy4yIDEzLjEgNi42LTMuOCIvPgo8cGF0aCBkPSJNMTIgMjN2LTciLz4KPC9zdmc+Cjwvc3ZnPgo=" alt="Feature 2" class="feature-image">
+                            </div>
+                            <h3>Real-time Collaboration</h3>
+                            <p>Seamless collaboration tools that enable students and teachers to work together in real-time, regardless of location.</p>
+                        </div>
+                        
+                        <div class="feature-slide">
+                            <div class="feature-visual">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMzAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSIxNSIgeT0iMTUiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiI+CjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iMyIgcng9IjIiLz4KPHBhdGggZD0iTTkgOWg2djZIOXoiLz4KPC9zdmc+Cjwvc3ZnPgo=" alt="Feature 3" class="feature-image">
+                            </div>
+                            <h3>Adaptive Learning</h3>
+                            <p>Personalized learning experiences that adapt to each student's pace and learning style for optimal educational outcomes.</p>
+                        </div>
+                        
+                        <div class="feature-slide">
+                            <div class="feature-visual">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMzAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSIxNSIgeT0iMTUiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiI+CjxwYXRoIGQ9Ik0xMiAydjIwIi8+CjxwYXRoIGQ9Im0xNSA1LTMgMy0zLTMiLz4KPHBhdGggZD0ibTkgMTkgMyAzIDMtMyIvPgo8L3N2Zz4KPC9zdmc+Cg==" alt="Feature 4" class="feature-image">
+                            </div>
+                            <h3>Mobile Integration</h3>
+                            <p>Fully responsive design with native mobile app integration for learning on-the-go and seamless cross-device synchronization.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">
+                            <span class="carousel-btn-icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                        </button>
+                        
+                        <div class="carousel-indicators">
+                            <button class="indicator active" data-slide="0" aria-label="Go to slide 1" aria-pressed="true"></button>
+                            <button class="indicator" data-slide="1" aria-label="Go to slide 2" aria-pressed="false"></button>
+                            <button class="indicator" data-slide="2" aria-label="Go to slide 3" aria-pressed="false"></button>
+                            <button class="indicator" data-slide="3" aria-label="Go to slide 4" aria-pressed="false"></button>
+                        </div>
+                        
+                        <button class="carousel-btn" id="nextBtn" aria-label="Next slide">
+                            <span class="carousel-btn-icon">
+                                <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Include features slider JavaScript -->
+    <script src="js/features-slider.js"></script>
+    
+    <!-- Test functions -->
+    <script>
+        function updateStatus(message) {
+            document.getElementById('statusDisplay').textContent = message;
+        }
+        
+        function testCarousel(action, value) {
+            const carousel = window.zhikeCarousel;
+            
+            if (!carousel) {
+                updateStatus('Error: Carousel not initialized');
+                return;
+            }
+            
+            try {
+                switch (action) {
+                    case 'next':
+                        carousel.nextSlide();
+                        updateStatus('Action: Next slide triggered');
+                        break;
+                        
+                    case 'prev':
+                        carousel.prevSlide();
+                        updateStatus('Action: Previous slide triggered');
+                        break;
+                        
+                    case 'goto':
+                        carousel.goToSlide(value);
+                        updateStatus(`Action: Navigated to slide ${value + 1}`);
+                        break;
+                        
+                    case 'autoplay':
+                        carousel.setAutoPlay(value, 3000);
+                        updateStatus(`Action: Auto-play ${value ? 'enabled' : 'disabled'}`);
+                        break;
+                        
+                    case 'info':
+                        const current = carousel.getCurrentSlide();
+                        const total = carousel.getTotalSlides();
+                        updateStatus(`Info: Slide ${current + 1} of ${total}`);
+                        break;
+                        
+                    case 'destroy':
+                        carousel.destroy();
+                        updateStatus('Action: Carousel destroyed');
+                        break;
+                        
+                    default:
+                        updateStatus('Error: Unknown action');
+                }
+            } catch (error) {
+                updateStatus(`Error: ${error.message}`);
+            }
+        }
+        
+        // Listen for carousel events
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('featuresTrack');
+            if (track) {
+                track.addEventListener('zhike-carousel-change', function(e) {
+                    updateStatus(`Event: Slide changed to ${e.detail.currentSlide + 1} (${e.detail.direction})`);
+                });
+            }
+            
+            // Initial status
+            setTimeout(() => {
+                if (window.zhikeCarousel) {
+                    updateStatus('Success: Carousel initialized and ready!');
+                } else {
+                    updateStatus('Error: Carousel failed to initialize');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

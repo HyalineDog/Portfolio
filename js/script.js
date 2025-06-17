@@ -56,9 +56,9 @@ function initializeChallengeHover() {
   const challengeCards = document.querySelectorAll('.challenge-card');
   
   const mediaMap = {
-    'static': 'assets/figma_assets/Challenge 1.png',
-    'business': 'assets/figma_assets/Challenge 2.mp4',
-    'fragmented': 'assets/figma_assets/Challenge 3.mp4'
+    'static': 'assets/figma_assets/Zhike Classroom Platform/Challenge 1.png',
+        'business': 'assets/figma_assets/Zhike Classroom Platform/Challenge 2.mp4',
+        'fragmented': 'assets/figma_assets/Zhike Classroom Platform/Challenge 3.mp4'
   };
   
   let currentlySelected = null;
@@ -318,12 +318,48 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(element);
   });
 });
+// Key Features Carousel is now handled by dedicated carousel.js file
+// This prevents conflicts with other carousel implementations on different pages
+
 const emailLink = document.querySelector('.nav-link[href="mailto:cjn259@gmail.com"]');
-emailLink.addEventListener('click', function(event) {
-  event.preventDefault();
-  const email = 'cjn259@gmail.com';
-  navigator.clipboard.writeText(email).then(() => {
-    alert('Email address copied to clipboard!');
-    window.open(emailLink.href, '_blank');
+if (emailLink) {
+  emailLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    const email = 'cjn259@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      alert('Email address copied to clipboard!');
+      window.open(emailLink.href, '_blank');
+    });
   });
-});
+}
+
+// Solution video scroll-triggered autoplay
+const solutionVideo = document.getElementById('solution-video');
+if (solutionVideo) {
+  // Ensure video is ready
+  solutionVideo.addEventListener('loadeddata', () => {
+    console.log('Solution video loaded and ready');
+  });
+  
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Video is in view, start playing
+        solutionVideo.play().catch(e => {
+          console.log('Solution video autoplay failed:', e);
+          // Try to play again after a short delay
+          setTimeout(() => {
+            solutionVideo.play().catch(err => console.log('Retry failed:', err));
+          }, 100);
+        });
+      } else {
+        // Video is out of view, pause it
+        solutionVideo.pause();
+      }
+    });
+  }, {
+    threshold: 0.3 // Trigger when 30% of the video is visible
+  });
+  
+  videoObserver.observe(solutionVideo);
+}

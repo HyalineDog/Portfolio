@@ -246,11 +246,16 @@ p {
     font-size: 1rem;
     color: var(--text-color-secondary);
     line-height: 1.7;
-    max-width: var(--width-large);
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
 }
 
 .content-text p {
-    max-width: fit-content;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .content-visual {
@@ -263,7 +268,6 @@ p {
     width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
 }
 
@@ -272,7 +276,6 @@ video.section-image {
     width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
     object-fit: cover;
 }
@@ -518,6 +521,361 @@ video.section-image {
 .solution-visual {
     margin-top: var(--space-xl);
     text-align: left;
+}
+
+/* Key Features Carousel Styles */
+.key-features-carousel {
+    margin: var(--space-xl) 0;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--card-background);
+    box-shadow: var(--shadow-lg);
+}
+
+.carousel-track {
+    display: flex;
+    width: 400%; /* 4 slides * 100% */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    outline: none;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Directional transition enhancements */
+.carousel-track.slide-next {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-track.slide-prev {
+    transition: transform 0.8s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+}
+
+.feature-slide {
+    width: 25%; /* Each slide takes 1/4 of track width */
+    display: flex;
+    align-items: center;
+    padding: var(--space-2xl);
+    gap: var(--space-xl);
+    min-height: 400px;
+    opacity: 0.6;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(0.92);
+    flex-shrink: 0; /* Prevent slides from shrinking */
+    filter: blur(1px);
+    z-index: 1;
+}
+
+.feature-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+    filter: blur(0);
+}
+
+.feature-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.feature-number {
+    font-size: 1rem;
+    font-weight: var(--weight-bold);
+    color: var(--primary-color);
+    background: rgba(255, 205, 66, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: var(--space-md);
+}
+
+.feature-slide h3 {
+    font-size: 2.5rem;
+    font-weight: var(--weight-bold);
+    color: var(--text-color);
+    margin: 0 0 var(--space-md) 0;
+    line-height: 1.2;
+}
+
+.feature-slide p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color-secondary);
+    margin: 0;
+}
+
+.feature-visual {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.carousel-btn {
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color-two);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 205, 66, 0.3);
+}
+
+.carousel-btn:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.carousel-btn.active-transition {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color-two);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(255, 205, 66, 0.4);
+}
+
+/* Directional button feedback */
+.carousel-btn#nextBtn:hover {
+    animation: pulseNext 0.6s ease-in-out;
+}
+
+.carousel-btn#prevBtn:hover {
+    animation: pulsePrev 0.6s ease-in-out;
+}
+
+@keyframes pulseNext {
+    0%, 100% {
+        transform: translateY(-2px) translateX(0);
+    }
+    50% {
+        transform: translateY(-2px) translateX(2px);
+    }
+}
+
+@keyframes pulsePrev {
+    0%, 100% {
+        transform: translateY(-2px) translateX(0);
+    }
+    50% {
+        transform: translateY(-2px) translateX(-2px);
+    }
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.indicator:hover {
+    background: var(--primary-color);
+    transform: scale(1.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(255, 205, 66, 0.3);
+}
+
+.indicator.active {
+    background: var(--primary-color);
+    transform: scale(1.4);
+    position: relative;
+    border-color: var(--primary-color);
+    box-shadow: 0 3px 12px rgba(255, 205, 66, 0.5);
+}
+
+.indicator.active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: var(--text-color-two);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+}
+
+/* Directional indicator feedback - simplified without continuous animations */
+.carousel-track.slide-next ~ .carousel-controls .indicator.active {
+    animation: slideIndicatorNext 0.8s ease;
+}
+
+.carousel-track.slide-prev ~ .carousel-controls .indicator.active {
+    animation: slideIndicatorPrev 0.8s ease;
+}
+
+@keyframes slideIndicatorNext {
+    0% {
+        transform: scale(1.4) translateX(-5px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.4) translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIndicatorPrev {
+    0% {
+        transform: scale(1.4) translateX(5px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.4) translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-lg);
+        min-height: auto;
+    }
+    
+    .feature-content,
+    .feature-visual {
+        max-width: 100%;
+    }
+    
+    .feature-slide h3 {
+        font-size: 2rem;
+    }
+    
+    .carousel-controls {
+        gap: var(--space-md);
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Learning Cards Styles */
+/* Mobile-first responsive design for learning cards */
+.learning-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin: var(--space-xl) 0;
+}
+
+/* Small tablets and large phones */
+@media (min-width: 480px) {
+    .learning-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .learning-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+    }
+}
+
+/* Large tablets and small desktops */
+@media (min-width: 1024px) {
+    .learning-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large desktops */
+@media (min-width: 1200px) {
+    .learning-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.learning-card {
+    padding: var(--space-lg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.learning-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+}
+
+.learning-card h4 {
+    font-size: 1.25rem;
+    font-weight: var(--weight-medium);
+    color: var(--text-color);
+    margin: 0 0 var(--space-sm) 0;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.learning-card p {
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
 .solution-image {
