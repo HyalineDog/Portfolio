@@ -51,6 +51,194 @@ const currentTheme = localStorage.getItem("theme")
   ? localStorage.getItem("theme")
   : null;
 
+// Challenge card selection functionality
+function initializeChallengeHover() {
+  const challengeCards = document.querySelectorAll('.challenge-card');
+  
+  const mediaMap = {
+    'static': 'assets/figma_assets/Challenge 1.png',
+    'business': 'assets/figma_assets/Challenge 2.mp4',
+    'fragmented': 'assets/figma_assets/Challenge 3.mp4'
+  };
+  
+  let currentlySelected = null;
+  
+  // Function to get current media element
+  function getCurrentMediaElement() {
+    return document.getElementById('challenge-media');
+  }
+  
+  // Function to select a card
+  function selectCard(card) {
+    // Remove selected class from all cards
+    challengeCards.forEach(c => c.classList.remove('selected'));
+    
+    // Add selected class to the clicked card
+    card.classList.add('selected');
+    currentlySelected = card;
+    
+    // Update media
+    const challengeType = card.getAttribute('data-challenge');
+    if (mediaMap[challengeType]) {
+      const mediaPath = mediaMap[challengeType];
+      const isVideo = mediaPath.endsWith('.mp4');
+      let currentMedia = getCurrentMediaElement();
+      
+      if (!currentMedia) return;
+      
+      if (isVideo) {
+        // If it's a video, ensure the element is a video tag
+        if (currentMedia.tagName !== 'VIDEO') {
+          const videoElement = document.createElement('video');
+          videoElement.className = currentMedia.className;
+          videoElement.id = currentMedia.id;
+          videoElement.autoplay = true;
+          videoElement.loop = true;
+          videoElement.muted = true;
+          videoElement.playsInline = true;
+          videoElement.innerHTML = 'Your browser does not support the video tag.';
+          currentMedia.parentNode.replaceChild(videoElement, currentMedia);
+          currentMedia = videoElement;
+        }
+        currentMedia.src = mediaPath;
+        currentMedia.load();
+        currentMedia.play().catch(e => console.log('Video autoplay failed:', e));
+      } else {
+        // If it's an image, ensure the element is an img tag
+        if (currentMedia.tagName !== 'IMG') {
+          const imgElement = document.createElement('img');
+          imgElement.className = currentMedia.className;
+          imgElement.id = currentMedia.id;
+          currentMedia.parentNode.replaceChild(imgElement, currentMedia);
+          currentMedia = imgElement;
+        }
+        currentMedia.src = mediaPath;
+        currentMedia.alt = `${challengeType} challenge visualization`;
+      }
+    }
+  }
+  
+  // Auto-select the first card on page load
+  if (challengeCards.length > 0) {
+    selectCard(challengeCards[0]);
+  }
+  
+  challengeCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      selectCard(card);
+    });
+  });
+}
+
+// Initialize challenge hover functionality when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeChallengeHover);
+} else {
+  initializeChallengeHover();
+}
+
+// Insight card selection functionality
+function initializeInsightHover() {
+  const insightCards = document.querySelectorAll('.insight-item');
+  const teacherQuote = document.getElementById('teacher-quote');
+  const problemSummary = document.getElementById('problem-summary');
+  const summaryCards = document.querySelectorAll('.summary-card');
+  
+  if (!teacherQuote || !problemSummary) return;
+  
+  const quoteMap = {
+    'apps': {
+      No: ".01",
+      problem: "Application overload disrupts current learning flow",
+      quote: "I start with PowerPoint, then switch to the textbook app, then open the activity platform, then back to PowerPoint. My students lose focus every time I'm fumbling with technology instead of teaching.",
+      author: "Middle School Science Teacher"
+    },
+    'time': {
+      No: ".02",
+      problem: "Inefficient resource management drains productivity",
+      quote: "I spend my entire Sunday searching for resources that match our curriculum, then another few hours during the week adapting them to fit our lesson plans. It's exhausting.",
+      author: "High School Math Teacher"
+    },
+    'adoption': {
+      No: ".03",
+      problem: "Resistance to change due to tool’s learning cost",
+      quote: "Sure, I know there are probably better tools out there, but learning a new system means weeks of preparation time I don't have. I'll stick with what I know, even if it's frustrating.",
+      author: "Elementary School Teacher"
+    },
+    'controls': {
+      No: ".04",
+      problem: "Poor smartboard interaction hinders classroom engagement",
+      quote: "When I have to turn my back to the students to click something on the computer, I immediately lose their attention. The controls need to be where I can reach them while still facing my class.",
+      author: "High School English Teacher"
+    }
+  };
+  
+  let currentlySelected = null;
+  
+  // Function to select an insight card
+  function selectInsight(card) {
+    // Remove selected class from all insight cards
+    insightCards.forEach(c => c.classList.remove('selected'));
+    
+    // Remove highlighted class from all summary cards
+    summaryCards.forEach(c => c.classList.remove('highlighted'));
+    
+    // Add selected class to the hovered insight card
+    card.classList.add('selected');
+    currentlySelected = card;
+    
+    // Get the insight type and highlight corresponding summary card
+    const insightType = card.getAttribute('data-insight');
+    const correspondingSummaryCard = document.querySelector(`[data-summary="${insightType}"]`);
+    if (correspondingSummaryCard) {
+      correspondingSummaryCard.classList.add('highlighted');
+    }
+    
+    // Update problem summary
+    if (quoteMap[insightType]) {
+      const quoteData = quoteMap[insightType];
+      const problemNumber = problemSummary.querySelector('.problem-number');
+      const problemText = problemSummary.querySelector('.problem-text');
+      
+      if (problemNumber && problemText) {
+        problemNumber.textContent = quoteData.No;
+        problemText.textContent = quoteData.problem;
+      }
+    }
+    
+    // Update quote
+    if (quoteMap[insightType]) {
+      const quoteData = quoteMap[insightType];
+      const blockquote = teacherQuote.querySelector('blockquote');
+      const cite = teacherQuote.querySelector('cite');
+      
+      if (blockquote && cite) {
+        blockquote.textContent = `"${quoteData.quote}"`;
+        cite.textContent = `— ${quoteData.author}`;
+      }
+    }
+  }
+  
+  // Add hover event listeners to insight cards
+  insightCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      selectInsight(card);
+    });
+  });
+  
+  // Auto-select the first insight card
+  if (insightCards.length > 0) {
+    selectInsight(insightCards[0]);
+  }
+}
+
+// Initialize insight hover functionality when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeInsightHover);
+} else {
+  initializeInsightHover();
+}
+
 if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);
 
