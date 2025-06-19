@@ -55,10 +55,17 @@ const currentTheme = localStorage.getItem("theme")
 function initializeChallengeHover() {
   const challengeCards = document.querySelectorAll('.challenge-card');
   
-  const mediaMap = {
+  // Check if we're on the Student Pad page or Classroom Platform page
+  const isStudentPadPage = window.location.pathname.includes('ZhiKe Student Pad') || document.title.includes('Student Pad');
+  
+  const mediaMap = isStudentPadPage ? {
+    'legacy': 'assets/figma_assets/Student Pad/Challenge 1.mp4',
+    'pedagogy': 'assets/figma_assets/Student Pad/Challenge 2.mp4',
+    'engagement': 'assets/figma_assets/Student Pad/Challenge 3.png'
+  } : {
     'static': 'assets/figma_assets/Zhike Classroom Platform/Challenge 1.png',
-        'business': 'assets/figma_assets/Zhike Classroom Platform/Challenge 2.mp4',
-        'fragmented': 'assets/figma_assets/Zhike Classroom Platform/Challenge 3.mp4'
+    'business': 'assets/figma_assets/Zhike Classroom Platform/Challenge 2.mp4',
+    'fragmented': 'assets/figma_assets/Zhike Classroom Platform/Challenge 3.mp4'
   };
   
   let currentlySelected = null;
@@ -133,20 +140,92 @@ function initializeChallengeHover() {
 // Initialize challenge hover functionality when DOM is loaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeChallengeHover);
+  document.addEventListener('DOMContentLoaded', initializeGamificationTabs);
 } else {
   initializeChallengeHover();
+  initializeGamificationTabs();
+}
+
+// Gamification tabs functionality
+function initializeGamificationTabs() {
+  const tabControllers = document.querySelectorAll('.tab-controller');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  if (tabControllers.length === 0 || tabContents.length === 0) return;
+  
+  function switchTab(targetTab) {
+    // Remove active state from all controllers and contents
+    tabControllers.forEach(controller => {
+      controller.setAttribute('data-active', 'false');
+    });
+    
+    tabContents.forEach(content => {
+      content.setAttribute('data-active', 'false');
+    });
+    
+    // Add active state to target controller and content
+    const targetController = document.querySelector(`[data-tab="${targetTab}"]`);
+    const targetContent = document.querySelector(`[data-content="${targetTab}"]`);
+    
+    if (targetController && targetContent) {
+      targetController.setAttribute('data-active', 'true');
+      targetContent.setAttribute('data-active', 'true');
+    }
+  }
+  
+  // Add hover event listeners to tab controllers
+  tabControllers.forEach(controller => {
+    controller.addEventListener('mouseenter', () => {
+      const tabName = controller.getAttribute('data-tab');
+      switchTab(tabName);
+    });
+    
+    controller.addEventListener('click', () => {
+      const tabName = controller.getAttribute('data-tab');
+      switchTab(tabName);
+    });
+  });
 }
 
 // Insight card selection functionality
 function initializeInsightHover() {
-  const insightCards = document.querySelectorAll('.insight-item');
+  // Exclude gamification insight items from interactive behavior
+  const insightCards = document.querySelectorAll('.insight-item:not(.gamification-cards-container .insight-item)');
   const teacherQuote = document.getElementById('teacher-quote');
   const problemSummary = document.getElementById('problem-summary');
   const summaryCards = document.querySelectorAll('.summary-card');
   
   if (!teacherQuote || !problemSummary) return;
   
-  const quoteMap = {
+  // Check if we're on the Student Pad page or Classroom Platform page
+  const isStudentPadPage = window.location.pathname.includes('ZhiKe Student Pad') || document.title.includes('Student Pad');
+  
+  const quoteMap = isStudentPadPage ? {
+    'motivation': {
+      No: ".01",
+      problem: "Students struggle with independent learning without teacher guidance",
+      quote: "I know I should be studying, but when there's no assignment due, I just don't know where to start or what to focus on.",
+      author: "9th Grade Student, Hefei"
+    },
+    'skepticism': {
+      No: ".02",
+      problem: "Teachers questioned technology's educational value in classroom settings",
+      quote: "These look just like iPads to them. If I let them have free access, they'd treat them like gaming devices instead of learning tools.",
+      author: "Elementary Teacher, Hefei"
+    },
+    'balance': {
+      No: ".03",
+      problem: "Parents view all screen as entertainment",
+      quote: "My parents don't like me using screens too much. They think I'm playing games even when I'm doing homework.",
+      author: "Hefei Fourteenth High School Freshman"
+    },
+    'rewards': {
+      No: ".04",
+      problem: "Visual customization motivated learning without creating dependency",
+      quote: "I like earning new avatars and themes when I complete my study goals. It makes me want to keep learning, but I don't feel like I have to use it all the time.",
+      author: "7th Grade Student, Beijing"
+    }
+  } : {
     'apps': {
       No: ".01",
       problem: "Application overload disrupts current learning flow",
@@ -161,7 +240,7 @@ function initializeInsightHover() {
     },
     'adoption': {
       No: ".03",
-      problem: "Resistance to change due to tool’s learning cost",
+      problem: "Resistance to change due to tool's learning cost",
       quote: "Sure, I know there are probably better tools out there, but learning a new system means weeks of preparation time I don't have. I'll stick with what I know, even if it's frustrating.",
       author: "Elementary School Teacher"
     },

@@ -141,43 +141,79 @@ h2::selection {
 
 /* Project Images - Using maximum specificity to override all other .card styles */
 
-/* Project 1 - Default static image */
+/* Project 1 Card Background - Apply to linkbox since it's on top */
 body .project-container .project-list .project-item:nth-child(1) .card {
-  background: url("../assets/figma_assets/Zhike Classroom Platform/web-portfolio-mockup_1.png") center center/cover !important;
+  background-image: url('../assets/figma_assets/Zhike\ Classroom\ Platform/web-portfolio-mockup_1.png') !important;
   background-size: cover !important;
-  transition: background-image 0.3s ease-in-out !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
 }
 
-/* Project 1 - Hover GIF */
-body .project-container .project-list .project-item:nth-child(1) .card:hover {
-  background: url("../assets/project/1-670.gif") center center/cover !important;
+body .project-container .project-list .project-item:nth-child(1) .linkbox:hover + .project-header + .card {
+  background-image: url('../assets/project/1-670.gif') !important;
   background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
 }
 
-/* Project 2 - Default static image (using existing jpg) */
+body .project-container .project-list .project-item:nth-child(1):hover .card {
+  background-image: url('../assets/project/1-670.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+/* Project 2 Card Background - Apply to linkbox since it's on top */
 body .project-container .project-list .project-item:nth-child(2) .card {
-  background: url("../assets/project/16.jpg") center center/cover !important;
+  background-image: url('../assets/project/project-two.png') !important;
   background-size: cover !important;
-  transition: background-image 0.3s ease-in-out !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
 }
 
-/* Project 2 - Hover GIF */
-body .project-container .project-list .project-item:nth-child(2) .card:hover {
-  background: url("../assets/project/MyVideo4.gif") center center/cover !important;
+body .project-container .project-list .project-item:nth-child(2) .linkbox:hover + .project-header + .card {
+  background-image: url('../assets/project/MyVideo4.gif') !important;
   background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
 }
 
-/* Project 3 - Default static image (using existing jpg) */
+body .project-container .project-list .project-item:nth-child(2):hover .card {
+  background-image: url('../assets/project/MyVideo4.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+/* Project 3 Card Background - Apply to linkbox since it's on top */
 body .project-container .project-list .project-item:nth-child(3) .card {
-  background: url("../assets/project/16.jpg") center center/cover !important;
+  background-image: url('../assets/project/16.jpg') !important;
   background-size: cover !important;
-  transition: background-image 0.3s ease-in-out !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
 }
 
-/* Project 3 - Hover GIF (creating a static version for now) */
-body .project-container .project-list .project-item:nth-child(3) .card:hover {
-  background: url("../assets/project/16.jpg") center center/cover !important;
+body .project-container .project-list .project-item:nth-child(3) .linkbox:hover + .project-header + .card {
+  background-image: url('../assets/project/16.jpg') !important;
   background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(3):hover .card {
+  background-image: url('../assets/project/16.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
 }
 
 /* Project 4 */
