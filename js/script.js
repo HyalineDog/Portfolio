@@ -140,183 +140,126 @@ function initializeChallengeHover() {
 // Initialize challenge hover functionality when DOM is loaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeChallengeHover);
-  document.addEventListener('DOMContentLoaded', initializeGamificationTabs);
 } else {
   initializeChallengeHover();
-  initializeGamificationTabs();
-}
-
-// Gamification tabs functionality
-function initializeGamificationTabs() {
-  const tabControllers = document.querySelectorAll('.tab-controller');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  if (tabControllers.length === 0 || tabContents.length === 0) return;
-  
-  function switchTab(targetTab) {
-    // Remove active state from all controllers and contents
-    tabControllers.forEach(controller => {
-      controller.setAttribute('data-active', 'false');
-    });
-    
-    tabContents.forEach(content => {
-      content.setAttribute('data-active', 'false');
-    });
-    
-    // Add active state to target controller and content
-    const targetController = document.querySelector(`[data-tab="${targetTab}"]`);
-    const targetContent = document.querySelector(`[data-content="${targetTab}"]`);
-    
-    if (targetController && targetContent) {
-      targetController.setAttribute('data-active', 'true');
-      targetContent.setAttribute('data-active', 'true');
-    }
-  }
-  
-  // Add hover event listeners to tab controllers
-  tabControllers.forEach(controller => {
-    controller.addEventListener('mouseenter', () => {
-      const tabName = controller.getAttribute('data-tab');
-      switchTab(tabName);
-    });
-    
-    controller.addEventListener('click', () => {
-      const tabName = controller.getAttribute('data-tab');
-      switchTab(tabName);
-    });
-  });
 }
 
 // Insight card selection functionality
 function initializeInsightHover() {
-  // Exclude gamification insight items from interactive behavior
-  const insightCards = document.querySelectorAll('.insight-item:not(.gamification-cards-container .insight-item)');
+  console.log('Initializing insight hover functionality');
+  const insightCards = document.querySelectorAll('.insight-item');
   const teacherQuote = document.getElementById('teacher-quote');
   const problemSummary = document.getElementById('problem-summary');
   const summaryCards = document.querySelectorAll('.summary-card');
   
-  if (!teacherQuote || !problemSummary) return;
-  
-  // Check if we're on the Student Pad page or Classroom Platform page
-  const isStudentPadPage = window.location.pathname.includes('ZhiKe Student Pad') || document.title.includes('Student Pad');
-  
-  const quoteMap = isStudentPadPage ? {
-    'motivation': {
-      No: ".01",
-      problem: "Students struggle with independent learning without teacher guidance",
-      quote: "I know I should be studying, but when there's no assignment due, I just don't know where to start or what to focus on.",
-      author: "9th Grade Student, Hefei"
-    },
-    'skepticism': {
-      No: ".02",
-      problem: "Teachers questioned technology's educational value in classroom settings",
-      quote: "These look just like iPads to them. If I let them have free access, they'd treat them like gaming devices instead of learning tools.",
-      author: "Elementary Teacher, Hefei"
-    },
-    'balance': {
-      No: ".03",
-      problem: "Parents view all screen as entertainment",
-      quote: "My parents don't like me using screens too much. They think I'm playing games even when I'm doing homework.",
-      author: "Hefei Fourteenth High School Freshman"
-    },
-    'rewards': {
-      No: ".04",
-      problem: "Visual customization motivated learning without creating dependency",
-      quote: "I like earning new avatars and themes when I complete my study goals. It makes me want to keep learning, but I don't feel like I have to use it all the time.",
-      author: "7th Grade Student, Beijing"
-    }
-  } : {
-    'apps': {
-      No: ".01",
-      problem: "Application overload disrupts current learning flow",
-      quote: "I start with PowerPoint, then switch to the textbook app, then open the activity platform, then back to PowerPoint. My students lose focus every time I'm fumbling with technology instead of teaching.",
-      author: "Middle School Science Teacher"
-    },
-    'time': {
-      No: ".02",
-      problem: "Inefficient resource management drains productivity",
-      quote: "I spend my entire Sunday searching for resources that match our curriculum, then another few hours during the week adapting them to fit our lesson plans. It's exhausting.",
-      author: "High School Math Teacher"
-    },
-    'adoption': {
-      No: ".03",
-      problem: "Resistance to change due to tool's learning cost",
-      quote: "Sure, I know there are probably better tools out there, but learning a new system means weeks of preparation time I don't have. I'll stick with what I know, even if it's frustrating.",
-      author: "Elementary School Teacher"
-    },
-    'controls': {
-      No: ".04",
-      problem: "Poor smartboard interaction hinders classroom engagement",
-      quote: "When I have to turn my back to the students to click something on the computer, I immediately lose their attention. The controls need to be where I can reach them while still facing my class.",
-      author: "High School English Teacher"
-    }
-  };
-  
-  let currentlySelected = null;
-  
-  // Function to select an insight card
-  function selectInsight(card) {
-    // Remove selected class from all insight cards
-    insightCards.forEach(c => c.classList.remove('selected'));
-    
-    // Remove highlighted class from all summary cards
-    summaryCards.forEach(c => c.classList.remove('highlighted'));
-    
-    // Add selected class to the hovered insight card
-    card.classList.add('selected');
-    currentlySelected = card;
-    
-    // Get the insight type and highlight corresponding summary card
-    const insightType = card.getAttribute('data-insight');
-    const correspondingSummaryCard = document.querySelector(`[data-summary="${insightType}"]`);
-    if (correspondingSummaryCard) {
-      correspondingSummaryCard.classList.add('highlighted');
-    }
-    
-    // Update problem summary
-    if (quoteMap[insightType]) {
-      const quoteData = quoteMap[insightType];
-      const problemNumber = problemSummary.querySelector('.problem-number');
-      const problemText = problemSummary.querySelector('.problem-text');
-      
-      if (problemNumber && problemText) {
-        problemNumber.textContent = quoteData.No;
-        problemText.textContent = quoteData.problem;
-      }
-    }
-    
-    // Update quote
-    if (quoteMap[insightType]) {
-      const quoteData = quoteMap[insightType];
-      const blockquote = teacherQuote.querySelector('blockquote');
-      const cite = teacherQuote.querySelector('cite');
-      
-      if (blockquote && cite) {
-        blockquote.textContent = `"${quoteData.quote}"`;
-        cite.textContent = `— ${quoteData.author}`;
-      }
-    }
-  }
-  
-  // Add hover event listeners to insight cards
-  insightCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      selectInsight(card);
-    });
+  console.log('Found elements:', {
+    insightCards: insightCards.length,
+    teacherQuote: !!teacherQuote,
+    problemSummary: !!problemSummary
   });
   
-  // Auto-select the first insight card
-  if (insightCards.length > 0) {
-    selectInsight(insightCards[0]);
+  if (!teacherQuote || !problemSummary) {
+    console.log('Missing required elements, exiting');
+    return;
   }
+  
+  // Check if we're on the Student Pad page, Classroom Platform page, or Notetaking App page
+  const isStudentPadPage = window.location.pathname.includes('ZhiKe Student Pad') || document.title.includes('Student Pad');
+  const isNoteTakingPage = window.location.pathname.includes('Notetaking App') || document.title.includes('Note-taking');
+  
+  console.log('Page detection:', {
+    pathname: window.location.pathname,
+    title: document.title,
+    isStudentPadPage,
+    isNoteTakingPage
+  });
+  
+  // Skip insight hover initialization - now handled by insight-hover-system.js
+  console.log('Insight hover functionality moved to unified system');
+  return;
 }
 
 // Initialize insight hover functionality when DOM is loaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeInsightHover);
-} else {
-  initializeInsightHover();
+function safeInitializeInsightHover() {
+  // Wait a bit to ensure all other scripts have loaded
+  setTimeout(() => {
+    console.log('=== Starting Safe Initialization ===');
+    console.log('Document ready state:', document.readyState);
+    console.log('Window location:', window.location.href);
+    
+    // Check if we're on the Notetaking App page
+    const isNoteTakingPage = window.location.pathname.includes('Notetaking App') || 
+                            document.title.includes('Note-taking') ||
+                            document.title.includes('note-taking');
+    
+    console.log('Is note-taking page:', isNoteTakingPage);
+    
+    if (isNoteTakingPage) {
+      console.log('Skipping initialization - Notetaking App has dedicated script');
+      return;
+    } else {
+      console.log('Initializing for other pages');
+      initializeInsightHover();
+    }
+  }, 500);
 }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', safeInitializeInsightHover);
+} else {
+  safeInitializeInsightHover();
+}
+
+// Also try to initialize when window loads (as a backup)
+window.addEventListener('load', () => {
+  console.log('Window loaded, attempting backup initialization');
+  setTimeout(initializeInsightHover, 1000);
+});
+
+// Manual test function for debugging (can be called from browser console)
+window.testInsightHover = function() {
+  console.log('=== Manual Test Function Called ===');
+  console.log('Current page title:', document.title);
+  console.log('Current pathname:', window.location.pathname);
+  
+  const insightCards = document.querySelectorAll('.insight-item');
+  const teacherQuote = document.getElementById('teacher-quote');
+  const problemSummary = document.getElementById('problem-summary');
+  
+  console.log('Elements found:');
+  console.log('- Insight cards:', insightCards.length);
+  console.log('- Teacher quote:', !!teacherQuote);
+  console.log('- Problem summary:', !!problemSummary);
+  
+  if (insightCards.length > 0) {
+    console.log('Insight cards data-insight attributes:');
+    insightCards.forEach((card, index) => {
+      console.log(`  Card ${index}:`, card.getAttribute('data-insight'));
+    });
+  }
+  
+  if (teacherQuote) {
+    console.log('Teacher quote structure:');
+    console.log('- Blockquote:', !!teacherQuote.querySelector('blockquote'));
+    console.log('- Cite:', !!teacherQuote.querySelector('cite'));
+  }
+  
+  if (problemSummary) {
+    console.log('Problem summary structure:');
+    console.log('- Problem number:', !!problemSummary.querySelector('.problem-number'));
+    console.log('- Problem text:', !!problemSummary.querySelector('.problem-text'));
+  }
+  
+  // Try to manually trigger the hover on the first card
+  if (insightCards.length > 0) {
+    console.log('Manually triggering hover on first card...');
+    const firstCard = insightCards[0];
+    const event = new Event('mouseenter');
+    firstCard.dispatchEvent(event);
+  }
+  
+  return 'Test completed - check console for results';
+};
 
 if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);

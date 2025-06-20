@@ -58,13 +58,78 @@
     flex-direction: column;
     padding: var(--space-2xl);
     gap: var(--space-xl);
-    min-height: 500px;
+    min-height: 600px;
     opacity: 0.6;
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: scale(0.92);
     flex-shrink: 0;
     filter: blur(1px);
     z-index: 1;
+}
+
+/* Layer 1: Design Strategy Title */
+.zhike-feature-layer-1 {
+    text-align: center;
+    padding: var(--space-lg) 0;
+    margin-bottom: var(--space-lg);
+}
+
+.zhike-feature-layer-1 h3 {
+    font-size: 2.5rem;
+    font-weight: var(--weight-bold);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Layer 2: Problem-Solution-Impact */
+.zhike-feature-layer-2 {
+    flex: 1;
+    padding: var(--space-lg) 0;
+}
+
+.zhike-feature-psi {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-lg);
+    height: 100%;
+    align-items: stretch;
+}
+
+.zhike-psi-item {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-md);
+    background: var(--card-background);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.zhike-psi-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.zhike-psi-item h4 {
+    font-weight: var(--weight-semibold);
+    color: var(--primary-color);
+    margin: 0 0 var(--space-sm) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.zhike-psi-item p {
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    flex: 1;
+}
+
+/* Layer 3: Visual Content */
+.zhike-feature-layer-3 {
+    padding: var(--space-lg) 0 0 0;
+    margin-top: var(--space-lg);
 }
 
 .zhike-feature-slide.active {
@@ -271,17 +336,28 @@
 @media (max-width: 768px) {
     .zhike-feature-slide {
         padding: var(--space-lg);
-        min-height: 500px;
+        min-height: 600px;
     }
     
-    .zhike-feature-text {
-        flex-direction: column;
+    .zhike-feature-layer-1 h3 {
+        font-size: 2rem;
+    }
+    
+    .zhike-feature-psi {
+        grid-template-columns: 1fr;
         gap: var(--space-md);
     }
     
-    .zhike-feature-text h3 {
-        font-size: 2rem;
-        flex: none;
+    .zhike-psi-item {
+        padding: var(--space-sm);
+    }
+    
+    .zhike-psi-item h4 {
+        font-size: 1.1rem;
+    }
+    
+    .zhike-psi-item p {
+        font-size: 0.95rem;
     }
     
     .zhike-features-header h2 {
@@ -301,11 +377,40 @@
 @media (max-width: 480px) {
     .zhike-feature-slide {
         padding: var(--space-md);
-        min-height: 450px;
+        min-height: 550px;
     }
     
-    .zhike-feature-text h3 {
+    .zhike-feature-layer-1 {
+        padding: var(--space-md) 0;
+    }
+    
+    .zhike-feature-layer-1 h3 {
         font-size: 1.75rem;
+    }
+    
+    .zhike-feature-layer-2 {
+        padding: var(--space-md) 0;
+    }
+    
+    .zhike-feature-psi {
+        gap: var(--space-sm);
+    }
+    
+    .zhike-psi-item {
+        padding: var(--space-xs);
+    }
+    
+    .zhike-psi-item h4 {
+        font-size: 1rem;
+    }
+    
+    .zhike-psi-item p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .zhike-feature-layer-3 {
+        padding: var(--space-md) 0 0 0;
     }
     
     .zhike-features-header h2 {

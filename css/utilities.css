@@ -168,7 +168,7 @@ body .project-container .project-list .project-item:nth-child(1):hover .card {
 
 /* Project 2 Card Background - Apply to linkbox since it's on top */
 body .project-container .project-list .project-item:nth-child(2) .card {
-  background-image: url('../assets/project/project-two.png') !important;
+  background-image: url('../assets/figma_assets/Student\ Pad/Hero Image.png') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;

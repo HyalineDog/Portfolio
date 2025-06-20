@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/Case Study.css">
     <link rel="stylesheet" href="css/features-slider.css">
     <link rel="stylesheet" href="css/zhike-features-slider.css">
-    <link rel="stylesheet" href="css/gamification-tabs.css">
+
     <link rel="stylesheet" href="css/animations.css">
 
 </head>
@@ -321,104 +321,118 @@
                 <p class="section-description">Designing motivation systems that foster genuine learning while preventing addiction through evidence-based psychological principles.</p>
             </div>
             
-            <!-- Gamification Tab Controller -->
             <div class="gamification-tabs">
                 <div class="tab-controller" data-tab="ethical" data-active="true">
-                    <div class="tab-icon">🎯</div>
+                    <span class="tab-icon">⚖️</span>
                     <h3>The Ethical Framework</h3>
-                    <p>Evidence-based psychological principles</p>
+                    <p>Establishing moral guidelines for educational gamification</p>
                 </div>
                 <div class="tab-controller" data-tab="reward">
-                    <div class="tab-icon">📊</div>
+                    <span class="tab-icon">🏆</span>
                     <h3>Reward Architecture</h3>
-                    <p>Meaningful motivation systems</p>
+                    <p>Designing meaningful and motivating reward systems</p>
                 </div>
-                <div class="tab-controller" data-tab="motivation">
-                    <div class="tab-icon">💡</div>
+                <div class="tab-controller" data-tab="psychology">
+                    <span class="tab-icon">🧠</span>
                     <h3>Motivation Psychology</h3>
-                    <p>Intrinsic vs. extrinsic balance</p>
+                    <p>Understanding psychological drivers of engagement</p>
                 </div>
                 <div class="tab-controller" data-tab="prevention">
-                    <div class="tab-icon">🛑</div>
+                    <span class="tab-icon">🛡️</span>
                     <h3>Addiction Prevention</h3>
-                    <p>Healthy learning boundaries</p>
+                    <p>Safeguarding against harmful gaming behaviors</p>
                 </div>
             </div>
             
-            <!-- Gamification Cards Container -->
             <div class="gamification-cards-container">
-                <!-- The Ethical Framework Cards -->
-                <div class="tab-content" data-content="ethical" data-active="true">
-                    <div class="research-insights">
-                        <div class="insight-item">
-                            <div class="insight-icon">🎯</div>
-                            <p>Hexad User Types Model application to education</p>
+                <div class="tab-content" data-tab="ethical" data-active="true">
+                        <div class="gamification-subcards">
+                            <div class="subcard">
+                                <span class="subcard-icon">📝 Self-Directed Task Creation</span>
+                                <p>Students set personal learning goals alongside teacher assignments</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">📊 Progress Visualization</span>
+                                <p>Learning analytics that show growth without time pressure</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">🎯 Learning-Focused UI</span>
+                                <p>To-do lists replace app icons to center on educational goals</p>
+                            </div>
                         </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">⚖️</div>
-                            <p>Control Student Engagement vs. Addiction</p>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">🧠</div>
-                            <p>Educational Psychology considerations for K-12 students</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Reward Architecture Cards -->
-                <div class="tab-content" data-content="reward">
-                    <div class="research-insights">
-                        <div class="insight-item">
-                            <div class="insight-icon">📊</div>
-                            <p>Study Points System - why learning completion over time spent</p>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">⏰</div>
-                            <p>Controlled Perks Strategy - time limits and meaningful restrictions</p>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">🎨</div>
-                            <p>Avatar/Visual Rewards - personality expression without distraction</p>
+                        <div class="gamification-visual">
+                            <video autoplay muted playsinline data-gamification-video="ethical">
+                                <source src="assets/figma_assets/Student Pad/Gamification 1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Motivation Psychology Cards -->
-                <div class="tab-content" data-content="motivation">
-                    <div class="research-insights">
-                        <div class="insight-item">
-                            <div class="insight-icon">💡</div>
-                            <p>Intrinsic vs. Extrinsic Balance - how you fostered internal motivation</p>
+                    
+                    <div class="tab-content" data-tab="reward">
+                        <div class="gamification-subcards">
+                            <div class="subcard">
+                                <span class="subcard-icon">⭐ Learning-Based Points</span>
+                                <p>Rewards for task completion, not time spent on device</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">📈 Level Progression</span>
+                                <p>Controlled progression with meaningful educational perks</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">⏰ Time-Limited Perks</span>
+                                <p>Avatar themes and customization with built-in expiration to keep motivation</p>
+                            </div>
                         </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">👥</div>
-                            <p>Social Proof Elements - healthy competition design</p>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">📈</div>
-                            <p>Progress Visualization - achievement recognition without exploitation</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Addiction Prevention Measures Cards -->
-                <div class="tab-content" data-content="prevention">
-                    <div class="research-insights">
-                        <div class="insight-item">
-                            <div class="insight-icon">🛑</div>
-                            <p>Natural Stopping Points built into the system</p>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">⏳</div>
-                            <p>Time-Limited Benefits preventing exploitation</p>
-                        </div>
-                        <div class="insight-item">
-                            <div class="insight-icon">🎓</div>
-                            <p>Educational Focus - rewards tied to learning outcomes, not engagement metrics</p>
+                        <div class="gamification-visual">
+                            <video autoplay muted playsinline data-gamification-video="reward">
+                                <source src="assets/figma_assets/Student Pad/Gamification 2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
-                </div>
-            </div>
+                    
+                    <div class="tab-content" data-tab="psychology">
+                        <div class="gamification-subcards">
+                            <div class="subcard">
+                                <span class="subcard-icon">🏆 Badge System</span>
+                                <p>Recognition for classroom participation and academic achievement, not competition</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">📊 Healthy Leaderboards</span>
+                                <p>Focus on study habits and self-improvement, not grades or rankings</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">🤝 Peer Encouragement</span>
+                                <p>Classmate gifts and support features that build learning community</p>
+                            </div>
+                        </div>
+                        <div class="gamification-visual">
+                            <video autoplay muted playsinline data-gamification-video="psychology">
+                                <source src="assets/figma_assets/Student Pad/Gamification 3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab="prevention">
+                        <div class="gamification-subcards">
+                            <div class="subcard">
+                                <span class="subcard-icon">⏹️ Natural Stopping Points</span>
+                                <p>Task completion creates logical break moments in usage</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">🎨 Cosmetic-Only Rewards</span>
+                                <p>Avatar customization and themes that don't affect learning functionality</p>
+                            </div>
+                            <div class="subcard">
+                                <span class="subcard-icon">👨‍👩‍👧‍👦 Parent-Friendly Design</span>
+                                <p>Visual differentiation from commerical interfaces to address concerns</p>
+                            </div>
+                        </div>
+                        <div class="gamification-visual">
+                            <img src="assets/figma_assets/Student Pad/Gamification 4.png" alt="Gamification Prevention Design" />
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -431,27 +445,37 @@
                 <h2 class="section-title">Flexible grid framework</h2>
                 <p class="section-description">We implemented a modern framework to replace 9 separate homepage versions, requiring close collaboration with developers to retrofit legacy code.</p>
             </div>
-            <div class="architecture-comparison">
-                <div class="before-after">
-                    <div class="before">
-                        <h4>Before: 9 Separate Versions</h4>
-                        <ul>
-                            <li>Maintenance nightmare</li>
-                            <li>Inconsistent experiences</li>
-                            <li>Development bottlenecks</li>
-                            <li>Legacy code constraints</li>
-                        </ul>
-                    </div>
-                    <div class="after">
-                        <h4>After: Unified Framework</h4>
-                        <ul>
-                            <li>60% reduction in maintenance time</li>
-                            <li>Consistent user experience</li>
-                            <li>Scalable architecture</li>
-                            <li>Future-ready foundation</li>
-                        </ul>
-                    </div>
+            
+            <!-- Simple Two-Box Comparison -->
+            <div class="simple-comparison">
+                <div class="comparison-box before-box">
+                    <h3>Before: 9 Separate Versions</h3>
+                    <ul class="info-list">
+                        <li>Maintenance nightmare across multiple codebases</li>
+                        <li>Inconsistent user experiences</li>
+                        <li>Development bottlenecks and delays</li>
+                        <li>Legacy code constraints limiting innovation</li>
+                        <li>Resource-intensive updates and bug fixes</li>
+                    </ul>
                 </div>
+                <div class="comparison-box after-box">
+                    <h3>After: Unified Framework</h3>
+                    <ul class="info-list">
+                        <li>60% reduction in maintenance time</li>
+                        <li>Consistent user experience across all versions</li>
+                        <li>Scalable architecture for future growth</li>
+                        <li>Streamlined development workflow</li>
+                        <li>Future-ready foundation for new features</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Flexible Grid Visual -->
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/figma_assets/Student Pad/Flexible Grid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
@@ -543,7 +567,8 @@
     </footer>
     
     <script src="js/studentpad-features-slider.js"></script>
-    <script src="js/gamification-tabs.js"></script>
-    <script src="js/script.js"></script>
+        <script src="js/gamification-tabs.js"></script>
+        <script src="js/insight-hover-system.js"></script>
+        <script src="js/script.js"></script>
 </body>
 </html>
