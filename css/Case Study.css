@@ -1678,6 +1678,26 @@ video.section-image {
     color: #999;
 }
 
+/* Fix footer attribution text color */
+#footer .attribution p {
+    color: #ffffff !important;
+}
+
+/* Ensure footer sticks to bottom */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+#footer {
+    margin-top: auto;
+}
+
 /* Responsive Design - Dush Style */
 @media (max-width: 768px) {
     :root {

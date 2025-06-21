@@ -61,7 +61,10 @@ class NoteTakingFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <img class="zhike-feature-image" src="assets/figma_assets/Note Taking/Template Feature.png" alt="Research-Backed Templates Interface" loading="lazy">
+                            <video class="zhike-feature-video" autoplay muted loop playsinline>
+                                <source src="assets/figma_assets/Notetaking App/Feature 1.mp4" type="video/mp4">
+                                <div class="zhike-feature-icon">📝</div>
+                            </video>
                         </div>
                     </div>
                     <div class="zhike-feature-slide">
@@ -72,10 +75,7 @@ class NoteTakingFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <video class="zhike-feature-video" autoplay muted loop playsinline>
-                                <source src="assets/figma_assets/Note Taking/Overlay Feature.mp4" type="video/mp4">
-                                <div class="zhike-feature-icon">🌐</div>
-                            </video>
+                            <img class="zhike-feature-image" src="assets/figma_assets/Notetaking App/Feature 2.png" alt="Anywhere Access System Interface" loading="lazy">
                         </div>
                     </div>
                     <div class="zhike-feature-slide">
@@ -86,7 +86,7 @@ class NoteTakingFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <img class="zhike-feature-image" src="assets/figma_assets/Note Taking/Input Methods.png" alt="Multiple Input Methods Interface" loading="lazy">
+                            <img class="zhike-feature-image" src="assets/figma_assets/Notetaking App/Feature 3.png" alt="Multiple Input Methods Interface" loading="lazy">
                         </div>
                     </div>
                     <div class="zhike-feature-slide">
@@ -97,7 +97,7 @@ class NoteTakingFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <img class="zhike-feature-image" src="assets/figma_assets/Note Taking/Community Feature.png" alt="Learning Communities Interface" loading="lazy">
+                            <img class="zhike-feature-image" src="assets/figma_assets/Notetaking App/Feature 4.png" alt="Learning Communities Interface" loading="lazy">
                         </div>
                     </div>
                 </div>

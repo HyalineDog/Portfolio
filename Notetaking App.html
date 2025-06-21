@@ -64,6 +64,7 @@
         </div>
     </nav>
 
+    <main>
     <!-- Hero Section -->
     <header id="hero">
         <section class="header-container" id="main">
@@ -151,9 +152,7 @@
                 </div>
             </div>
             <div class="content-visual">
-                <video src="assets/figma_assets/Note Taking/Challenge 1.mp4" class="section-image" id="challenge-media" autoplay loop muted playsinline>
-                    Your browser does not support the video tag.
-                </video>
+                <img src="assets/figma_assets/Notetaking App/Challenge 1.png" class="section-image" id="challenge-media" alt="Challenge visualization showing confusing architecture">
             </div>
         </div>
     </section>
@@ -230,9 +229,6 @@
                     <p>Discussion boards where students share strategies, learn from high-performers, and build peer-to-peer learning networks</p>
                 </div>
             </div>
-            <div class="solution-visual">
-                <img src="assets/figma_assets/Note Taking/Solution Overview.png" class="solution-image" id="solution-video" alt="Solution demonstration">
-            </div>
         </div>
     </section>
 
@@ -250,7 +246,7 @@
     </section>
 
     <!-- Design Strategy Section -->
-    <section class="section" id="methodology">
+    <section class="section" id="gamification">
         <div class="container">
             <div class="section-header">
                 <p class="section-subtitle highlighted">Design Strategy</p>
@@ -258,7 +254,7 @@
                 <p class="section-description">Converting diverse educational methodologies—from Cornell Notes to mind mapping—into intuitive digital templates that teach students multiple approaches to processing and retaining information.</p>
             </div>
             
-            <div class="methodology-tabs">
+            <div class="gamification-tabs">
                 <div class="tab-controller" data-tab="research" data-active="true">
                     <span class="tab-icon">📚</span>
                     <h3>Research-Backed Methods</h3>
@@ -281,84 +277,34 @@
                 </div>
             </div>
             
-            <div class="methodology-cards-container">
+            <div class="gamification-cards-container">
                 <div class="tab-content" data-tab="research" data-active="true">
-                    <div class="methodology-subcards">
-                        <div class="subcard">
-                            <span class="subcard-icon">📋 Cornell Method</span>
-                            <p>Three-section layout: notes, cues, summary for systematic review and retention</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">📖 SQ3R Method</span>
-                            <p>Survey, Question, Read, Recite, Review for active reading comprehension</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">📝 Outline Method</span>
-                            <p>Hierarchical structure using main topics, subtopics, and supporting details</p>
-                        </div>
-                    </div>
-                    <div class="methodology-visual">
-                        <img src="assets/figma_assets/Note Taking/Research Methods.png" alt="Research-Backed Note-Taking Methods" />
+                    <div class="gamification-visual">
+                        <video autoplay muted playsinline data-gamification-video="research">
+                            <source src="assets/figma_assets/Notetaking App/Design Strategy 1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
                 
                 <div class="tab-content" data-tab="subject">
-                    <div class="methodology-subcards">
-                        <div class="subcard">
-                            <span class="subcard-icon">🔢 STEM Templates</span>
-                            <p>Grid layouts for equations, problem-solving steps, and diagram integration</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">📚 English Templates</span>
-                            <p>Analysis frameworks for literature, quote integration, and thematic exploration</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">🌍 Social Studies</span>
-                            <p>Timeline structures, cause-effect mapping, and historical context organization</p>
-                        </div>
-                    </div>
-                    <div class="methodology-visual">
-                        <img src="assets/figma_assets/Note Taking/Subject Templates.png" alt="Subject-Specific Templates" />
+                    <div class="gamification-visual">
+                        <img src="assets/figma_assets/Notetaking App/Design Strategy 2.png" alt="Subject-Specific Templates" />
                     </div>
                 </div>
                 
                 <div class="tab-content" data-tab="cognitive">
-                    <div class="methodology-subcards">
-                        <div class="subcard">
-                            <span class="subcard-icon">🕸️ Mind Mapping</span>
-                            <p>Radial layouts that mirror natural thought processes and idea connections</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">🔗 Concept Mapping</span>
-                            <p>Visual networks showing relationships between concepts and knowledge structures</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">📊 Charting Method</span>
-                            <p>Table-based organization for comparing information and systematic analysis</p>
-                        </div>
-                    </div>
-                    <div class="methodology-visual">
-                        <img src="assets/figma_assets/Note Taking/Cognitive Methods.png" alt="Cognitive Learning Templates" />
+                    <div class="gamification-visual">
+                        <video autoplay muted playsinline data-gamification-video="cognitive">
+                            <source src="assets/figma_assets/Notetaking App/Design Strategy 3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
                 
                 <div class="tab-content" data-tab="adaptive">
-                    <div class="methodology-subcards">
-                        <div class="subcard">
-                            <span class="subcard-icon">📈 Success Analytics</span>
-                            <p>Templates adapt based on student performance and learning effectiveness data</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">👥 Peer Influence</span>
-                            <p>High-performing student templates become available to help struggling learners</p>
-                        </div>
-                        <div class="subcard">
-                            <span class="subcard-icon">🔄 Iterative Design</span>
-                            <p>Templates evolve based on usage patterns and educational research updates</p>
-                        </div>
-                    </div>
-                    <div class="methodology-visual">
-                        <img src="assets/figma_assets/Note Taking/Adaptive Learning.png" alt="Adaptive Learning System" />
+                    <div class="gamification-visual">
+                        <img src="assets/figma_assets/Notetaking App/Design Strategy 4.png" alt="Adaptive Learning Templates" />
                     </div>
                 </div>
             </div>
@@ -428,6 +374,7 @@
             </div>
         </div>
     </section>
+    </main>
 
 
     <!-- Footer -->
@@ -455,6 +402,7 @@
     
     <script src="js/note-taking-features-slider.js"></script>
         <script src="js/methodology-tabs.js"></script>
+        <script src="js/gamification-tabs.js"></script>
         <script src="js/insight-hover-system.js"></script>
         <script src="js/script.js"></script>
 </body>

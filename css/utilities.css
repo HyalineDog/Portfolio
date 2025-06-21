@@ -201,7 +201,7 @@ body .project-container .project-list .project-item:nth-child(3) .card {
 }
 
 body .project-container .project-list .project-item:nth-child(3) .linkbox:hover + .project-header + .card {
-  background-image: url('../assets/project/16.jpg') !important;
+  background-image: url('../assets/figma_assets/Notetaking\ App/Hover\ Cover.png') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -209,7 +209,7 @@ body .project-container .project-list .project-item:nth-child(3) .linkbox:hover 
 }
 
 body .project-container .project-list .project-item:nth-child(3):hover .card {
-  background-image: url('../assets/project/16.jpg') !important;
+  background-image: url('../assets/figma_assets/Notetaking\ App/Hover\ Cover.png') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;

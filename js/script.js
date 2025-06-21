@@ -55,18 +55,30 @@ const currentTheme = localStorage.getItem("theme")
 function initializeChallengeHover() {
   const challengeCards = document.querySelectorAll('.challenge-card');
   
-  // Check if we're on the Student Pad page or Classroom Platform page
+  // Check which page we're on
   const isStudentPadPage = window.location.pathname.includes('ZhiKe Student Pad') || document.title.includes('Student Pad');
+  const isNotetakingAppPage = window.location.pathname.includes('Notetaking App') || document.title.includes('Note Taking') || document.title.includes('Note-Taking');
   
-  const mediaMap = isStudentPadPage ? {
-    'legacy': 'assets/figma_assets/Student Pad/Challenge 1.mp4',
-    'pedagogy': 'assets/figma_assets/Student Pad/Challenge 2.mp4',
-    'engagement': 'assets/figma_assets/Student Pad/Challenge 3.png'
-  } : {
-    'static': 'assets/figma_assets/Zhike Classroom Platform/Challenge 1.png',
-    'business': 'assets/figma_assets/Zhike Classroom Platform/Challenge 2.mp4',
-    'fragmented': 'assets/figma_assets/Zhike Classroom Platform/Challenge 3.mp4'
-  };
+  let mediaMap;
+  if (isStudentPadPage) {
+    mediaMap = {
+      'legacy': 'assets/figma_assets/Student Pad/Challenge 1.mp4',
+      'pedagogy': 'assets/figma_assets/Student Pad/Challenge 2.mp4',
+      'engagement': 'assets/figma_assets/Student Pad/Challenge 3.png'
+    };
+  } else if (isNotetakingAppPage) {
+    mediaMap = {
+      'confusing': 'assets/figma_assets/Notetaking App/Challenge 1.png',
+      'isolated': 'assets/figma_assets/Notetaking App/Challenge 2.png',
+      'limited': 'assets/figma_assets/Notetaking App/Challenge 3.png'
+    };
+  } else {
+    mediaMap = {
+      'static': 'assets/figma_assets/Zhike Classroom Platform/Challenge 1.png',
+      'business': 'assets/figma_assets/Zhike Classroom Platform/Challenge 2.mp4',
+      'fragmented': 'assets/figma_assets/Zhike Classroom Platform/Challenge 3.mp4'
+    };
+  }
   
   let currentlySelected = null;
   
