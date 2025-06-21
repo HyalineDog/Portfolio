@@ -766,6 +766,10 @@ p {
     text-align: left;
 }
 
+.content-text h3 {
+    text-align: left;
+}
+
 .content-text p {
     max-width: 100%;
     width: 100%;
