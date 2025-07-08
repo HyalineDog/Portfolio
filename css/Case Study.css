@@ -64,6 +64,12 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
+/* Dark mode specific overrides for proper contrast */
+[data-theme="dark"] .insight-stat,
+[data-theme="dark"] .result-number {
+  color: #000000;
+}
+
 /* Base styles */
 * {
   box-sizing: border-box;
@@ -1902,6 +1908,21 @@ button:focus {
     padding: 0 0.3rem;
     border-radius: 3px;
     color: var(--text-color);
+}
+
+/* Dark mode highlight with black text for better contrast */
+[data-theme="dark"] .highlight {
+    color: #000000;
+}
+
+/* Dark mode styling for section subtitle highlighted */
+[data-theme="dark"] .section-subtitle.highlighted {
+    color: #000000;
+}
+
+/* Dark mode styling for summary card highlighted */
+[data-theme="dark"] .summary-card.highlighted {
+    color: #000000;
 }
 
 /* Video Container Styles - Matching Featured Videos */

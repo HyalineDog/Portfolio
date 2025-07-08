@@ -288,6 +288,11 @@ body .project-container .project-list .project-item:nth-child(6) .card {
   border-radius: 3px;
 }
 
+/* Dark mode highlight with black text for better contrast */
+[data-theme="dark"] .highlight {
+  color: #000000;
+}
+
 /* Project text animations */
 .project-title-column h3,
 .project-title-column .project-timeframe,
