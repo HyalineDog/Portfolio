@@ -46,10 +46,17 @@ function switchTheme(e) {
 }
 
 // Save user preference on load
+const currentTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") : null;
 
-const currentTheme = localStorage.getItem("theme")
-  ? localStorage.getItem("theme")
-  : null;
+if (currentTheme) {
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  
+  if (currentTheme === "dark") {
+    toggleSwitch.checked = true;
+  }
+}
+
+
 
 // Challenge card selection functionality
 function initializeChallengeHover() {
@@ -273,20 +280,9 @@ window.testInsightHover = function() {
   return 'Test completed - check console for results';
 };
 
-if (currentTheme) {
-  document.documentElement.setAttribute("data-theme", currentTheme);
 
-  if (currentTheme === "dark") {
-    toggleSwitch.checked = true;
-  }
-}
 
-//Adding date
-
-let myDate = document.querySelector("#datee");
-
-const yes = new Date().getFullYear();
-myDate.innerHTML = yes;
+// Date functionality removed as the #datee element doesn't exist
 
 // Scroll animation for project cards and text
 document.addEventListener('DOMContentLoaded', function() {

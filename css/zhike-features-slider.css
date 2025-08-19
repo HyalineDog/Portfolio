@@ -80,11 +80,12 @@
 }
 
 .zhike-feature-layer-1 h3 {
-    font-size: 2.5rem;
-    font-weight: var(--weight-bold);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--weight-semibold);
     color: var(--text-color);
     margin: 0;
-    line-height: 1.2;
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-normal);
 }
 
 /* Layer 2: Problem-Solution-Impact */
@@ -168,10 +169,11 @@
 }
 
 .zhike-feature-text h3 {
-    font-size: 2.5rem;
-    font-weight: var(--weight-bold);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--weight-semibold);
     color: var(--text-color);
-    line-height: 1.2;
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-normal);
 }
 
 .zhike-feature-text p {
@@ -192,7 +194,6 @@
 .zhike-feature-icon {
     font-size: 6rem;
     opacity: 0.8;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .zhike-feature-video {
@@ -200,7 +201,6 @@
     height: auto;
     max-width: 800px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
 
@@ -210,7 +210,6 @@
     height: auto;
     max-width: 800px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
 
@@ -321,7 +320,11 @@
     }
     
     .zhike-feature-layer-1 h3 {
-        font-size: 2rem;
+        font-size: var(--font-size-xl);
+    }
+    
+    .zhike-feature-text h3 {
+        font-size: var(--font-size-xl);
     }
     
     .zhike-feature-psi {
@@ -366,7 +369,11 @@
     }
     
     .zhike-feature-layer-1 h3 {
-        font-size: 1.75rem;
+        font-size: var(--font-size-lg);
+    }
+    
+    .zhike-feature-text h3 {
+        font-size: var(--font-size-lg);
     }
     
     .zhike-feature-layer-2 {

@@ -23,8 +23,13 @@ h2::selection {
   padding: 0.75rem 1.9rem;
   border-radius: 30px;
   text-transform: uppercase;
-  font-size: 0.82rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
   transition: 0.3s;
+  white-space: nowrap;
+  min-width: fit-content;
+  text-align: center;
 }
 
 .btn-primary {
@@ -76,10 +81,17 @@ h2::selection {
 .header-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin-top: 8rem;
   padding: 1rem;
+  max-width: var(--width-medium);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-container .profile-image {
+  align-self: center;
 }
 
 .header-container > div {
@@ -87,14 +99,16 @@ h2::selection {
 }
 
 .content-text {
-  text-align: center;
+  text-align: left;
   margin: 1.5rem 0;
   width: 100%;
 }
 
 .content-text h2 {
-  font-size: 3rem;
-  line-height: 1.2;
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-tight);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
   transition: 0.2s ease-in-out;
 }
 
@@ -103,6 +117,9 @@ h2::selection {
   margin: 0;
   max-width: 100%;
   width: 100%;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--weight-normal);
 }
 
 /* Project cards */
@@ -272,11 +289,15 @@ body .project-container .project-list .project-item:nth-child(6) .card {
 @media (max-width: 768px) {
   .header-container {
     margin-top: 7rem;
-    text-align: center;
+    text-align: left;
   }
 
   .content-text h2 {
-    font-size: 2.5rem;
+    font-size: var(--font-size-3xl);
+  }
+  
+  .content-text p {
+    font-size: var(--font-size-base);
   }
 }
 

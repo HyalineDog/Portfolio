@@ -57,6 +57,7 @@
       integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/microsoft-fonts.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/utilities.css" />
     <link rel="stylesheet" href="css/animations.css" />
@@ -106,21 +107,23 @@
       </nav>
 
       <section class="header-container" id="main">
-        <img
-          class="profile-image animate fly-in-down"
-          src="assets/profile-image.svg"
-          alt="Jinnan Chen profile image"
-        />
-        <h1 class="animate fly-in-up delay-1">About Me</h1>
+        <div class="about-hero-content">
+          <img
+            class="profile-image animate fly-in-down"
+            src="assets/profile-image.svg"
+            alt="Jinnan Chen profile image"
+          />
+          <div class="about-hero-text">
+            <h1 class="animate fly-in-up delay-1">About Me</h1>
+            <p class="about-hero-subtitle animate fly-in-up delay-2">Designer, Researcher, and Creative Problem Solver</p>
+          </div>
+        </div>
       </section>
     </header>
 
     <!-- About Me Content -->
-    <section id="about" class="project-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2 class="animate fly-in-left">My Journey</h2>
-        <p class="animate fly-in-right delay-1">Learn more about my background, skills, and professional experience</p>
+    <section id="about" class="about-container container">
+      <div class="about-intro">
       </div>
       <!-- Top Image Carousel -->
       <div class="image-carousel animate fly-in-up delay-2">
@@ -138,15 +141,15 @@
       </div>
 
       <!-- About Me Sections -->
-      <article class="project-list">
+      <article class="about-content">
         <!-- My Journey Section -->
-        <div class="project-item">
-          <div class="project-header animate fly-in-up delay-3">
-            <div class="project-title-column">
-              <h3>My Journey</h3>
-            </div>
-            <div class="project-description-column">
-              <p>My journey into UX design began in the mountains of Guizhou and led me through Pennsylvania, Seattle, and now Ann Arbor. This diverse path has shaped my approach, blending technology, cultural understanding, and creativity. With over three years of experience in the field, I earned my B.D. in Design from the University of Washington in 2021 and transitioned from a design intern to a UX Designer at iFlytek, where I focused on creating innovative B2B EdTech experiences. After that, I pursued an M.S. from the University of Michigan to further hone my skills as a designer and researcher, committed to creating meaningful digital solutions that bridge technology and human needs.</p>
+        <div class="about-section">
+          <div class="about-section-header animate fly-in-up delay-3">
+            <h3 class="about-section-title">My Journey</h3>
+            <div class="about-section-content">
+              <p>My journey into UX design began in the mountains of Guizhou and led me through Pennsylvania, Seattle, and now Ann Arbor. This diverse path has shaped my approach, blending technology, cultural understanding, and creativity.</p>
+              <p>With over three years of experience in the field, I earned my B.D. in Design from the University of Washington in 2021 and transitioned from a design intern to a UX Designer at iFlytek, where I focused on creating innovative B2B EdTech experiences.</p>
+              <p>After that, I pursued an M.S. from the University of Michigan to further hone my skills as a designer and researcher, committed to creating meaningful digital solutions that bridge technology and human needs.</p>
             </div>
           </div>
         </div>
@@ -167,31 +170,43 @@
         </div>
 
         <!-- Personal Interests -->
-        <div class="project-item">
-          <div class="project-header animate fly-in-up delay-5">
-            <div class="project-title-column">
-              <h3>Beyond Design</h3>
-            </div>
-            <div class="project-description-column">
-              <p>When not designing, I'm strategizing at Magic: The Gathering tables, exploring worlds through video games, or enjoying board game nights with friends. I'm drawn to films of all genres and constantly seek to understand the world through different perspectives—whether via documentaries, podcasts, or conversations. These diverse interests bring fresh inspiration to my design approach.</p>
+        <div class="about-section">
+          <div class="about-section-header animate fly-in-up delay-5">
+            <h3 class="about-section-title">Beyond Design</h3>
+            <div class="about-section-content">
+              <p>When not designing, I'm strategizing at Magic: The Gathering tables, exploring worlds through video games, or enjoying board game nights with friends.</p>
+              <p>I'm drawn to films of all genres and constantly seek to understand the world through different perspectives—whether via documentaries, podcasts, or conversations. These diverse interests bring fresh inspiration to my design approach.</p>
             </div>
           </div>
         </div>
       </article>
-
-      <a href="index.html#projects" class="btn btn-secondary animate fly-in-up delay-5" style="display: block; margin: 2rem auto; width: fit-content;">View My Projects <i class="fas fa-arrow-right"></i></a>
+      <a href="index.html#projects" class="btn btn-secondary animate fly-in-up delay-5" style="opacity: 1;">View My Projects <i class="fas fa-arrow-right"></i></a>
     </section>
 
     <footer id="footer">
       <div class="container">
-        <a href="mailto:cjn259@gmail.com">cjn259@gmail.com</a>
-        <!-- Social links -->
-        <div class="social">
-          <a href="https://www.linkedin.com/in/jinnan-kit-chen/" target="_blank"
-            ><img src="./assets/linkedin-icon.svg" alt="Linkedin"
-          /></a>
-          <a href="https://github.com/HyalineDog" target="_blank"><img src="./assets/github-icon.svg" alt="GitHub" /></a>
+        <!-- Tech grid background -->
+        <div class="footer-bg-grid" aria-hidden="true"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-content">
+          <div class="footer-main">
+            <h3 class="footer-title">Let's create something amazing together</h3>
+            <a href="mailto:cjn259@gmail.com" class="footer-email">cjn259@gmail.com</a>
+          </div>
+          
+          <!-- Social links -->
+          <div class="social">
+            <a href="https://www.linkedin.com/in/jinnan-kit-chen/" target="_blank"
+              ><img src="./assets/linkedin-icon.svg" alt="Linkedin"
+            /></a>
+            <a href="https://github.com/HyalineDog" target="_blank"><img src="./assets/github-icon.svg" alt="GitHub" /></a>
+          </div>
         </div>
+        
+        <!-- Tech accent line -->
+        <div class="footer-accent-line"></div>
+        
         <!-- Attribution -->
         <div class="attribution">
           <p>
