@@ -114,7 +114,15 @@ html {
 
 ::selection {
   background-color: var(--primary-color);
-  /* Removing the color property to maintain original text color when highlighted */
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Ensure proper selection contrast in dark mode */
+[data-theme="dark"] ::selection {
+  background-color: var(--primary-color);
+  color: #000000;
+  text-shadow: none;
 }
 
 ul {
@@ -275,6 +283,10 @@ body {
 .hamburger {
   margin-bottom: 0.1rem;
   display: none;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 /* Ensure hamburger is hidden on larger screens */
@@ -297,16 +309,37 @@ body {
   .navbar .nav-menu .btn {
     display: block !important;
   }
+  
+  /* Reset nav-group and theme-toggle-item styling for desktop */
+  .nav-group {
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .theme-toggle-item {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+  }
 }
 
 .bar {
   display: block;
-  width: 23px;
+  width: 25px;
   height: 3px;
-  margin: 4px auto;
+  margin: 3px 0;
+  background-color: var(--text-color);
   transition: all 0.3s ease-in-out;
-  border-radius: 30px;
-  background-color: var(--bg-secondary);
+  border-radius: 2px;
+}
+
+/* Ensure hamburger bars maintain proper contrast in both themes */
+[data-theme="light"] .bar {
+  background-color: #222222;
+}
+
+[data-theme="dark"] .bar {
+  background-color: #ffffff;
 }
 
 
@@ -518,14 +551,15 @@ body {
   }
 }
 
-/* Footer - Unified Design */
+/* Footer - Unified Design - Always Light Mode */
 #footer {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary-two) 100%);
+  background: linear-gradient(135deg, #000000 0%, #111111 100%) !important;
   position: relative;
   overflow: hidden;
   padding: 4rem 0 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: auto;
+  user-select: text; /* Ensure all footer content is selectable */
 }
 
 #footer .container {
@@ -554,6 +588,7 @@ body {
   opacity: 0.5;
   z-index: 1;
   animation: grid-shift 20s linear infinite;
+  pointer-events: none; /* Ensure grid doesn't interfere with selection */
 }
 
 @keyframes grid-shift {
@@ -561,10 +596,11 @@ body {
   100% { transform: translate(50px, 50px); }
 }
 
+/* Remove dark theme override for footer grid - maintain light mode appearance */
 [data-theme="dark"] .footer-bg-grid {
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
 }
 
 /* Footer content */
@@ -574,6 +610,7 @@ body {
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
+  user-select: text; /* Ensure footer content is selectable */
 }
 
 .footer-main {
@@ -586,18 +623,15 @@ body {
 .footer-title {
   font-size: 1.5rem;
   font-weight: var(--weight-semibold);
-  color: var(--text-primary);
+  color: #ffffff !important;
   margin: 0;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  user-select: text; /* Ensure title is selectable */
 }
 
-/* Footer email - unified styling for all pages */
+/* Footer email - unified styling for all pages - Always Light Mode */
 #footer a[href^="mailto"], .footer-email {
   font-size: 1.25rem;
-  color: var(--accent-color);
+  color: #ffcd42 !important;
   text-decoration: none;
   font-weight: var(--weight-medium);
   transition: all 0.3s ease;
@@ -605,9 +639,9 @@ body {
   display: inline-block;
 }
 
-/* WCAG focus indicator for email links */
+/* WCAG focus indicator for email links - Always Light Mode */
 #footer a[href^="mailto"]:focus, .footer-email:focus {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid #ffcd42 !important;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -619,7 +653,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-color), var(--text-primary));
+  background: linear-gradient(90deg, #ffcd42, #ffffff) !important;
   transition: width 0.3s ease;
 }
 
@@ -629,19 +663,19 @@ body {
 
 #footer a[href^="mailto"]:hover, .footer-email:hover {
   transform: translateY(-2px);
-  color: var(--text-primary);
+  color: #ffffff !important;
 }
 
-/* Tech accent line */
+/* Tech accent line - Always Light Mode */
 .footer-accent-line {
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    var(--accent-color) 20%, 
-    var(--text-primary) 50%, 
-    var(--accent-color) 80%, 
-    transparent 100%);
+    #ffcd42 20%, 
+    #ffffff 50%, 
+    #ffcd42 80%, 
+    transparent 100%) !important;
   margin: 1rem 0;
   opacity: 0.6;
   animation: pulse-line 3s ease-in-out infinite;
@@ -669,9 +703,9 @@ body {
   border-radius: 4px;
 }
 
-/* WCAG focus indicators for social links */
+/* WCAG focus indicators for social links - Always Light Mode */
 #footer .social a:focus, .social a:focus {
-  outline: 2px solid var(--accent-color);
+  outline: 2px solid #ffcd42 !important;
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -685,7 +719,7 @@ body {
   transform: translateY(-3px) scale(1.1);
   filter: brightness(1.2);
   box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
-  outline: 2px solid var(--accent-color); /* WCAG focus indicator */
+  outline: 2px solid #ffcd42 !important; /* WCAG focus indicator */
   outline-offset: 2px;
 }
 
@@ -704,7 +738,7 @@ body {
 }
 
 #footer .attribution .fas, .attribution .fas {
-  color: var(--accent-color);
+  color: #ffcd42 !important;
   margin: 0 0.25rem;
   font-size: 0.9rem;
 }
@@ -780,6 +814,12 @@ body {
 
 /* Switch to hamburger menu when space is insufficient */
 @media (max-width: 800px) {
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   .navbar .nav-menu {
     position: fixed;
     right: -100vw;
@@ -798,13 +838,18 @@ body {
 
   .navbar .btn {
     margin: 0;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     white-space: nowrap;
     min-width: fit-content;
   }
 
   .nav-menu.active {
     right: 15px;
+  }
+  
+  /* Position hamburger on the right */
+  .navbar .hamburger {
+    align-items: center;
   }
 
   .nav-menu .nav-link {
@@ -823,6 +868,11 @@ body {
   .nav-menu .nav-link:hover {
     color: var(--accent-color);
   }
+  
+  /* Prevent resume button from changing color on hover */
+  .nav-menu .btn:hover {
+    color: #000000 !important;
+  }
 
   .nav-menu li {
     margin-bottom: 0;
@@ -834,7 +884,8 @@ body {
     white-space: nowrap;
     min-width: fit-content;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
     padding: 0.75rem 1rem;
   }
 
@@ -849,9 +900,17 @@ body {
   .hamburger:hover {
     background-color: var(--bg-secondary);
   }
+  
+  .hamburger:hover .bar {
+    background-color: white;
+  }
 
   .hamburger.active {
     background-color: var(--bg-secondary);
+  }
+
+  .hamburger.active .bar {
+    background-color: white;
   }
 
   .hamburger.active .bar:nth-child(2) {
@@ -859,23 +918,55 @@ body {
   }
 
   .hamburger.active .bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
   }
 
   .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   /* Hide regular nav menu items on mobile */
   .navbar .nav-menu:not(.active) .nav-link,
-  .navbar .nav-menu:not(.active) .btn {
+  .navbar .nav-menu:not(.active) .btn,
+  .navbar .nav-menu:not(.active) .theme-switch {
     display: none;
   }
 
   /* Show items when menu is active */
   .navbar .nav-menu.active .nav-link,
-  .navbar .nav-menu.active .btn {
+  .navbar .nav-menu.active .btn,
+  .navbar .nav-menu.active .theme-switch {
     display: block;
+  }
+  
+  /* Navigation group styling - only for mobile */
+  .nav-group {
+    display: contents;
+  }
+  
+  /* Theme toggle item styling - only for mobile */
+  .theme-toggle-item {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bg-secondary);
+  }
+  
+  /* Style theme switch within hamburger menu */
+  .nav-menu .theme-switch {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Maintain consistent theme switch styling with desktop */
+    border: 2px solid var(--text-color);
+    border-radius: 30px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu .theme-switch:hover {
+    background-color: var(--card-background);
   }
 }
 
@@ -989,11 +1080,11 @@ body {
 
 .about-hero-subtitle {
   font-size: var(--font-size-lg);
-  color: var(--text-secondary);
+  color: var(--text-color);
   font-weight: var(--weight-light);
   line-height: var(--line-height-relaxed);
   margin: 0;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .about-container {
@@ -1013,7 +1104,7 @@ body {
 .section-title {
   font-size: var(--font-size-3xl);
   font-weight: var(--weight-medium);
-  color: var(--text-primary);
+  color: var(--text-color);
   margin-bottom: 1rem;
   line-height: var(--line-height-tight);
 }
@@ -1048,7 +1139,7 @@ body {
 .about-section-title {
   font-size: var(--font-size-2xl);
   font-weight: var(--weight-medium);
-  color: var(--text-primary);
+  color: var(--text-color);
   margin: 0;
   line-height: var(--line-height-tight);
   position: relative;
@@ -1062,7 +1153,7 @@ body {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-color), var(--text-primary));
+  background: linear-gradient(90deg, var(--accent-color), var(--text-color));
   border-radius: 2px;
 }
 
@@ -1074,7 +1165,7 @@ body {
 
 .about-section-content p {
   font-size: var(--font-size-base);
-  color: var(--text-primary);
+  color: var(--text-color);
   line-height: var(--line-height-relaxed);
   font-weight: var(--weight-normal);
   margin: 0;

@@ -14,7 +14,16 @@
 h1::selection,
 h2::selection {
   background-color: var(--primary-color);
-  /* Removing the color property to maintain original text color when highlighted */
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Ensure proper heading selection contrast in dark mode */
+[data-theme="dark"] h1::selection,
+[data-theme="dark"] h2::selection {
+  background-color: var(--primary-color);
+  color: #000000;
+  text-shadow: none;
 }
 
 /* Buttons */
@@ -55,7 +64,7 @@ h2::selection {
 
 .toggle-icons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 }
@@ -305,12 +314,35 @@ body .project-container .project-list .project-item:nth-child(6) .card {
 /* Highlight */
 .highlight {
   background-color: var(--primary-color);
-  padding: 0 0.3rem;
-  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  line-height: 1.2;
+  font-weight: var(--weight-semibold);
+  transition: all 0.2s ease;
+}
+
+.highlight:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Dark mode highlight with black text for better contrast */
 [data-theme="dark"] .highlight {
+  color: #000000;
+  background-color: var(--primary-color);
+}
+
+/* Ensure proper text selection visibility on highlighted elements */
+.highlight::selection {
+  background-color: var(--secondary-color);
+  color: #000000;
+}
+
+[data-theme="dark"] .highlight::selection {
+  background-color: var(--secondary-color);
   color: #000000;
 }
 
