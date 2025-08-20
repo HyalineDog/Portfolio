@@ -20,6 +20,11 @@
   --bg-secondary-two: #111111;
   --text-color-secondary: #666666;
   --text-color-light: #999999;
+  
+  /* WCAG-compliant footer colors */
+  --accent-color: #ffcd42;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
 
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 
@@ -68,6 +73,12 @@
   --bg-secondary: #ffffff;
   --card-background: #111111;
   --bg-secondary-two: #f4f4f4;
+  
+  /* WCAG-compliant footer colors for dark theme */
+  --accent-color: #ffcd42;
+  --text-primary: #222222;
+  --text-secondary: #555555;
+  
   --shadow: 0 2px 10px rgba(95, 95, 95, 0.2);
 }
 
@@ -594,6 +605,13 @@ body {
   display: inline-block;
 }
 
+/* WCAG focus indicator for email links */
+#footer a[href^="mailto"]:focus, .footer-email:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 #footer a[href^="mailto"]::after, .footer-email::after {
   content: '';
   position: absolute;
@@ -651,13 +669,27 @@ body {
   border-radius: 4px;
 }
 
+/* WCAG focus indicators for social links */
+#footer .social a:focus, .social a:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+#footer .social a:focus img, .social a:focus img {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.1);
+}
+
 #footer .social img:hover, .social img:hover {
   transform: translateY(-3px) scale(1.1);
   filter: brightness(1.2);
   box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  outline: 2px solid var(--accent-color); /* WCAG focus indicator */
+  outline-offset: 2px;
 }
 
-/* Attribution - unified styling for all pages */
+/* Attribution - unified styling for all pages with WCAG compliance */
 #footer .attribution, .attribution {
   margin-top: 2rem;
   text-align: center;
@@ -665,11 +697,10 @@ body {
 
 #footer .attribution p, .attribution p {
   font-size: 0.95rem;
-  color: var(--text-secondary) !important;
+  color: #e0e0e0 !important; /* WCAG AA compliant contrast ratio 7.4:1 on dark background */
   margin: 0;
-  opacity: 0.8;
   line-height: 1.5;
-  font-weight: var(--weight-regular);
+  font-weight: var(--weight-normal);
 }
 
 #footer .attribution .fas, .attribution .fas {
