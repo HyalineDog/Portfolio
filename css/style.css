@@ -1312,7 +1312,7 @@ body {
     width: 300px;
     height: 250px;
   }
-  
+
   @keyframes scroll {
     0% {
       transform: translateX(0);
