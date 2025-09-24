@@ -34,15 +34,24 @@ function handleIslandNavbarScroll() {
         
         // After animation completes, show original navbar
         setTimeout(() => {
+          navbar.style.transition = 'none'; // Disable transitions to prevent flicker
+          
           if (window.scrollY < navbarHeight) {
-            navbar.classList.remove('retracting');
+            navbar.classList.remove('retracting', 'hidden');
             navbar.classList.add('at-top');
           } else {
             navbar.classList.remove('retracting');
             navbar.classList.add('hidden');
           }
+          
           islandIsRetracting = false;
-        }, 400);
+          
+          // Force a reflow to apply the style changes immediately
+          void navbar.offsetWidth;
+          
+          // Restore transitions
+          navbar.style.transition = '';
+        }, 400); // Corresponds to animation duration
       }
     }
     
