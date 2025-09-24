@@ -4,24 +4,7 @@
     background: var(--bg-primary);
 }
 
-.zhike-features-header {
-    margin-bottom: var(--space-2xl);
-}
 
-.zhike-features-header h2 {
-    font-size: 3rem;
-    font-weight: var(--weight-bold);
-    color: var(--text-color);
-    margin: 0 0 var(--space-md) 0;
-    line-height: 1.2;
-}
-
-.zhike-features-header p {
-    font-size: 1.25rem;
-    color: var(--text-color-secondary);
-    margin: 0;
-    max-width: 600px;
-}
 
 .zhike-features-slider {
     margin: var(--space-xl) 0;
@@ -344,9 +327,7 @@
         font-size: 0.95rem;
     }
     
-    .zhike-features-header h2 {
-        font-size: 2.5rem;
-    }
+
     
     .zhike-feature-icon {
         font-size: 4rem;
@@ -401,9 +382,7 @@
         padding: var(--space-md) 0 0 0;
     }
     
-    .zhike-features-header h2 {
-        font-size: 2rem;
-    }
+
     
     .zhike-slider-controls {
         gap: var(--space-md);

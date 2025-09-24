@@ -1,0 +1,358 @@
+/* Island Navigation Component */
+/* Extracted from nav-animations-backup for modular implementation */
+
+/* Apple-style Floating Island Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Dark theme navbar */
+[data-theme="dark"] .navbar {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar at top of page - full width */
+.navbar.at-top {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  transform: none;
+}
+
+[data-theme="dark"] .navbar.at-top {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Navbar hidden state */
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Navbar when scrolled - floating island style */
+.navbar.scrolled {
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: auto;
+  max-width: 864px;
+  min-width: 576px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideInFromTop 0.4s ease-out;
+}
+
+/* Navbar retracting state */
+.navbar.retracting {
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: auto;
+  max-width: 864px;
+  min-width: 576px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideOutToTop 0.4s ease-in forwards;
+}
+
+/* Container adjustments for retracting navbar */
+.navbar.retracting .container {
+  padding: 0 2rem;
+  max-width: none;
+  width: auto;
+}
+
+/* Keyframes for navbar animations */
+@keyframes slideInFromTop {
+  from {
+    transform: translateX(-50%) translateY(-100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide out animation for retraction */
+@keyframes slideOutToTop {
+  from {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+[data-theme="dark"] .navbar.scrolled {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Container adjustments for floating navbar */
+.navbar.scrolled .container {
+  padding: 0 1.5rem;
+  max-width: none;
+  width: auto;
+}
+
+/* Keep nav links spacing same as original for floating navbar */
+.navbar.scrolled .nav-link {
+  margin: 0 1rem;
+  font-size: var(--font-size-sm);
+}
+
+.navbar.scrolled .btn {
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 20;
+  height: 80px;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Reduce height for floating island navbar */
+.navbar.scrolled .container,
+.navbar.retracting .container {
+  height: 60px;
+}
+
+.navbar .nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.navbar .nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar .theme-toggle-item {
+  margin-left: 0;
+}
+
+.navbar .nav-link {
+  font-family: var(--font-family);
+  font-weight: var(--weight-medium);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.navbar #logo {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  transition: height 0.3s ease;
+}
+
+.navbar #logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.navbar #logo img {
+  height: 40px;
+  width: auto;
+  transition: height 0.3s ease;
+}
+
+.navbar #logo .logo-text {
+  font-family: var(--font-family);
+  font-weight: var(--weight-bold);
+  font-size: 3rem;
+  color: var(--text-color);
+  margin-left: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled #logo .logo-text,
+.navbar.retracting #logo .logo-text {
+  font-size: var(--font-size-lg);
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
+}
+
+.navbar.scrolled #logo,
+.navbar.retracting #logo {
+  height: 35px;
+}
+
+.navbar.scrolled #logo a,
+.navbar.retracting #logo a {
+  height: 35px;
+}
+
+.navbar.scrolled #logo img,
+.navbar.retracting #logo img {
+  height: 30px;
+}
+
+.navbar .btn {
+  display: inline-block;
+  font-family: var(--font-family);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-size-sm);
+  color: #000000;
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+
+/* Mobile Navigation Styles */
+@media screen and (max-width: 768px) {
+  .navbar .nav-link {
+    font-size: var(--font-size-sm);
+  }
+
+  .navbar .btn {
+    font-size: var(--font-size-xs);
+    padding: 0.35rem 1rem;
+  }
+
+  .navbar .nav-link {
+    margin: 0 0.6rem;
+  }
+
+  .navbar .btn {
+    margin-left: 0.5rem;
+  }
+
+  .navbar #logo {
+    height: 40px;
+  }
+
+  .navbar #logo img {
+    height: 30px;
+  }
+
+  .navbar #logo .logo-text {
+    font-size: var(--font-size-lg);
+    margin-left: 0.5rem;
+  }
+
+  .navbar .container {
+    padding: 0 0.75rem;
+  }
+
+  /* Mobile hidden navbar */
+  .navbar.hidden {
+    transform: translateY(-100%);
+  }
+
+  /* Mobile floating navbar adjustments */
+  .navbar.scrolled {
+    top: 20px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    width: auto;
+    min-width: auto;
+    max-width: none;
+  }
+
+  .navbar.scrolled .container {
+    padding: 0 1rem;
+  }
+
+  .navbar .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    border: 1px solid var(--card-background);
+    padding: 2rem 0;
+    gap: 1.5rem;
+  }
+
+  [data-theme="dark"] .navbar .nav-menu {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--bg-secondary-two);
+  }
+
+  .navbar .btn {
+    margin: 0;
+    align-self: center;
+  }
+
+  .navbar .hamburger {
+    display: block;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .navbar .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .navbar .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .navbar .nav-menu.active {
+    left: 0;
+  }
+
+  .navbar .nav-menu:not(.active) .nav-link,
+  .navbar .nav-menu:not(.active) .btn,
+  .navbar .nav-menu:not(.active) .theme-switch {
+    opacity: 0;
+  }
+
+  .navbar .nav-menu.active .nav-link,
+  .navbar .nav-menu.active .btn,
+  .navbar .nav-menu.active .theme-switch {
+    opacity: 1;
+  }
+}

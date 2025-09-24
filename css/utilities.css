@@ -29,10 +29,10 @@ h2::selection {
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.9rem;
-  border-radius: 30px;
+  padding: 0 1rem;
+  border-radius: 9999px;
   text-transform: uppercase;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   font-weight: var(--weight-semibold);
   letter-spacing: var(--letter-spacing-wide);
   transition: 0.3s;
@@ -43,7 +43,7 @@ h2::selection {
 
 .btn-primary {
   background: var(--primary-color);
-  color: #000000;
+  color: #000000 !important;
 }
 
 .btn-secondary {
@@ -92,8 +92,8 @@ h2::selection {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-top: 8rem;
-  padding: 1rem;
+  margin-top: 4rem;
+  padding: 3rem 2rem;
   max-width: var(--width-medium);
   margin-left: auto;
   margin-right: auto;
@@ -109,16 +109,23 @@ h2::selection {
 
 .content-text {
   text-align: left;
-  margin: 1.5rem 0;
+  margin: 0.5rem 0 1.5rem 0;
   width: 100%;
 }
 
-.content-text h2 {
-  font-size: var(--font-size-4xl);
-  line-height: var(--line-height-tight);
-  font-weight: var(--weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
+.content-text h3 {
+  font-size: 1.75rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--letter-spacing-normal);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: var(--text-color);
   transition: 0.2s ease-in-out;
+}
+
+.content-text h2 {
+  margin-top: 0.5rem;
 }
 
 .content-text p {
@@ -297,12 +304,12 @@ body .project-container .project-list .project-item:nth-child(6) .card {
 /* Media Queries */
 @media (max-width: 768px) {
   .header-container {
-    margin-top: 7rem;
+    margin-top: 3rem;
     text-align: left;
   }
 
-  .content-text h2 {
-    font-size: var(--font-size-3xl);
+  .content-text h3 {
+    font-size: 1.5rem;
   }
   
   .content-text p {
@@ -320,7 +327,7 @@ body .project-container .project-list .project-item:nth-child(6) .card {
   z-index: 1;
   display: inline-block;
   line-height: 1.2;
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   transition: all 0.2s ease;
 }
 

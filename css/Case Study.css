@@ -706,12 +706,16 @@ p {
     padding: var(--space-lg);
     border-radius: 12px;
     border: 1px solid var(--border-color);
+    justify-items: start;
+    text-align: left !important;
 }
 
 .meta-item {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+    text-align: left !important;
+    align-items: flex-start;
 }
 
 .meta-label {
@@ -720,12 +724,14 @@ p {
     font-weight: var(--weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    text-align: left !important;
 }
 
 .meta-value {
     font-size: 0.875rem;
     color: var(--text-color);
     font-weight: var(--weight-semibold);
+    text-align: left !important;
 }
 
 .hero-image {
@@ -745,7 +751,7 @@ p {
 
 /* Section Headers - Dush Style */
 .section-header {
-    margin-bottom: var(--space-1xl);
+    margin-bottom: var(--space-xl);
     max-width: var(--width-medium);
     margin-left: 0;
     margin-right: 0;
@@ -765,7 +771,6 @@ p {
     color: var(--text-color-secondary);
     line-height: 1.6;
     max-width: 42rem;
-    margin: 0;
 }
 
 .section-subtitle.highlighted {
@@ -775,7 +780,6 @@ p {
     border-radius: 8px;
     font-weight: var(--weight-semibold);
     display: inline-block;
-    margin-bottom: var(--space-md);
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.05em;
@@ -1161,7 +1165,6 @@ video.section-image {
     margin-bottom: var(--space-md);
     display: inline-block;
     color: var(--text-color);
-    background: var(--primary-color);
     padding: 0.5rem;
     border-radius: 8px;
 }
@@ -1590,7 +1593,7 @@ video.section-image {
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-normal);
     color: var(--text-color);
-    margin-bottom: var(--space-sm);
+    margin: var(--space-xs) 0 var(--space-sm) 0;
     text-align: left;
 }
 
@@ -1669,7 +1672,7 @@ video.section-image {
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-normal);
     color: var(--text-color);
-    margin-bottom: var(--space-sm);
+    margin: var(--space-xs) 0 var(--space-sm) 0;
     text-align: left;
 }
 
@@ -1768,7 +1771,7 @@ main {
     :root {
         --container-padding: 1rem;
         --space-3xl: 4rem;
-        --space-2xl: 3rem;
+        --space-2xl: 2.5rem;
         --space-xl: 2rem;
     }
     
@@ -1899,7 +1902,7 @@ main {
     :root {
         --container-padding: 1rem;
         --space-3xl: 3rem;
-        --space-2xl: 2rem;
+        --space-2xl: 1.5rem;
         --space-xl: 1.5rem;
     }
     

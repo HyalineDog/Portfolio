@@ -34,6 +34,58 @@ document.addEventListener("click", function(event) {
   }
 });
 
+// Apple-style navbar scroll effect
+let lastScrollY = 0;
+let isRetracting = false;
+
+function handleNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    const scrollY = window.scrollY;
+    const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
+    const navbarHeight = 80; // Height of the navbar
+    
+    if (scrollY < navbarHeight) {
+      // Original navbar is still visible - keep it at top
+      navbar.classList.add('at-top');
+      navbar.classList.remove('scrolled', 'hidden', 'retracting');
+      isRetracting = false;
+    } else {
+      // Original navbar is completely out of view
+      if (scrollDirection === 'down' && !navbar.classList.contains('scrolled') && !isRetracting) {
+        // Show floating island when scrolling down past navbar
+        navbar.classList.remove('at-top', 'hidden', 'retracting');
+        navbar.classList.add('scrolled');
+      } else if (scrollDirection === 'up' && navbar.classList.contains('scrolled') && !isRetracting && scrollY < navbarHeight * 2) {
+        // Hide floating island only when scrolling up near the top of the page
+        isRetracting = true;
+        navbar.classList.remove('scrolled');
+        navbar.classList.add('retracting');
+        
+        // After animation completes, show original navbar
+        setTimeout(() => {
+          if (window.scrollY < navbarHeight) {
+            navbar.classList.remove('retracting');
+            navbar.classList.add('at-top');
+          } else {
+            navbar.classList.remove('retracting');
+            navbar.classList.add('hidden');
+          }
+          isRetracting = false;
+        }, 400);
+      }
+    }
+    
+    lastScrollY = scrollY;
+  }
+}
+
+// Initialize navbar state
+document.addEventListener('DOMContentLoaded', function() {
+  handleNavbarScroll(); // Set initial state
+  window.addEventListener('scroll', handleNavbarScroll);
+});
+
 // Event Listeners: Handling toggle event
 const toggleSwitch = document.querySelector(
   '.theme-switch input[type="checkbox"]'
@@ -343,27 +395,71 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Intersection Observer for animations
+// Modern 2025 Animation System with Intersection Observer
 document.addEventListener('DOMContentLoaded', function() {
-  // Select all elements with the 'animate' class
-  const animatedElements = document.querySelectorAll('.animate');
+  // Add animate class to all major sections that don't have it
+  const sectionsToAnimate = [
+    'section', 
+    '.about-container', 
+    '.project-container', 
+    '.tldr-content',
+    '.section',
+    'footer',
+    '.about-section',
+    '.project-list',
+    '.image-carousel',
+    '.footer-content'
+  ];
   
-  // Create an Intersection Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      // If the element is in the viewport
-      if (entry.isIntersecting) {
-        // Add the animation class that was previously applied
-        entry.target.style.opacity = '1';
-        // Unobserve the element after it's animated
-        observer.unobserve(entry.target);
+  sectionsToAnimate.forEach(selector => {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach(element => {
+      if (!element.classList.contains('animate')) {
+        element.classList.add('animate');
       }
     });
-  }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+  });
   
-  // Observe all animated elements
+  // Create intersection observer for modern animations
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const element = entry.target;
+        
+        // Add appropriate modern animation class based on element type
+        if (element.classList.contains('profile-image')) {
+          element.classList.add('subtle-glow');
+        } else if (element.tagName === 'SECTION' || element.classList.contains('about-container') || element.classList.contains('project-container')) {
+          // Section-level blur-to-focus animation
+          element.classList.add('morph-in');
+        } else if (element.tagName === 'H1' || element.tagName === 'H2') {
+          element.classList.add('slide-reveal');
+        } else if (element.tagName === 'P') {
+          element.classList.add('gentle-float');
+        } else if (element.classList.contains('btn')) {
+          element.classList.add('subtle-glow');
+        } else if (element.classList.contains('project-item')) {
+          element.classList.add('morph-in');
+        } else if (element.tagName === 'FOOTER' || element.classList.contains('footer-content')) {
+          element.classList.add('gentle-float');
+        } else {
+          // Default blur-to-focus animation for other elements
+          element.classList.add('morph-in');
+        }
+        
+        // Stop observing this element
+        animationObserver.unobserve(element);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  // Observe all elements with animate class
+  const animatedElements = document.querySelectorAll('.animate');
   animatedElements.forEach(element => {
-    observer.observe(element);
+    animationObserver.observe(element);
   });
 });
 // Key Features Carousel is now handled by dedicated carousel.js file

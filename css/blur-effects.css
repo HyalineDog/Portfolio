@@ -1,0 +1,251 @@
+/* Blur-to-Focus Animation Effects */
+/* Extracted from nav-animations-backup for modular implementation */
+
+/* Core blur-to-focus keyframes */
+@keyframes blurFocusOnly {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideRevealBlurOnly {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes morphIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+    filter: blur(8px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(1.02) translateY(-2px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes morphInSmooth {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes gentleFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0.98) translateY(15px);
+    filter: blur(3px) brightness(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px) brightness(1);
+  }
+}
+
+@keyframes subtleGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+    box-shadow: 0 0 0 rgba(255, 205, 66, 0);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 4px 20px rgba(255, 205, 66, 0.1);
+    filter: blur(0px);
+  }
+}
+
+/* Blur-focused animation classes */
+.blur-animate {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+.blur-animate.morph-in {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.blur-animate.slide-reveal {
+  animation: slideRevealBlurOnly 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.blur-animate.gentle-float {
+  animation: gentleFloat 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.blur-animate.subtle-glow {
+  animation: subtleGlow 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Enhanced blur effects for specific elements */
+.blur-animate.fly-in-left,
+.blur-animate.fly-in-right {
+  animation: slideRevealBlurOnly 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.blur-animate.fly-in-up {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.blur-animate.fly-in-down {
+  animation: gentleFloat 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Consistent blur-only animation for h2 elements */
+h2.blur-animate.fly-in-up {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Section-level blur-to-focus animations */
+section.blur-animate {
+  animation: blurFocusOnly 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.about-container.blur-animate {
+  animation: blurFocusOnly 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.project-container.blur-animate {
+  animation: blurFocusOnly 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tldr-content.blur-animate {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+footer.blur-animate {
+  animation: gentleFloat 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.footer-content.blur-animate {
+  animation: gentleFloat 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Profile image with subtle glow effect */
+.profile-image.blur-animate {
+  animation: subtleGlow 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Section headers with blur-only reveal */
+.content-text h3.blur-animate {
+  animation: slideRevealBlurOnly 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.content-text p.blur-animate {
+  animation: gentleFloat 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Project items with blur-only effect */
+.project-item .project-header.blur-animate {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.project-item.blur-animate {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Button animations */
+.btn.blur-animate {
+  animation: subtleGlow 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Image carousel blur effects */
+.image-carousel.blur-animate {
+  animation: blurFocusOnly 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modern staggered delays with natural rhythm */
+.blur-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.blur-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.blur-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.blur-delay-4 {
+  animation-delay: 0.6s;
+}
+
+.blur-delay-5 {
+  animation-delay: 0.75s;
+}
+
+.blur-delay-6 {
+  animation-delay: 0.9s;
+}
+
+/* Micro-delays for subtle sequencing */
+.blur-delay-micro-1 {
+  animation-delay: 0.05s;
+}
+
+.blur-delay-micro-2 {
+  animation-delay: 0.1s;
+}
+
+.blur-delay-micro-3 {
+  animation-delay: 0.2s;
+}
+
+/* Modern hover effects with blur transitions */
+.btn.blur-animate:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 205, 66, 0.25);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-item.blur-animate:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  .blur-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Performance optimizations */
+.blur-animate {
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}

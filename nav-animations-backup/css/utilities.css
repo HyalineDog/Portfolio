@@ -1,0 +1,372 @@
+/* ?This is where reusable styling of this template will be.
+   !Will contain things like:
+   * Button styling
+   * Background color styling
+   * padding and margin
+*/
+
+.container {
+  max-width: var(--width-medium);
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+h1::selection,
+h2::selection {
+  background-color: var(--primary-color);
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Ensure proper heading selection contrast in dark mode */
+[data-theme="dark"] h1::selection,
+[data-theme="dark"] h2::selection {
+  background-color: var(--primary-color);
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  transition: 0.3s;
+  white-space: nowrap;
+  min-width: fit-content;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: #000000;
+}
+
+.btn-secondary {
+  margin: 5px 0;
+  background-color: var(--bg-secondary);
+  color: var(--bg-primary);
+}
+
+/* add hover to resume button */
+.btn-primary:hover {
+  background: var(--secondary-color);
+}
+
+/* Dark mode toggle */
+#switch {
+  display: none;
+}
+
+.toggle-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-icons > img {
+  transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 30px;
+}
+
+.moon {
+  transform: rotate(10deg);
+}
+
+#switch:checked + .toggle-icons .moon {
+  transform: rotate(250deg);
+}
+
+#switch:checked + .toggle-icons .sun {
+  transform: rotate(100deg);
+}
+
+/* Header Container */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  max-width: var(--width-medium);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-container .profile-image {
+  align-self: center;
+}
+
+.header-container > div {
+  margin-top: 1rem;
+}
+
+.content-text {
+  text-align: left;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.content-text h3 {
+  font-size: 1.75rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--letter-spacing-normal);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: var(--text-color);
+  transition: 0.2s ease-in-out;
+}
+
+.content-text p {
+  padding: 0.5rem 0;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--weight-normal);
+}
+
+/* Project cards */
+.card {
+  aspect-ratio: 1.67 / 1;
+  position: relative;
+  height: 100%;
+  width: 95%;
+  padding: 1rem;
+  /* Removed default background to allow project images to show */
+  /* background: var(--card-background); */
+  color: #ffffff;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-play-state: running;
+}
+
+.card a {
+  color: #ffffff;
+  transition: 0.25s ease-in-out;
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
+}
+
+.card a:hover {
+  color: var(--primary-color);
+}
+
+/* Removing hover effect as requested by user */
+/* .card:hover {
+  box-shadow: inset 100px 100px 1000px 1000px rgba(0, 0, 0, 0.8);
+} */
+
+
+/* Project Images - Using maximum specificity to override all other .card styles */
+
+/* Project 1 Card Background - Apply to linkbox since it's on top */
+body .project-container .project-list .project-item:nth-child(1) .card {
+  background-image: url('../assets/figma_assets/Zhike\ Classroom\ Platform/web-portfolio-mockup_1.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(1) .linkbox:hover + .project-header + .card {
+  background-image: url('../assets/project/1-670.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(1):hover .card {
+  background-image: url('../assets/project/1-670.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+/* Project 2 Card Background - Apply to linkbox since it's on top */
+body .project-container .project-list .project-item:nth-child(2) .card {
+  background-image: url('../assets/figma_assets/Student\ Pad/Hero Image.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(2) .linkbox:hover + .project-header + .card {
+  background-image: url('../assets/project/MyVideo4.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(2):hover .card {
+  background-image: url('../assets/project/MyVideo4.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+/* Project 3 Card Background - Apply to linkbox since it's on top */
+body .project-container .project-list .project-item:nth-child(3) .card {
+  background-image: url('../assets/project/16.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(3) .linkbox:hover + .project-header + .card {
+  background-image: url('../assets/figma_assets/Notetaking\ App/Hover\ Cover.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body .project-container .project-list .project-item:nth-child(3):hover .card {
+  background-image: url('../assets/figma_assets/Notetaking\ App/Hover\ Cover.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image 0.3s ease !important;
+}
+
+/* Project 4 */
+/* .project-item:nth-child(4) .card {
+  background: url(../assets/project/project-four.png) center center/cover;
+} */
+
+/* Project 5 */
+/* .project-item:nth-child(5) .card {
+  background: url(../assets/project/project-five.png) center center/cover;
+} */
+
+/* Project 6 */
+/* .card:nth-child(6) {
+  background: url(../assets/project/project-six.png) center center/cover;
+} */
+
+/* Scroll Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply staggered delays to project items - Updated to match background image specificity */
+body .project-container .project-list .project-item:nth-child(1) .card {
+  animation-delay: 0.3s;
+}
+
+body .project-container .project-list .project-item:nth-child(2) .card {
+  animation-delay: 1.8s; /* 0.3s + 1.5s delay */
+}
+
+body .project-container .project-list .project-item:nth-child(3) .card {
+  animation-delay: 3.3s; /* 1.8s + 1.5s delay */
+}
+
+body .project-container .project-list .project-item:nth-child(4) .card {
+  animation-delay: 4.8s; /* 3.3s + 1.5s delay */
+}
+
+body .project-container .project-list .project-item:nth-child(5) .card {
+  animation-delay: 6.3s; /* 4.8s + 1.5s delay */
+}
+
+body .project-container .project-list .project-item:nth-child(6) .card {
+  animation-delay: 7.8s; /* 6.3s + 1.5s delay */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header-container {
+    margin-top: 3rem;
+    text-align: left;
+  }
+
+  .content-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .content-text p {
+    font-size: var(--font-size-base);
+  }
+}
+
+
+/* Highlight */
+.highlight {
+  background-color: var(--primary-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  line-height: 1.2;
+  font-weight: var(--weight-bold);
+  transition: all 0.2s ease;
+}
+
+.highlight:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode highlight with black text for better contrast */
+[data-theme="dark"] .highlight {
+  color: #000000;
+  background-color: var(--primary-color);
+}
+
+/* Ensure proper text selection visibility on highlighted elements */
+.highlight::selection {
+  background-color: var(--secondary-color);
+  color: #000000;
+}
+
+[data-theme="dark"] .highlight::selection {
+  background-color: var(--secondary-color);
+  color: #000000;
+}
+
+/* Project text animations */
+.project-title-column h3,
+.project-title-column .project-timeframe,
+.project-description-column p {
+  opacity: 1; /* Changed from 0 to 1 to make text visible by default */
+  transform: translateY(0); /* Changed from translateY(20px) to remove the initial offset */
+  animation: none; /* Removed animation that was causing visibility issues */
+}
+
+/* Removing animation delays that were keeping content hidden */
+.project-item:nth-child(1) .project-title-column h3,
+.project-item:nth-child(1) .project-title-column .project-timeframe,
+.project-item:nth-child(1) .project-description-column p,
+.project-item:nth-child(2) .project-title-column h3,
+.project-item:nth-child(2) .project-title-column .project-timeframe,
+.project-item:nth-child(2) .project-description-column p,
+.project-item:nth-child(3) .project-title-column h3,
+.project-item:nth-child(3) .project-title-column .project-timeframe,
+.project-item:nth-child(3) .project-description-column p {
+  animation-delay: 0s;
+}
