@@ -373,6 +373,7 @@ body {
 
 .navbar .nav-menu {
   display: flex;
+  justify-content: center;
   align-items: center;
   background: transparent;
   flex-shrink: 1; /* Allow nav menu to shrink if needed */
@@ -415,14 +416,19 @@ body {
 }
 
 .navbar #logo .logo-text {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-sm);
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--letter-spacing-normal);
+  letter-spacing: var(--letter-spacing-wide);
   line-height: 1;
   color: var(--text-color);
   display: flex;
   align-items: center;
   height: 40px; /* Match the logo image height */
+  border: none; /* Override any inherited border styles */
+  background: transparent; /* Override any inherited background */
+  padding: 0; /* Override any inherited padding */
+  margin: 0; /* Override any inherited margin */
+  border-radius: 0; /* Override any inherited border-radius */
 }
 
 /* Hide logo text in floating island state */
@@ -995,7 +1001,7 @@ body {
   
   .navbar #logo .logo-text {
     height: 35px; /* Match mobile logo height */
-    font-size: var(--font-size-base); /* Slightly smaller text on mobile */
+    font-size: var(--font-size-xs); /* Match mobile nav-link size */
   }
 }
 

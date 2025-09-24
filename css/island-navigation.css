@@ -147,7 +147,7 @@
 
 .navbar .nav-menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 0.1rem;
 }

@@ -217,38 +217,36 @@ dealtCardsContainer.addEventListener('click', function (e) {
             // Reset the card's transform before enlarging
             resetCardTransform(clickedCard);
 
-            // Small delay to ensure the reset is applied before enlarging
-            setTimeout(() => {
-                clickedCard.classList.add('enlarged');
-                const overlay = document.createElement('div');
-                overlay.classList.add('overlay');
-                document.body.appendChild(overlay);
-                overlay.addEventListener('click', function () {
-                    clickedCard.classList.remove('enlarged');
-                    overlay.remove();
-                    const closeButton = document.querySelector('.close-button');
-                    if (closeButton) {
-                        closeButton.remove();
-                    }
-                });
-
-                // Create a close button for mobile devices
-                const closeButton = document.createElement('button');
-                closeButton.classList.add('close-button');
-                closeButton.innerHTML = '&times;';
-                closeButton.style.display = 'block'; // Ensure the button is visible
-                closeButton.style.position = 'fixed'; // Fix position in viewport
-                closeButton.style.zIndex = '1001'; // Ensure it's above the overlay
-                closeButton.addEventListener('click', function() {
-                    clickedCard.classList.remove('enlarged');
-                    overlay.remove();
+            // Immediate appearance without delay
+            clickedCard.classList.add('enlarged');
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+            document.body.appendChild(overlay);
+            overlay.addEventListener('click', function () {
+                clickedCard.classList.remove('enlarged');
+                overlay.remove();
+                const closeButton = document.querySelector('.close-button');
+                if (closeButton) {
                     closeButton.remove();
-                });
-                document.body.appendChild(closeButton);
+                }
+            });
 
-                // Push a new state to the browser history
-                history.pushState({cardEnlarged: true}, '');
-            }, 50);
+            // Create a close button for mobile devices
+            const closeButton = document.createElement('button');
+            closeButton.classList.add('close-button');
+            closeButton.innerHTML = '&times;';
+            closeButton.style.display = 'block'; // Ensure the button is visible
+            closeButton.style.position = 'fixed'; // Fix position in viewport
+            // z-index is handled by CSS (100000)
+            closeButton.addEventListener('click', function() {
+                clickedCard.classList.remove('enlarged');
+                overlay.remove();
+                closeButton.remove();
+            });
+            document.body.appendChild(closeButton);
+
+            // Push a new state to the browser history
+            history.pushState({cardEnlarged: true}, '');
         }
     }
 });
