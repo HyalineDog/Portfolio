@@ -12,7 +12,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Dark theme navbar */
@@ -70,7 +70,7 @@
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  animation: slideOutToTop 0.4s ease-in forwards;
+  animation: slideOutAndExpand 0.4s ease-in forwards;
 }
 
 /* Container adjustments for retracting navbar */
@@ -101,6 +101,40 @@
   to {
     transform: translateX(-50%) translateY(-100vh);
     opacity: 0;
+  }
+}
+
+/* New animation for smooth transition from island to full-width navbar */
+@keyframes slideOutAndExpand {
+  0% {
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: auto;
+    max-width: 864px;
+    min-width: 576px;
+    border-radius: 20px;
+    opacity: 1;
+  }
+  50% {
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 90%;
+    max-width: none;
+    min-width: none;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    min-width: none;
+    border-radius: 0;
+    opacity: 1;
   }
 }
 
