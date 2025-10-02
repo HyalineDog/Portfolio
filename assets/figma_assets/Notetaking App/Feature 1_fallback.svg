@@ -1,0 +1,13 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <rect x="50" y="50" width="700" height="350" fill="#e9ecef" stroke="#dee2e6" stroke-width="2" rx="8"/>
+  <!-- Smaller, centered play button with website colors -->
+  <circle cx="400" cy="225" r="28" fill="#ffcd42" stroke="#222222" stroke-width="2"/>
+  <polygon points="392,215 392,235 408,225" fill="#222222"/>
+  <text x="400" y="280" text-anchor="middle" font-family="Raleway, Arial, sans-serif" font-size="16" fill="#222222">
+    Video: Note-taking App Feature Demo
+  </text>
+  <text x="400" y="300" text-anchor="middle" font-family="Raleway, Arial, sans-serif" font-size="12" fill="#666666">
+    Click to play video
+  </text>
+</svg>

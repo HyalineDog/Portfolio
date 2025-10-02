@@ -136,11 +136,11 @@ a {
 
 /* Typography */
 h1 {
-  font-size: 5rem; /* 80px - Modern 2025 trend for strong visual impact */
+  font-size: var(--font-size-4xl); /* 48px - Back to original size */
   font-weight: var(--weight-extrabold);
-  line-height: 1.1; /* Tighter for large headings */
-  letter-spacing: -0.02em; /* Slightly tighter for better readability */
-  margin-bottom: 2rem; /* Increased spacing for better hierarchy */
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: 2rem;
   color: var(--text-color);
 }
 
@@ -625,8 +625,13 @@ body {
 }
 
 #projects .btn {
-  align-self: flex-start;
   margin: 3rem 0;
+}
+
+/* Specific styling for project description buttons */
+.project-description-column .btn {
+  align-self: flex-end; /* Align button to the right edge of the description text */
+  margin: 1rem 0 0 0; /* Adjust margin for better spacing */
 }
 
 .project-list {
@@ -655,12 +660,7 @@ body {
   transform: translateX(10px);
 }
 
-.project-item:hover .project-title-column h3::after {
-  content: " \f061";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  margin-left: 8px;
-}
+
 
 .project-item .linkbox {
   position: absolute;
@@ -670,6 +670,16 @@ body {
   left: 0;
   z-index: 2;
   margin-bottom: 1.5rem;
+}
+
+/* Hide View Case Study button by default and show on hover */
+.project-item .btn {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-item:hover .btn {
+  opacity: 1;
 }
 
 
@@ -710,7 +720,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 3rem;
-  align-items: flex-start;
+  align-items: flex-end; /* Align items to the right */
 }
 
 .project-description-column p {
@@ -719,6 +729,8 @@ body {
   line-height: var(--line-height-relaxed);
   font-weight: var(--weight-normal);
   margin-top: 0;
+  width: 100%; /* Take full width for proper text alignment */
+  text-align: left; /* Keep text left-aligned */
 }
 
 .card .linkbox {

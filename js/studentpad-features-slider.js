@@ -61,8 +61,9 @@ class ZhiKeFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <video class="zhike-feature-video" autoplay muted loop playsinline>
+                            <video class="zhike-feature-video" autoplay muted loop playsinline poster="assets/figma_assets/Student Pad/Feature 1_fallback.svg">
                                 <source src="assets/figma_assets/Student Pad/Feature 1.mp4" type="video/mp4">
+                                <img src="assets/figma_assets/Student Pad/Feature 1_fallback.svg" alt="Video: Learning-Focused Task Management Demo" class="zhike-feature-video">
                                 <div class="zhike-feature-icon">✅</div>
                             </video>
                         </div>

@@ -64,8 +64,8 @@
                     <div class="theme-switch">
                         <input type="checkbox" id="switch">
                         <label class="toggle-icons" for="switch">
-                            <img class="moon" src="assets/moon.svg">
-                            <img class="sun" src="assets/sun.svg">
+                            <img class="moon" src="assets/moon.svg" alt="Dark mode">
+                            <img class="sun" src="assets/sun.svg" alt="Light mode">
                         </label>
                     </div>
                 </li>
@@ -167,7 +167,8 @@
                 </div>
             </div>
             <div class="content-visual">
-                <video src="assets/figma_assets/Student Pad/Challenge 1.mp4" class="section-image" id="challenge-media" autoplay loop muted playsinline>
+                <video src="assets/figma_assets/Student Pad/Challenge 1.mp4" class="section-image" id="challenge-media" autoplay loop muted playsinline poster="assets/figma_assets/Student Pad/Challenge 1_fallback.svg">
+                    <img src="assets/figma_assets/Student Pad/Challenge 1_fallback.svg" alt="Video: Engagement vs. Addiction Challenge" class="section-image">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -377,8 +378,9 @@
                             </div>
                         </div>
                         <div class="gamification-visual">
-                            <video autoplay muted playsinline data-gamification-video="ethical">
+                            <video autoplay muted playsinline data-gamification-video="ethical" poster="assets/figma_assets/Student Pad/Gamification 1_fallback.svg">
                                 <source src="assets/figma_assets/Student Pad/Gamification 1.mp4" type="video/mp4">
+                                <img src="assets/figma_assets/Student Pad/Gamification 1_fallback.svg" alt="Video: Learning-Focused UI Design" class="section-image">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -400,8 +402,9 @@
                             </div>
                         </div>
                         <div class="gamification-visual">
-                            <video autoplay muted playsinline data-gamification-video="reward">
+                            <video autoplay muted playsinline data-gamification-video="reward" poster="assets/figma_assets/Student Pad/Gamification 2_fallback.svg">
                                 <source src="assets/figma_assets/Student Pad/Gamification 2.mp4" type="video/mp4">
+                                <img src="assets/figma_assets/Student Pad/Gamification 2_fallback.svg" alt="Video: Reward Architecture Design" class="section-image">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -423,8 +426,9 @@
                             </div>
                         </div>
                         <div class="gamification-visual">
-                            <video autoplay muted playsinline data-gamification-video="psychology">
+                            <video autoplay muted playsinline data-gamification-video="psychology" poster="assets/figma_assets/Student Pad/Gamification 3_fallback.svg">
                                 <source src="assets/figma_assets/Student Pad/Gamification 3.mp4" type="video/mp4">
+                                <img src="assets/figma_assets/Student Pad/Gamification 3_fallback.svg" alt="Video: Psychology-Based Design Features" class="section-image">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -603,5 +607,6 @@
         <script src="js/insight-hover-system.js"></script>
         <script src="js/script.js"></script>
         <script src="js/island-navigation.js"></script>
+        <script src="js/video-loader.js"></script>
 </body>
 </html>
