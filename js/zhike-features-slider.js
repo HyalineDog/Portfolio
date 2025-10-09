@@ -62,9 +62,8 @@ class ZhiKeFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <video class="zhike-feature-video" autoplay muted poster="assets/figma_assets/Zhike Classroom Platform/Simplified Interface_fallback.svg">
+                            <video class="zhike-feature-video" autoplay muted>
                                 <source src="assets/figma_assets/Zhike Classroom Platform/Simplified Interface.mp4" type="video/mp4">
-                                <img src="assets/figma_assets/Zhike Classroom Platform/Simplified Interface_fallback.svg" alt="Video: Simplified Interface Demo" class="zhike-feature-video">
                                 <div class="zhike-feature-icon">🎯</div>
                             </video>
                         </div>
@@ -77,9 +76,8 @@ class ZhiKeFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <video class="zhike-feature-video" autoplay muted poster="assets/figma_assets/Zhike Classroom Platform/AI Generated Content_fallback.svg">
+                            <video class="zhike-feature-video" autoplay muted>
                                 <source src="assets/figma_assets/Zhike Classroom Platform/AI Generated Content.mp4" type="video/mp4">
-                                <img src="assets/figma_assets/Zhike Classroom Platform/AI Generated Content_fallback.svg" alt="Video: AI-Powered Content Creation Demo" class="zhike-feature-video">
                                 <div class="zhike-feature-icon">🤖</div>
                             </video>
                         </div>
@@ -92,9 +90,8 @@ class ZhiKeFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <video class="zhike-feature-video" autoplay muted poster="assets/figma_assets/Zhike Classroom Platform/Cross Platform_fallback.svg">
+                            <video class="zhike-feature-video" autoplay muted>
                                 <source src="assets/figma_assets/Zhike Classroom Platform/Cross Platform.mp4" type="video/mp4">
-                                <img src="assets/figma_assets/Zhike Classroom Platform/Cross Platform_fallback.svg" alt="Video: Cross-Platform Optimization Demo" class="zhike-feature-video">
                                 <div class="zhike-feature-icon">📱</div>
                             </video>
                         </div>

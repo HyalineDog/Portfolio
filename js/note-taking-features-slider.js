@@ -62,9 +62,8 @@ class NoteTakingFeaturesSlider {
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
-                            <video class="zhike-feature-video" autoplay muted loop playsinline poster="assets/figma_assets/Notetaking App/Feature 1_fallback.svg">
+                            <video class="zhike-feature-video" autoplay muted loop playsinline>
                                 <source src="assets/figma_assets/Notetaking App/Feature 1.mp4" type="video/mp4">
-                                <img src="assets/figma_assets/Notetaking App/Feature 1_fallback.svg" alt="Video: Structured Note-Taking Templates Demo" class="zhike-feature-video">
                                 <div class="zhike-feature-icon">📝</div>
                             </video>
                         </div>
