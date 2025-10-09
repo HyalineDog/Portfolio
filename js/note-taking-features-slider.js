@@ -43,6 +43,7 @@ class NoteTakingFeaturesSlider {
     init() {
         this.createSlider();
         this.bindEvents();
+        this.initializeVideos();
         if (this.isAutoPlaying) {
             this.startAutoPlay();
         }
@@ -336,9 +337,11 @@ class NoteTakingFeaturesSlider {
     }
 
     pauseAllVideos() {
-        const videos = this.container.querySelectorAll('.zhike-feature-video');
+        const videos = this.container.querySelectorAll('video.zhike-feature-video');
         videos.forEach(video => {
-            video.pause();
+            if (video.tagName === 'VIDEO' && typeof video.pause === 'function') {
+                video.pause();
+            }
         });
     }
 
@@ -347,14 +350,52 @@ class NoteTakingFeaturesSlider {
         
         const currentSlideElement = this.slides[this.currentSlide];
         if (currentSlideElement) {
-            const video = currentSlideElement.querySelector('.zhike-feature-video');
-            if (video) {
-                video.currentTime = 0;
-                video.play().catch(e => {
-                    console.log('Video autoplay prevented:', e);
-                });
+            const video = currentSlideElement.querySelector('video.zhike-feature-video');
+            if (video && video.tagName === 'VIDEO' && typeof video.play === 'function') {
+                // Wait for video to be ready before playing
+                if (video.readyState >= 2) {
+                    video.currentTime = 0;
+                    video.play().catch(e => console.log('Video autoplay failed:', e));
+                } else {
+                    // If video isn't ready, wait for it to load
+                    const playWhenReady = () => {
+                        video.currentTime = 0;
+                        video.play().catch(e => console.log('Video autoplay failed:', e));
+                        video.removeEventListener('canplay', playWhenReady);
+                    };
+                    video.addEventListener('canplay', playWhenReady);
+                }
             }
         }
+    }
+
+    initializeVideos() {
+        // Initialize all videos to ensure they're ready for playback
+        const videos = this.container.querySelectorAll('video.zhike-feature-video');
+        videos.forEach(video => {
+            // Preload the video
+            video.preload = 'metadata';
+            
+            // Set up initial state
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            
+            // Load the video
+            video.load();
+            
+            // If this is the first slide video, try to play it once ready
+            const slideElement = video.closest('.zhike-feature-slide');
+            if (slideElement && slideElement.classList.contains('active')) {
+                if (video.readyState >= 2) {
+                    video.play().catch(e => console.log('Initial video autoplay failed:', e));
+                } else {
+                    video.addEventListener('canplay', () => {
+                        video.play().catch(e => console.log('Initial video autoplay failed:', e));
+                    }, { once: true });
+                }
+            }
+        });
     }
 
     getCurrentSlide() {

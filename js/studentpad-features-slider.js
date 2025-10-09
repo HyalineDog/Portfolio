@@ -47,6 +47,7 @@ class ZhiKeFeaturesSlider {
             this.startAutoPlay();
         }
         this.updateSlider();
+        this.initializeVideos();
     }
 
     createSlider() {
@@ -364,12 +365,51 @@ class ZhiKeFeaturesSlider {
             const video = currentSlideElement.querySelector('.zhike-feature-video');
             if (video) {
                 video.currentTime = 0;
-                video.play().catch(e => {
-                    // Handle autoplay restrictions gracefully
-                    console.log('Video autoplay prevented:', e);
-                });
+                
+                // Check if video is ready to play
+                if (video.readyState >= 2) {
+                    video.play().catch(e => {
+                        console.log('Video autoplay prevented:', e);
+                    });
+                } else {
+                    // Wait for video to be ready
+                    video.addEventListener('canplay', () => {
+                        video.play().catch(e => {
+                            console.log('Video autoplay prevented:', e);
+                        });
+                    }, { once: true });
+                }
             }
         }
+    }
+
+    initializeVideos() {
+        const videos = this.container.querySelectorAll('.zhike-feature-video');
+        videos.forEach((video, index) => {
+            // Set video attributes for better loading
+            video.preload = 'metadata';
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            
+            // Force load the video
+            video.load();
+            
+            // If this is the active slide video, try to play it once ready
+            if (index === this.currentSlide) {
+                if (video.readyState >= 2) {
+                    video.play().catch(e => {
+                        console.log('Video autoplay prevented:', e);
+                    });
+                } else {
+                    video.addEventListener('canplay', () => {
+                        video.play().catch(e => {
+                            console.log('Video autoplay prevented:', e);
+                        });
+                    }, { once: true });
+                }
+            }
+        });
     }
 
     destroy() {
