@@ -143,6 +143,100 @@ class VideoLoader {
                     z-index: 10;
                 }
                 
+                .video-error.enhanced {
+                    max-width: 300px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                }
+                
+                .video-error .error-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                }
+                
+                .video-error .error-icon {
+                    font-size: 24px;
+                    margin: 0;
+                }
+                
+                .video-error .error-title {
+                    font-weight: bold;
+                    margin: 0;
+                    color: #dc3545;
+                }
+                
+                .video-error .error-message {
+                    font-size: 14px;
+                    margin: 0;
+                    color: #666;
+                    line-height: 1.4;
+                }
+                
+                .video-retry-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 15;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                
+                .video-retry-overlay:hover {
+                    opacity: 1;
+                }
+                
+                .video-retry-overlay .retry-content {
+                    text-align: center;
+                    color: white;
+                    background: rgba(0, 0, 0, 0.8);
+                    padding: 20px;
+                    border-radius: 8px;
+                    max-width: 250px;
+                }
+                
+                .video-retry-overlay .retry-icon {
+                    font-size: 32px;
+                    margin-bottom: 10px;
+                    animation: rotate 2s linear infinite;
+                }
+                
+                .video-retry-overlay .retry-message {
+                    font-size: 14px;
+                    margin: 10px 0;
+                    line-height: 1.4;
+                }
+                
+                .retry-button {
+                    background: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    transition: background-color 0.2s ease;
+                }
+                
+                .retry-button:hover {
+                    background: #0056b3;
+                }
+                
+                .retry-button:active {
+                    transform: translateY(1px);
+                }
+                
+                @keyframes rotate {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                
                 .video-container {
                     position: relative;
                 }
@@ -215,13 +309,41 @@ class VideoLoader {
             video.loadingIndicator.remove();
         }
         
-        // Show fallback image
-        this.showFallbackImage(video);
+        // Determine error type for better user feedback
+        const errorType = this.determineErrorType(video);
         
-        console.warn('Video failed to load, showing fallback:', video.src);
+        // Show fallback image with enhanced error info
+        this.showFallbackImage(video, errorType);
+        
+        console.warn('Video failed to load, showing fallback:', video.src, 'Error type:', errorType);
     }
 
-    showFallbackImage(video) {
+    determineErrorType(video) {
+        // Check network connectivity
+        if (!navigator.onLine) {
+            return 'network';
+        }
+        
+        // Check if it's a CORS issue
+        if (video.error && video.error.code === video.error.MEDIA_ERR_NETWORK) {
+            return 'network';
+        }
+        
+        // Check if it's a format issue
+        if (video.error && video.error.code === video.error.MEDIA_ERR_SRC_NOT_SUPPORTED) {
+            return 'format';
+        }
+        
+        // Check if it's a decode issue
+        if (video.error && video.error.code === video.error.MEDIA_ERR_DECODE) {
+            return 'decode';
+        }
+        
+        // Default to generic error
+        return 'generic';
+    }
+
+    showFallbackImage(video, errorType = 'generic') {
         const container = video.parentElement;
         
         // Try to find fallback image in video element
@@ -246,16 +368,149 @@ class VideoLoader {
             // Hide video and show fallback
             video.style.display = 'none';
             container.appendChild(displayImg);
+            
+            // Add retry overlay for fallback images
+            this.addRetryOverlay(container, video, errorType);
         } else {
-            // Show error message if no fallback available
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'video-error';
-            errorDiv.innerHTML = `
-                <p>⚠️ Video unavailable</p>
-                <small>Content could not be loaded</small>
-            `;
-            container.appendChild(errorDiv);
+            // Show enhanced error message if no fallback available
+            this.showErrorMessage(container, video, errorType);
         }
+    }
+
+    addRetryOverlay(container, video, errorType) {
+        const overlay = document.createElement('div');
+        overlay.className = 'video-retry-overlay';
+        overlay.innerHTML = `
+            <div class="retry-content">
+                <div class="retry-icon">🔄</div>
+                <p class="retry-message">${this.getErrorMessage(errorType)}</p>
+                <button class="retry-button" data-video-src="${video.src}">Try Again</button>
+            </div>
+        `;
+        
+        // Add click handler for retry
+        const retryButton = overlay.querySelector('.retry-button');
+        retryButton.addEventListener('click', () => {
+            this.retryVideo(video, overlay);
+        });
+        
+        container.appendChild(overlay);
+    }
+
+    showErrorMessage(container, video, errorType) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'video-error enhanced';
+        errorDiv.innerHTML = `
+            <div class="error-content">
+                <p class="error-icon">⚠️</p>
+                <p class="error-title">Video Unavailable</p>
+                <p class="error-message">${this.getErrorMessage(errorType)}</p>
+                <button class="retry-button" data-video-src="${video.src}">Try Again</button>
+            </div>
+        `;
+        
+        // Add click handler for retry
+        const retryButton = errorDiv.querySelector('.retry-button');
+        retryButton.addEventListener('click', () => {
+            this.retryVideo(video, errorDiv);
+        });
+        
+        container.appendChild(errorDiv);
+    }
+
+    getErrorMessage(errorType) {
+        const messages = {
+            network: 'Network connection issue. Please check your internet connection.',
+            format: 'Video format not supported by your browser.',
+            decode: 'Video file appears to be corrupted or incomplete.',
+            generic: 'Content could not be loaded. This might be a temporary issue.'
+        };
+        
+        return messages[errorType] || messages.generic;
+    }
+
+    // Network connectivity detection
+    checkNetworkConnectivity() {
+        return new Promise((resolve) => {
+            // Check if navigator.onLine is available
+            if (!navigator.onLine) {
+                resolve(false);
+                return;
+            }
+            
+            // Try to fetch a small resource to verify actual connectivity
+            const timeout = 5000; // 5 seconds
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+            
+            fetch('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', {
+                method: 'HEAD',
+                signal: controller.signal,
+                cache: 'no-cache'
+            })
+            .then(() => {
+                clearTimeout(timeoutId);
+                resolve(true);
+            })
+            .catch(() => {
+                clearTimeout(timeoutId);
+                resolve(false);
+            });
+        });
+    }
+
+    // Enhanced retry with network check
+    async retryVideo(video, errorElement) {
+        const container = video.parentElement;
+        const retryOverlay = container.querySelector('.video-retry-overlay');
+        
+        // Show loading state
+        if (retryOverlay) {
+            const retryIcon = retryOverlay.querySelector('.retry-icon');
+            const retryMessage = retryOverlay.querySelector('.retry-message');
+            const retryButton = retryOverlay.querySelector('.retry-button');
+            
+            if (retryIcon) retryIcon.textContent = '🔄';
+            if (retryMessage) retryMessage.textContent = 'Checking connection...';
+            if (retryButton) retryButton.disabled = true;
+        }
+        
+        // Check network connectivity first
+        const isOnline = await this.checkNetworkConnectivity();
+        
+        if (!isOnline) {
+            // Update UI to show offline state
+            if (retryOverlay) {
+                const retryIcon = retryOverlay.querySelector('.retry-icon');
+                const retryMessage = retryOverlay.querySelector('.retry-message');
+                const retryButton = retryOverlay.querySelector('.retry-button');
+                
+                if (retryIcon) retryIcon.textContent = '📡';
+                if (retryMessage) retryMessage.textContent = 'No internet connection. Please check your network and try again.';
+                if (retryButton) {
+                    retryButton.disabled = false;
+                    retryButton.textContent = 'Check Again';
+                }
+            }
+            return;
+        }
+        
+        // Remove from failed videos set
+        this.failedVideos.delete(video);
+        
+        // Remove error element
+        errorElement.remove();
+        
+        // Show video again
+        video.style.display = 'block';
+        
+        // Add loading state
+        this.addLoadingState(video);
+        
+        // Try to load video again
+        video.load();
+        
+        console.log('Retrying video load:', video.src);
     }
 
     // Public method to retry failed videos
@@ -276,14 +531,16 @@ class VideoLoader {
     }
 }
 
-// Initialize video loader
-const videoLoader = new VideoLoader();
+// Global instance - only create if one doesn't exist
+if (typeof window.videoLoader === 'undefined') {
+    const videoLoader = new VideoLoader();
+    window.videoLoader = videoLoader;
+}
 
-// Export for module systems
+// Module exports for Node.js environments
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = VideoLoader;
 }
 
-// Make available globally
+// Make VideoLoader class available globally
 window.VideoLoader = VideoLoader;
-window.videoLoader = videoLoader;

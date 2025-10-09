@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Error Handling Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-section h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        
+        video {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border-radius: 4px;
+        }
+        
+        .test-description {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .controls {
+            margin: 15px 0;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Error Handling Test Page</h1>
+    <p>This page demonstrates the enhanced video error handling system with different error scenarios.</p>
+    
+    <!-- Test 1: Network Error (Invalid URL) -->
+    <div class="test-section">
+        <h2>Test 1: Network Error</h2>
+        <div class="test-description">
+            <strong>Scenario:</strong> Video with invalid URL to simulate network/404 error
+        </div>
+        <div class="video-container">
+            <video id="test-network-error" 
+                   src="https://invalid-domain-12345.com/nonexistent-video.mp4"
+                   poster="images/fallback-image.svg"
+                   preload="metadata">
+                <img src="images/fallback-image.svg" alt="Video unavailable" style="width: 100%; height: 300px; object-fit: cover;">
+            </video>
+        </div>
+        <div class="controls">
+            <button onclick="retryVideo('test-network-error')">Manual Retry</button>
+            <button onclick="simulateOffline()">Simulate Offline</button>
+        </div>
+    </div>
+    
+    <!-- Test 2: Format Error -->
+    <div class="test-section">
+        <h2>Test 2: Format Error</h2>
+        <div class="test-description">
+            <strong>Scenario:</strong> Video with unsupported format to simulate decode error
+        </div>
+        <div class="video-container">
+            <video id="test-format-error" 
+                   src="data:video/mp4;base64,invalid-video-data"
+                   poster="images/fallback-image.svg"
+                   preload="metadata">
+                <img src="images/fallback-image.svg" alt="Video unavailable" style="width: 100%; height: 300px; object-fit: cover;">
+            </video>
+        </div>
+        <div class="controls">
+            <button onclick="retryVideo('test-format-error')">Manual Retry</button>
+        </div>
+    </div>
+    
+    <!-- Test 3: Working Video -->
+    <div class="test-section">
+        <h2>Test 3: Working Video</h2>
+        <div class="test-description">
+            <strong>Scenario:</strong> Valid video that should load successfully
+        </div>
+        <div class="video-container">
+            <video id="test-working-video" 
+                   src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                   poster="images/fallback-image.svg"
+                   preload="metadata"
+                   controls>
+                <img src="images/fallback-image.svg" alt="Video unavailable" style="width: 100%; height: 300px; object-fit: cover;">
+            </video>
+        </div>
+        <div class="controls">
+            <button onclick="retryVideo('test-working-video')">Manual Retry</button>
+        </div>
+    </div>
+    
+    <!-- Test 4: Timeout Error -->
+    <div class="test-section">
+        <h2>Test 4: Timeout Error</h2>
+        <div class="test-description">
+            <strong>Scenario:</strong> Very slow loading video to test timeout handling
+        </div>
+        <div class="video-container">
+            <video id="test-timeout-error" 
+                   src="https://httpbin.org/delay/15"
+                   poster="images/fallback-image.jpg"
+                   preload="metadata">
+                <img src="images/fallback-image.jpg" alt="Video unavailable" style="width: 100%; height: 300px; object-fit: cover;">
+            </video>
+        </div>
+        <div class="controls">
+            <button onclick="retryVideo('test-timeout-error')">Manual Retry</button>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="stats">
+        <h3>Video Loading Statistics</h3>
+        <div id="stats-content">
+            <p>Loading statistics...</p>
+        </div>
+        <button onclick="updateStats()">Refresh Stats</button>
+        <button onclick="retryAllFailed()">Retry All Failed Videos</button>
+    </div>
+    
+    <script src="js/video-loader.js"></script>
+    <script>
+        // Initialize video loader - use existing global instance or create new one
+        const videoLoader = window.videoLoader || new VideoLoader();
+        
+        // Initialize all test videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                videoLoader.processVideo(video);
+            });
+            
+            // Update stats initially
+            setTimeout(updateStats, 1000);
+        });
+        
+        // Manual retry function
+        function retryVideo(videoId) {
+            const video = document.getElementById(videoId);
+            if (video && videoLoader) {
+                videoLoader.retryVideo(video);
+            }
+        }
+        
+        // Update statistics display
+        function updateStats() {
+            if (videoLoader && videoLoader.getStats) {
+                const stats = videoLoader.getStats();
+                const statsContent = document.getElementById('stats-content');
+                statsContent.innerHTML = `
+                    <p><strong>Total Videos:</strong> ${stats.total}</p>
+                    <p><strong>Successfully Loaded:</strong> ${stats.loaded}</p>
+                    <p><strong>Failed to Load:</strong> ${stats.failed}</p>
+                    <p><strong>Currently Loading:</strong> ${stats.loading}</p>
+                    <p><strong>Success Rate:</strong> ${stats.total > 0 ? Math.round((stats.loaded / stats.total) * 100) : 0}%</p>
+                `;
+            }
+        }
+        
+        // Retry all failed videos
+        function retryAllFailed() {
+            if (videoLoader && videoLoader.retryFailedVideos) {
+                videoLoader.retryFailedVideos();
+                setTimeout(updateStats, 2000);
+            }
+        }
+        
+        // Simulate offline state for testing
+        function simulateOffline() {
+            // Override navigator.onLine temporarily
+            Object.defineProperty(navigator, 'onLine', {
+                writable: true,
+                value: false
+            });
+            
+            alert('Simulated offline state. Try retrying the network error video now.');
+            
+            // Restore online state after 10 seconds
+            setTimeout(() => {
+                Object.defineProperty(navigator, 'onLine', {
+                    writable: true,
+                    value: true
+                });
+                alert('Back online!');
+            }, 10000);
+        }
+        
+        // Update stats every 5 seconds
+        setInterval(updateStats, 5000);
+    </script>
+</body>
+</html>
