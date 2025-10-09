@@ -34,57 +34,7 @@ document.addEventListener("click", function(event) {
   }
 });
 
-// Apple-style navbar scroll effect
-let lastScrollY = 0;
-let isRetracting = false;
-
-function handleNavbarScroll() {
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    const scrollY = window.scrollY;
-    const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-    const navbarHeight = 80; // Height of the navbar
-    
-    if (scrollY < navbarHeight) {
-      // Original navbar is still visible - keep it at top
-      navbar.classList.add('at-top');
-      navbar.classList.remove('scrolled', 'hidden', 'retracting');
-      isRetracting = false;
-    } else {
-      // Original navbar is completely out of view
-      if (scrollDirection === 'down' && !navbar.classList.contains('scrolled') && !isRetracting) {
-        // Show floating island when scrolling down past navbar
-        navbar.classList.remove('at-top', 'hidden', 'retracting');
-        navbar.classList.add('scrolled');
-      } else if (scrollDirection === 'up' && navbar.classList.contains('scrolled') && !isRetracting && scrollY < navbarHeight * 2) {
-        // Hide floating island only when scrolling up near the top of the page
-        isRetracting = true;
-        navbar.classList.remove('scrolled');
-        navbar.classList.add('retracting');
-        
-        // After animation completes, show original navbar
-        setTimeout(() => {
-          if (window.scrollY < navbarHeight) {
-            navbar.classList.remove('retracting');
-            navbar.classList.add('at-top');
-          } else {
-            navbar.classList.remove('retracting');
-            navbar.classList.add('hidden');
-          }
-          isRetracting = false;
-        }, 400);
-      }
-    }
-    
-    lastScrollY = scrollY;
-  }
-}
-
-// Initialize navbar state
-document.addEventListener('DOMContentLoaded', function() {
-  handleNavbarScroll(); // Set initial state
-  window.addEventListener('scroll', handleNavbarScroll);
-});
+// Navigation scroll effect is now handled by island-navigation.js
 
 // Event Listeners: Handling toggle event
 const toggleSwitch = document.querySelector(

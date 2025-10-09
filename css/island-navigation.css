@@ -317,12 +317,11 @@
   /* Mobile floating navbar adjustments */
   .navbar.scrolled {
     top: 20px;
-    left: 10px;
-    right: 10px;
-    transform: none;
-    width: auto;
-    min-width: auto;
-    max-width: none;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    max-width: calc(100vw - 20px);
+    min-width: 280px;
   }
 
   .navbar.scrolled .container {
