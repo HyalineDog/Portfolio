@@ -1589,6 +1589,7 @@ img {
 .availability-badge {
   display: inline-flex;
   align-items: center;
+  align-self: center;
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border-radius: 50px;
@@ -1597,7 +1598,8 @@ img {
   color: #16a34a;
   font-size: var(--font-size-sm);
   font-weight: var(--weight-medium);
-  margin-bottom: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 [data-theme="dark"] .availability-badge {
