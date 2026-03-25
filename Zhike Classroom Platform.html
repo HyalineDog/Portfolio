@@ -13,7 +13,15 @@
     </script>
     <title>ZhiKe Classroom Presentation - Jinnan Chen</title>
     <meta name="description" content="Case study of ZhiKe Classroom Platform - Unified Teaching Experience for K-12 Educators">
-    
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jinnanchen.com/Zhike%20Classroom%20Platform.html" />
+    <meta property="og:title" content="ZhiKe Classroom Presentation - Jinnan Chen" />
+    <meta property="og:description" content="Case study: Unified Teaching Experience for K-12 Educators. Created an education-first presentation platform for classroom teaching." />
+    <meta property="og:image" content="https://jinnanchen.com/assets/figma_assets/Zhike%20Classroom%20Platform/web-portfolio-mockup_1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -33,6 +41,8 @@
     <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" aria-hidden="true"></div>
     <a href="#main" class="skip-to-main">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
@@ -165,7 +175,7 @@
                 </div>
             </div>
             <div class="content-visual">
-                <img src="assets/figma_assets/Zhike Classroom Platform/Challenge 1.png" class="section-image" id="challenge-media" alt="Challenge visualization">
+                <img src="assets/figma_assets/Zhike Classroom Platform/Challenge 1.png" class="section-image" loading="lazy" id="challenge-media" alt="Challenge visualization">
             </div>
         </div>
     </section>
@@ -366,11 +376,23 @@
             </div>
         </div>
     </footer>
-    
+
+    <!-- Next Project Navigation -->
+    <section class="next-project-nav">
+        <div class="container">
+            <p class="next-project-label">Next Case Study</p>
+            <a href="ZhiKe Student Pad 4.0.html" class="next-project-link">
+                <span class="next-project-title">Student Pad 4.0 Upgrade</span>
+                <i class="fas fa-arrow-right next-project-arrow"></i>
+            </a>
+        </div>
+    </section>
+
     <script src="js/features-slider.js"></script>
     <script src="js/zhike-features-slider.js"></script>
         <script src="js/insight-hover-system.js"></script>
         <script src="js/script.js"></script>
         <script src="js/island-navigation.js"></script>
+        <script src="js/case-study-enhancements.js"></script>
 </body>
 </html>

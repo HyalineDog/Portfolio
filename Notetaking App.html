@@ -13,7 +13,15 @@
     </script>
     <title>ZhiKe Student Note Taking App - Jinnan Chen</title>
     <meta name="description" content="Case study of ZhiKe Student Note Taking App - From Basic App to Learning Ecosystem">
-    
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jinnanchen.com/Notetaking%20App.html" />
+    <meta property="og:title" content="ZhiKe Student Note Taking App - Jinnan Chen" />
+    <meta property="og:description" content="Case study: From Basic App to Learning Ecosystem. Transformed note-taking into collaborative learning with guided templates." />
+    <meta property="og:image" content="https://jinnanchen.com/assets/figma_assets/Notetaking%20App/Hero%20Section.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -34,6 +42,8 @@
 
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" aria-hidden="true"></div>
 
     <a href="#main" class="skip-to-main">Skip to main content</a>
     <!-- Navigation -->
@@ -168,7 +178,7 @@
                 </div>
             </div>
             <div class="content-visual">
-                <img src="assets/figma_assets/Notetaking App/Challenge 1.png" class="section-image" id="challenge-media" alt="Challenge visualization showing confusing architecture">
+                <img src="assets/figma_assets/Notetaking App/Challenge 1.png" class="section-image" loading="lazy" id="challenge-media" alt="Challenge visualization showing confusing architecture">
             </div>
         </div>
     </section>
@@ -305,7 +315,7 @@
                 
                 <div class="tab-content" data-tab="subject">
                     <div class="gamification-visual">
-                        <img src="assets/figma_assets/Notetaking App/Design Strategy 2.png" alt="Subject-Specific Templates" />
+                        <img src="assets/figma_assets/Notetaking App/Design Strategy 2.png" alt="Subject-Specific Templates" loading="lazy" />
                     </div>
                 </div>
                 
@@ -320,7 +330,7 @@
                 
                 <div class="tab-content" data-tab="adaptive">
                     <div class="gamification-visual">
-                        <img src="assets/figma_assets/Notetaking App/Design Strategy 4.png" alt="Adaptive Learning Templates" />
+                        <img src="assets/figma_assets/Notetaking App/Design Strategy 4.png" alt="Adaptive Learning Templates" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -431,7 +441,18 @@
             </div>
         </div>
     </footer>
-    
+
+    <!-- Next Project Navigation -->
+    <section class="next-project-nav">
+        <div class="container">
+            <p class="next-project-label">Next Case Study</p>
+            <a href="Zhike Classroom Platform.html" class="next-project-link">
+                <span class="next-project-title">Interactive Presentation</span>
+                <i class="fas fa-arrow-right next-project-arrow"></i>
+            </a>
+        </div>
+    </section>
+
     <script src="js/note-taking-features-slider.js"></script>
         <script src="js/methodology-tabs.js"></script>
         <script src="js/gamification-tabs.js"></script>
@@ -439,5 +460,6 @@
         <script src="js/script.js"></script>
         <script src="js/island-navigation.js"></script>
         <script src="js/video-loader.js"></script>
+        <script src="js/case-study-enhancements.js"></script>
 </body>
 </html>
