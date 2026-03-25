@@ -2014,3 +2014,82 @@ button:focus {
         transform: translateY(0);
     }
 }
+
+/* ===========================
+   Scroll Progress Bar
+   =========================== */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--primary-color);
+    z-index: 100;
+    transition: width 0.1s linear;
+}
+
+/* ===========================
+   Next Project Navigation
+   =========================== */
+.next-project-nav {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--bg-primary);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .next-project-nav {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.next-project-label {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: var(--weight-medium);
+}
+
+.next-project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.next-project-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--weight-bold);
+}
+
+.next-project-arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.next-project-link:hover {
+    color: var(--primary-color);
+}
+
+.next-project-link:hover .next-project-arrow {
+    transform: translateX(5px);
+}
+
+.next-project-link:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .next-project-title {
+        font-size: var(--font-size-xl);
+    }
+    .next-project-nav {
+        padding: 3rem 1.5rem;
+    }
+}

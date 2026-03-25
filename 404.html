@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found - Jinnan Chen</title>
+    <meta name="description" content="The page you're looking for doesn't exist." />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/microsoft-fonts.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/island-navigation.css" />
+  </head>
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar at-top">
+        <div class="container">
+          <h1 id="logo">
+            <a href="index.html">
+              <img src="./assets/logo.svg" alt="logo for Jinnan Chen" /><span class="logo-text">Jinnan Chen</span>
+            </a>
+          </h1>
+          <ul class="nav-menu">
+            <div class="nav-group">
+              <li><a class="nav-link" href="index.html#projects">PROJECTS</a></li>
+              <li><a class="nav-link" href="about.html">ABOUT</a></li>
+              <li><a class="nav-link" href="mailto:cjn259@gmail.com" target="_blank">EMAIL <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></li>
+              <li>
+                <a class="nav-link btn btn-primary"
+                  href="https://drive.google.com/file/d/17VbhEPfLZQmC63t_CV_Tgb7Y0ob8u0_a/view?usp=drive_link"
+                  target="_blank">RESUME <i class="fas fa-external-link-alt"></i></a>
+              </li>
+            </div>
+            <li class="theme-toggle-item">
+              <div class="theme-switch">
+                <input type="checkbox" id="switch" />
+                <label class="toggle-icons" for="switch">
+                  <img class="moon" src="assets/moon.svg" />
+                  <img class="sun" src="assets/sun.svg" />
+                </label>
+              </div>
+            </li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="error-page">
+      <div class="container" style="text-align: center; padding: 8rem 2rem; min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h1 style="font-size: 6rem; font-weight: 800; color: var(--primary-color); margin-bottom: 1rem;">404</h1>
+        <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem;">Page not found</h2>
+        <p style="font-size: 1.125rem; color: var(--text-color-secondary); max-width: 480px; margin-bottom: 2rem;">
+          The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <a href="index.html" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">View Projects</a>
+          <a href="about.html" class="btn btn-secondary" style="padding: 0.75rem 1.5rem;">About Me</a>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <div class="container">
+        <div class="footer-bg-grid" aria-hidden="true"></div>
+        <div class="footer-content">
+          <div class="footer-main">
+            <h3 class="footer-title">Let's connect</h3>
+            <a href="mailto:cjn259@gmail.com" class="footer-email" aria-label="Send email to Jinnan Chen">cjn259@gmail.com <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+          </div>
+          <div class="social" role="navigation" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/jinnan-kit-chen/" target="_blank" rel="noopener noreferrer" aria-label="Visit Jinnan Chen's LinkedIn profile (opens in new tab)">
+              <img src="./assets/linkedin-icon.svg" alt="LinkedIn logo" role="img" />
+            </a>
+            <a href="https://github.com/HyalineDog?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Visit Jinnan Chen's GitHub repositories (opens in new tab)">
+              <img src="./assets/github-icon.svg" alt="GitHub logo" role="img" />
+            </a>
+          </div>
+        </div>
+        <div class="footer-accent-line"></div>
+        <div class="attribution" role="contentinfo">
+          <p>Portfolio by Jinnan Chen with <i class="fas fa-heart" aria-label="love" role="img"></i></p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="js/island-navigation.js"></script>
+  </body>
+</html>
