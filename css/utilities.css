@@ -103,6 +103,11 @@ h2::selection {
   align-self: center;
 }
 
+.header-container .availability-badge {
+  align-self: center;
+  margin-top: 0;
+}
+
 .header-container > div {
   margin-top: 1rem;
 }
