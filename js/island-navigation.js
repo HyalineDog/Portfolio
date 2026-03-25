@@ -24,8 +24,20 @@ function handleIslandNavbarScroll() {
   
   if (scrollY < navbarHeight) {
     // Original navbar is still visible - keep it at top
-    navbar.classList.add('at-top');
-    navbar.classList.remove('scrolled', 'hidden', 'retracting');
+    if (navbar.classList.contains('scrolled')) {
+      // Coming from floating island — disable transition to prevent
+      // the "slide from left" glitch caused by left jumping to 0
+      // instantly while transform still animates from translateX(-50%)
+      navbar.style.transition = 'none';
+      navbar.classList.remove('scrolled', 'hidden', 'retracting');
+      navbar.classList.add('at-top');
+      // Force reflow so the transition:none takes effect, then restore
+      navbar.offsetHeight;
+      navbar.style.transition = '';
+    } else {
+      navbar.classList.add('at-top');
+      navbar.classList.remove('scrolled', 'hidden', 'retracting');
+    }
     islandIsRetracting = false;
   } else {
     // Original navbar is completely out of view
