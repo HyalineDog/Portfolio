@@ -587,36 +587,14 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Enhanced profile image animation */
 .profile-image {
   width: 150px;
   border-radius: 50%;
-  animation: bounce 1s infinite alternate, glow-pulse 3s ease-in-out infinite;
   transition: transform 0.3s ease;
 }
 
 .profile-image:hover {
   transform: scale(1.05);
-  animation-play-state: paused;
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(255, 193, 7, 0.5), 0 0 40px rgba(255, 193, 7, 0.2);
-  }
-}
-
-@keyframes bounce {
-  from {
-    transform: translateY(0px);
-  }
-
-  to {
-    transform: translateY(-10px);
-  }
 }
 
 .division {
@@ -798,13 +776,7 @@ body {
   background-size: 50px 50px;
   opacity: 0.5;
   z-index: 1;
-  animation: grid-shift 20s linear infinite;
   pointer-events: none; /* Ensure grid doesn't interfere with selection */
-}
-
-@keyframes grid-shift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
 }
 
 /* Remove dark theme override for footer grid - maintain light mode appearance */
@@ -889,12 +861,6 @@ body {
     transparent 100%) !important;
   margin: 1rem 0;
   opacity: 0.6;
-  animation: pulse-line 3s ease-in-out infinite;
-}
-
-@keyframes pulse-line {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
 }
 
 /* Social links - unified styling for all pages */
@@ -1581,44 +1547,6 @@ img {
       transform: translateX(calc(-300px * 4 - 80px));
     }
   }
-}
-
-/* ===========================
-   Availability Badge
-   =========================== */
-.availability-badge {
-  display: inline-flex;
-  align-items: center;
-  align-self: center;
-  gap: 0.5rem;
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  color: #16a34a;
-  font-size: var(--font-size-sm);
-  font-weight: var(--weight-medium);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-[data-theme="dark"] .availability-badge {
-  background: rgba(34, 197, 94, 0.15);
-  border-color: rgba(34, 197, 94, 0.4);
-  color: #4ade80;
-}
-
-.availability-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
 }
 
 /* ===========================
