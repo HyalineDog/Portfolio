@@ -230,11 +230,11 @@ body {
 }
 
 .subcard-icon {
-    font-size: 2rem;
-    margin-bottom: var(--space-md);
-    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-sm);
+    display: block;
     color: var(--text-color);
-    padding: 0.5rem;
 }
 
 .subcard p {
