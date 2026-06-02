@@ -1619,7 +1619,7 @@ video.section-image {
     grid-column: 1 / -1;
     margin: var(--space-sm) 0;
     padding: var(--space-lg);
-    border-radius: 12px;
+    border-radius: 0;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
 }
