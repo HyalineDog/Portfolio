@@ -57,8 +57,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide active">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Simplified Interface Design</h3>
-                                <p>Stripped away PowerPoint's complexity to essential teaching tools only. Clean toolbar and right-side controls let teachers focus on students, not software navigation.</p>
+                                <h3>A smaller toolbar</h3>
+                                <p>We cut PowerPoint's toolbar down to the tools teachers use in class and moved the main controls to the right edge, so teachers spend less time hunting for buttons.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -71,8 +71,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>AI-Powered Content Creation</h3>
-                                <p>One-click access to iFlytek's resource bank with AI assistance. Teachers can generate, edit, and customize lesson materials instantly without leaving the platform.</p>
+                                <h3>Lesson materials with AI help</h3>
+                                <p>iFlytek's resource bank is one click away. Teachers can have AI draft materials, then edit them to fit their lesson without leaving the app.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -85,8 +85,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Cross-Platform Optimization</h3>
-                                <p>Purpose-built experiences: PC for content creation, tablets for lesson control, smartboards for student-facing presentation—each optimized for its specific teaching context.</p>
+                                <h3>Each device does one job</h3>
+                                <p>Teachers build lessons on a PC, run them from a tablet, and present on the smartboard. Each screen only shows what that moment needs.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -99,8 +99,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Seamless Student Interaction</h3>
-                                <p>Embedded classroom activities within slides. Send problems to student devices, collect real-time feedback, and project student work—all without switching apps.</p>
+                                <h3>Activities inside the slides</h3>
+                                <p>Teachers send a problem to student devices, see answers as they come in, and put a student's work on the big screen, all without switching apps.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
