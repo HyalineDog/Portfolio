@@ -318,39 +318,16 @@ body .project-container .project-list .project-item:nth-child(6) .card {
 }
 
 
-/* Highlight */
+/* Highlight: plain emphasis, no marker background */
 .highlight {
-  background-color: var(--primary-color);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  line-height: 1.2;
-  font-weight: var(--weight-bold);
-  transition: all 0.2s ease;
+  font-weight: var(--weight-semibold);
+  color: var(--text-color);
 }
 
-.highlight:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode highlight with black text for better contrast */
-[data-theme="dark"] .highlight {
-  color: #000000;
-  background-color: var(--primary-color);
-}
-
-/* Ensure proper text selection visibility on highlighted elements */
-.highlight::selection {
-  background-color: var(--secondary-color);
-  color: #000000;
-}
-
-[data-theme="dark"] .highlight::selection {
-  background-color: var(--secondary-color);
-  color: #000000;
+h1 .highlight,
+h2 .highlight,
+h3 .highlight {
+  font-weight: inherit;
 }
 
 /* Project text animations */

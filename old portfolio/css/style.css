@@ -97,6 +97,7 @@ li {
 .wrapper {
   display: grid;
   width: 90%;
+  overflow-x: clip; /* dealt cards fly in from off-screen */
   padding: 20px;
   grid-template-columns: 1fr;
   gap: 20px;
