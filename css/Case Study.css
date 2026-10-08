@@ -1560,6 +1560,39 @@ video.section-image {
 }
 
 /* TL;DR Section */
+.tldr-prose {
+    max-width: 68ch;
+    margin: var(--space-lg) 0 0;
+}
+
+.tldr-prose p {
+    margin-bottom: var(--space-md);
+}
+
+/* One-line intro under a section title */
+.section-lede {
+    color: var(--text-color-secondary);
+    max-width: 65ch;
+    margin-top: var(--space-sm);
+}
+
+/* Solution written as a list of decisions */
+.decision-list {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 68ch;
+    margin: var(--space-xl) 0;
+}
+
+.decision-list h3 {
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--space-xs);
+}
+
+.decision-list p {
+    margin: 0;
+}
+
 .tldr section{
     margin-top: var(--space-xs);
 }

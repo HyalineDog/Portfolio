@@ -218,25 +218,25 @@ class InsightHoverSystem {
                 quoteMap: {
                     'apps': {
                         No: ".01",
-                        problem: "Application overload disrupts current learning flow",
+                        problem: "Switching apps mid-lesson costs the class's attention",
                         quote: "I start with PowerPoint, then switch to the textbook app, then open the activity platform, then back to PowerPoint. My students lose focus every time I'm fumbling with technology instead of teaching.",
                         author: "Middle School Science Teacher"
                     },
                     'time': {
                         No: ".02",
-                        problem: "Inefficient resource management drains productivity",
+                        problem: "Finding and adapting materials eats into teachers' weekends",
                         quote: "I spend my entire Sunday searching for resources that match our curriculum, then another few hours during the week adapting them to fit our lesson plans. It's exhausting.",
                         author: "High School Math Teacher"
                     },
                     'adoption': {
                         No: ".03",
-                        problem: "Resistance to change due to tool's learning cost",
+                        problem: "Learning a new tool costs time teachers don't have",
                         quote: "Sure, I know there are probably better tools out there, but learning a new system means weeks of preparation time I don't have. I'll stick with what I know, even if it's frustrating.",
                         author: "Elementary School Teacher"
                     },
                     'controls': {
                         No: ".04",
-                        problem: "Poor smartboard interaction hinders classroom engagement",
+                        problem: "Teachers turn their backs on the class to click",
                         quote: "When I have to turn my back to the students to click something on the computer, I immediately lose their attention. The controls need to be where I can reach them while still facing my class.",
                         author: "High School English Teacher"
                     }
