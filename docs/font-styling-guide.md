@@ -8,10 +8,10 @@ This document outlines the font styling system implemented across the portfolio 
 
 ### Base Font Family
 
-The primary font family is Segoe UI, Microsoft's signature font, with appropriate fallbacks:
+The whole site uses one family, Instrument Sans (loaded from Google Fonts in `css/style.css`), with system fallbacks. `--font-family` and `--ms-font-family` point at the same stack:
 
 ```css
---ms-font-family: 'Segoe UI', 'Segoe UI Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+--ms-font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 ```
 
 ### Font Size Scale

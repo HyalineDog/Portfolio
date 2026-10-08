@@ -227,8 +227,9 @@
 
 .navbar #logo .logo-text {
   font-family: var(--font-family);
-  font-weight: var(--weight-bold);
-  font-size: 3rem;
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-size-lg);
+  letter-spacing: -0.01em;
   color: var(--text-color);
   margin-left: 0.2rem;
   transition: all 0.3s ease;

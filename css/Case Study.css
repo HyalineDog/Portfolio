@@ -1,5 +1,5 @@
 /* Import main portfolio styles */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap');
 
 /* Portfolio-aligned design system */
 :root {
@@ -21,7 +21,7 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   
   /* Typography */
-  --font-family: 'Raleway', sans-serif;
+  --font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-size-xs: 0.75rem;    /* 12px */
   --font-size-sm: 0.875rem;   /* 14px */
   --font-size-base: 1rem;     /* 16px */
@@ -83,12 +83,6 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow: 0 2px 10px rgba(95, 95, 95, 0.2);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-}
-
-/* Dark mode specific overrides for proper contrast */
-[data-theme="dark"] .insight-stat,
-[data-theme="dark"] .result-number {
-  color: #000000;
 }
 
 /* Base styles */
@@ -376,12 +370,9 @@ body {
     letter-spacing: var(--letter-spacing-normal);
 }
 
-.before-box h3 {
-    color: #ef4444;
-}
-
+.before-box h3,
 .after-box h3 {
-    color: #22c55e;
+    color: var(--text-color);
 }
 
 .info-list {
@@ -774,16 +765,12 @@ p {
 }
 
 .section-subtitle.highlighted {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: var(--weight-semibold);
+    color: var(--text-color-secondary);
     display: inline-block;
     text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    font-size: 0.875rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.08em;
+    font-size: var(--font-size-xs);
 }
 
 /* Content Grid - Dush Style */
@@ -972,11 +959,10 @@ video.section-image {
 
 .insight-stat {
     font-size: 2.5rem;
-    font-weight: var(--weight-extrabold);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
     color: var(--text-color);
-    background: var(--primary-color);
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
     display: inline-block;
     margin-bottom: var(--space-xs);
     line-height: 1;
@@ -1043,7 +1029,8 @@ video.section-image {
     font-weight: var(--weight-bold);
     color: var(--primary-color);
     margin-bottom: var(--space-xs);
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-family);
+    font-variant-numeric: tabular-nums;
 }
 
 .summary-card h3 {
@@ -1078,7 +1065,8 @@ video.section-image {
     font-size: 1.5rem;
     font-weight: var(--weight-bold);
     color: var(--text-color);
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-family);
+    font-variant-numeric: tabular-nums;
     flex-shrink: 0;
 }
 
@@ -1117,7 +1105,7 @@ video.section-image {
     position: absolute;
     left: 0;
     top: -0.25rem;
-    font-family: Georgia, serif;
+    font-family: var(--font-family);
     line-height: 1;
 }
 
@@ -1128,7 +1116,7 @@ video.section-image {
     position: absolute;
     right: 0;
     bottom: -0.25rem;
-    font-family: Georgia, serif;
+    font-family: var(--font-family);
     line-height: 1;
 }
 
@@ -1170,7 +1158,7 @@ video.section-image {
 }
 
 .feature-card h3 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--weight-semibold);
     color: var(--text-color);
     margin: 0 0 var(--space-sm) 0;
@@ -1569,6 +1557,39 @@ video.section-image {
 }
 
 /* TL;DR Section */
+.tldr-prose {
+    max-width: 68ch;
+    margin: var(--space-lg) 0 0;
+}
+
+.tldr-prose p {
+    margin-bottom: var(--space-md);
+}
+
+/* One-line intro under a section title */
+.section-lede {
+    color: var(--text-color-secondary);
+    max-width: 65ch;
+    margin-top: var(--space-sm);
+}
+
+/* Solution written as a list of decisions */
+.decision-list {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 68ch;
+    margin: var(--space-xl) 0;
+}
+
+.decision-list h3 {
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--space-xs);
+}
+
+.decision-list p {
+    margin: 0;
+}
+
 .tldr section{
     margin-top: var(--space-xs);
 }
@@ -1588,7 +1609,7 @@ video.section-image {
 }
 
 .tldr-item h3 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--weight-semibold);
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-normal);
@@ -1668,7 +1689,7 @@ video.section-image {
 }
 
 .challenge-card h3 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--weight-semibold);
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-normal);
@@ -1711,11 +1732,10 @@ video.section-image {
 
 .result-number {
     font-size: 2.5rem;
-    font-weight: var(--weight-extrabold);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
     color: var(--text-color);
-    background: var(--primary-color);
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
     display: inline-block;
     margin-bottom: var(--space-xs);
     line-height: 1;
@@ -1885,7 +1905,6 @@ main {
         padding: var(--space-lg);
     }
     
-    .tldr-item h3,
     .summary-card h3 {
         font-size: var(--font-size-xl);
     }
@@ -1974,24 +1993,6 @@ a:focus,
 button:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
-}
-
-/* Highlight styles for TL;DR section */
-.highlight {
-    background-color: var(--primary-color);
-    padding: 0 0.3rem;
-    border-radius: 3px;
-    color: var(--text-color);
-}
-
-/* Dark mode highlight with black text for better contrast */
-[data-theme="dark"] .highlight {
-    color: #000000;
-}
-
-/* Dark mode styling for section subtitle highlighted */
-[data-theme="dark"] .section-subtitle.highlighted {
-    color: #000000;
 }
 
 /* Dark mode styling for summary card highlighted */
@@ -2092,5 +2093,55 @@ button:focus {
     }
     .next-project-nav {
         padding: 3rem 1.5rem;
+    }
+}
+
+/* Research cards on mobile: each card shows its own problem line and quote,
+   because the shared hover panel would sit below all four cards */
+.insight-inline {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #research .research-insights {
+        grid-template-columns: 1fr;
+    }
+
+    #research .problem {
+        display: none;
+    }
+
+    #research .insight-item,
+    #research .insight-item:hover,
+    #research .insight-item.selected {
+        cursor: default;
+        transform: none;
+        box-shadow: none;
+        border-color: var(--border-color);
+    }
+
+    .insight-inline {
+        display: block;
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--border-color);
+    }
+
+    .insight-inline-problem {
+        font-weight: var(--weight-semibold);
+        margin: 0 0 var(--space-xs);
+    }
+
+    .insight-inline blockquote {
+        font-style: italic;
+        color: var(--text-color-secondary);
+        line-height: 1.6;
+        margin: 0 0 var(--space-xs);
+    }
+
+    .insight-inline cite {
+        font-size: var(--font-size-sm);
+        font-style: normal;
+        color: var(--text-color-secondary);
     }
 }

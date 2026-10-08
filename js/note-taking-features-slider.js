@@ -56,8 +56,8 @@ class NoteTakingFeaturesSlider {
                     <div class="zhike-feature-slide active">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Research-Backed Templates</h3>
-                                <p>Replaced blank pages with proven methodologies like Cornell Notes, subject-specific structures, and guided frameworks that teach students how to process information effectively through embedded educational guidance.</p>
+                                <h3>Templates instead of blank pages</h3>
+                                <p>Cornell Notes, subject-specific layouts and guided frameworks, each with built-in prompts that show students how to use it.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -70,8 +70,8 @@ class NoteTakingFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Anywhere Access System</h3>
-                                <p>Lightweight overlay system that allows note-taking while using other apps—reading textbooks, watching videos, or following presentations—without disrupting the primary learning context or requiring app switching.</p>
+                                <h3>Notes on top of any app</h3>
+                                <p>A light overlay lets students take notes while reading a textbook, watching a video or following a presentation, without switching apps.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -81,8 +81,8 @@ class NoteTakingFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Multiple Input Methods</h3>
-                                <p>Integrated typing and pen input with rich text editing options, custom grids for spatial learning, and accessibility features that ensure all students can participate regardless of their device accessories or input preferences.</p>
+                                <h3>Typing as well as pen</h3>
+                                <p>Typing, pen input, rich text and custom grids, so students without a stylus can still take proper notes.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -92,8 +92,8 @@ class NoteTakingFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Learning Communities</h3>
-                                <p>Discussion boards where students share effective note-taking strategies, save templates from high-performing peers, and build collaborative learning networks that spread good study habits naturally through peer influence.</p>
+                                <h3>Sharing what works</h3>
+                                <p>Discussion boards where students share note-taking methods and save templates from classmates who do well.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">

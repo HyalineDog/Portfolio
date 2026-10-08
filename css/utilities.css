@@ -172,98 +172,6 @@ h2::selection {
 } */
 
 
-/* Project Images - Using maximum specificity to override all other .card styles */
-
-/* Project 1 Card Background - Apply to linkbox since it's on top */
-body .project-container .project-list .project-item:nth-child(1) .card {
-  background-image: url('../assets/figma_assets/Zhike\ Classroom\ Platform/web-portfolio-mockup_1.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-body .project-container .project-list .project-item:nth-child(1) .linkbox:hover + .project-header + .card {
-  background-image: url('../assets/project/1-670.gif') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-body .project-container .project-list .project-item:nth-child(1):hover .card {
-  background-image: url('../assets/project/1-670.gif') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-/* Project 2 Card Background - Apply to linkbox since it's on top */
-body .project-container .project-list .project-item:nth-child(2) .card {
-  background-image: url('../assets/figma_assets/Student\ Pad/Hero Image.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-body .project-container .project-list .project-item:nth-child(2) .linkbox:hover + .project-header + .card {
-  background-image: url('../assets/project/MyVideo4.gif') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-body .project-container .project-list .project-item:nth-child(2):hover .card {
-  background-image: url('../assets/project/MyVideo4.gif') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-/* Project 3 Card Background - Apply to linkbox since it's on top */
-body .project-container .project-list .project-item:nth-child(3) .card {
-  background-image: url('../assets/project/16.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-body .project-container .project-list .project-item:nth-child(3) .linkbox:hover + .project-header + .card {
-  background-image: url('../assets/figma_assets/Notetaking\ App/Hover\ Cover.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-body .project-container .project-list .project-item:nth-child(3):hover .card {
-  background-image: url('../assets/figma_assets/Notetaking\ App/Hover\ Cover.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  transition: background-image 0.3s ease !important;
-}
-
-/* Project 4 */
-/* .project-item:nth-child(4) .card {
-  background: url(../assets/project/project-four.png) center center/cover;
-} */
-
-/* Project 5 */
-/* .project-item:nth-child(5) .card {
-  background: url(../assets/project/project-five.png) center center/cover;
-} */
-
-/* Project 6 */
-/* .card:nth-child(6) {
-  background: url(../assets/project/project-six.png) center center/cover;
-} */
-
 /* Scroll Animation */
 @keyframes fadeInUp {
   from {
@@ -274,31 +182,6 @@ body .project-container .project-list .project-item:nth-child(3):hover .card {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Apply staggered delays to project items - Updated to match background image specificity */
-body .project-container .project-list .project-item:nth-child(1) .card {
-  animation-delay: 0.3s;
-}
-
-body .project-container .project-list .project-item:nth-child(2) .card {
-  animation-delay: 1.8s; /* 0.3s + 1.5s delay */
-}
-
-body .project-container .project-list .project-item:nth-child(3) .card {
-  animation-delay: 3.3s; /* 1.8s + 1.5s delay */
-}
-
-body .project-container .project-list .project-item:nth-child(4) .card {
-  animation-delay: 4.8s; /* 3.3s + 1.5s delay */
-}
-
-body .project-container .project-list .project-item:nth-child(5) .card {
-  animation-delay: 6.3s; /* 4.8s + 1.5s delay */
-}
-
-body .project-container .project-list .project-item:nth-child(6) .card {
-  animation-delay: 7.8s; /* 6.3s + 1.5s delay */
 }
 
 /* Media Queries */
@@ -318,39 +201,16 @@ body .project-container .project-list .project-item:nth-child(6) .card {
 }
 
 
-/* Highlight */
+/* Highlight: plain emphasis, no marker background */
 .highlight {
-  background-color: var(--primary-color);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  line-height: 1.2;
-  font-weight: var(--weight-bold);
-  transition: all 0.2s ease;
+  font-weight: var(--weight-semibold);
+  color: var(--text-color);
 }
 
-.highlight:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode highlight with black text for better contrast */
-[data-theme="dark"] .highlight {
-  color: #000000;
-  background-color: var(--primary-color);
-}
-
-/* Ensure proper text selection visibility on highlighted elements */
-.highlight::selection {
-  background-color: var(--secondary-color);
-  color: #000000;
-}
-
-[data-theme="dark"] .highlight::selection {
-  background-color: var(--secondary-color);
-  color: #000000;
+h1 .highlight,
+h2 .highlight,
+h3 .highlight {
+  font-weight: inherit;
 }
 
 /* Project text animations */

@@ -62,6 +62,10 @@ class InsightHoverSystem {
             return;
         }
 
+        // On narrow screens the shared panel sits below every card, so each card
+        // also carries its own problem line and quote (shown via CSS on mobile)
+        insightCards.forEach(card => this.addInlineDetails(card));
+
         // Add event listeners to each insight card
         insightCards.forEach((card, index) => {
             const insightType = card.getAttribute('data-insight');
@@ -87,6 +91,30 @@ class InsightHoverSystem {
 
         this.isInitialized = true;
         console.log(`InsightHoverSystem initialized successfully for ${this.pageType}`);
+    }
+
+    /**
+     * Append a card's own problem line and quote, for the stacked mobile layout
+     */
+    addInlineDetails(card) {
+        const quoteData = this.quoteMap[card.getAttribute('data-insight')];
+        if (!quoteData || card.querySelector('.insight-inline')) return;
+
+        const inline = document.createElement('div');
+        inline.className = 'insight-inline';
+
+        const problem = document.createElement('p');
+        problem.className = 'insight-inline-problem';
+        problem.textContent = quoteData.problem;
+
+        const quote = document.createElement('blockquote');
+        quote.textContent = quoteData.quote;
+
+        const author = document.createElement('cite');
+        author.textContent = quoteData.author;
+
+        inline.append(problem, quote, author);
+        card.appendChild(inline);
     }
 
     /**
@@ -160,25 +188,25 @@ class InsightHoverSystem {
                 quoteMap: {
                     'processing': {
                         No: ".01",
-                        problem: "Students weren't failing because they couldn't capture information—they were failing because no one had taught them how to process it.",
+                        problem: "Students could write things down. No one had taught them what to do with their notes.",
                         quote: "When I look back at my notes later, I can't even make sense of what I wrote. It's like I was writing for someone else.",
                         author: "Grade 10 Student, Hefei"
                     },
                     'strategies': {
                         No: ".02",
-                        problem: "High-performing students had discovered effective strategies but kept them to themselves",
+                        problem: "Top students had good methods but kept them to themselves",
                         quote: "I learned a structured method from my cousin who goes to a top university, but I never shared it with my classmates. I thought everyone already knew how to take good notes.",
                         author: "Grade 11 Student, Hefei"
                     },
                     'subjects': {
                         No: ".03",
-                        problem: "One-size-fits-all approach ignored the unique demands of different disciplines",
+                        problem: "Physics notes and literature notes need different pages",
                         quote: "Taking notes for physics is completely different from Chinese literature class. I need space for formulas and diagrams, but the app just gives me blank pages like I'm writing a composition.",
                         author: "Grade 9 Student, Shanghai"
                     },
                     'community': {
                         No: ".04",
-                        problem: "Students wanted to learn from each other but had no platform for sharing strategies",
+                        problem: "Students wanted to learn each other's methods but felt awkward asking",
                         quote: "I always notice how neat and organized my deskmate's notes are, especially her use of colors and symbols. I want to ask her method, but it feels awkward. There should be a way for us to share good study techniques.",
                         author: "Grade 8 Student, Guangzhou"
                     }
@@ -189,25 +217,25 @@ class InsightHoverSystem {
                 quoteMap: {
                     'motivation': {
                         No: ".01",
-                        problem: "Students struggle with independent learning without teacher guidance",
+                        problem: "Without an assignment, students don't know where to start",
                         quote: "I know I should be studying, but when there's no assignment due, I just don't know where to start or what to focus on.",
                         author: "9th Grade Student, Hefei"
                     },
                     'skepticism': {
                         No: ".02",
-                        problem: "Teachers questioned technology's educational value in classroom settings",
+                        problem: "Teachers saw the pads as gaming devices",
                         quote: "These look just like iPads to them. If I let them have free access, they'd treat them like gaming devices instead of learning tools.",
                         author: "Elementary Teacher, Hefei"
                     },
                     'balance': {
                         No: ".03",
-                        problem: "Parents view all screen as entertainment",
+                        problem: "Parents assume any screen time is play",
                         quote: "My parents don't like me using screens too much. They think I'm playing games even when I'm doing homework.",
                         author: "Hefei Fourteenth High School Freshman"
                     },
                     'rewards': {
                         No: ".04",
-                        problem: "Visual customization motivated learning without creating dependency",
+                        problem: "Unlockable avatars and themes kept students going without hooking them",
                         quote: "I like earning new avatars and themes when I complete my study goals. It makes me want to keep learning, but I don't feel like I have to use it all the time.",
                         author: "7th Grade Student, Beijing"
                     }
@@ -218,25 +246,25 @@ class InsightHoverSystem {
                 quoteMap: {
                     'apps': {
                         No: ".01",
-                        problem: "Application overload disrupts current learning flow",
+                        problem: "Switching apps mid-lesson costs the class's attention",
                         quote: "I start with PowerPoint, then switch to the textbook app, then open the activity platform, then back to PowerPoint. My students lose focus every time I'm fumbling with technology instead of teaching.",
                         author: "Middle School Science Teacher"
                     },
                     'time': {
                         No: ".02",
-                        problem: "Inefficient resource management drains productivity",
+                        problem: "Finding and adapting materials eats into teachers' weekends",
                         quote: "I spend my entire Sunday searching for resources that match our curriculum, then another few hours during the week adapting them to fit our lesson plans. It's exhausting.",
                         author: "High School Math Teacher"
                     },
                     'adoption': {
                         No: ".03",
-                        problem: "Resistance to change due to tool's learning cost",
+                        problem: "Learning a new tool costs time teachers don't have",
                         quote: "Sure, I know there are probably better tools out there, but learning a new system means weeks of preparation time I don't have. I'll stick with what I know, even if it's frustrating.",
                         author: "Elementary School Teacher"
                     },
                     'controls': {
                         No: ".04",
-                        problem: "Poor smartboard interaction hinders classroom engagement",
+                        problem: "Teachers turn their backs on the class to click",
                         quote: "When I have to turn my back to the students to click something on the computer, I immediately lose their attention. The controls need to be where I can reach them while still facing my class.",
                         author: "High School English Teacher"
                     }

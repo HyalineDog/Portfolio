@@ -57,8 +57,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide active">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>To-Do Centered Interface</h3>
-                                <p>Learning-focused task management: Self-directed goal setting alongside teacher assignments, progress visualization, and subject-based filtering—transforming passive app consumption into active learning ownership and independent study habits.</p>
+                                <h3>A home screen of tasks</h3>
+                                <p>Students see teacher assignments next to goals they set themselves, with progress charts and a filter by subject. The pad opens on what to study, not on a grid of apps.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -71,8 +71,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Social Learning Community</h3>
-                                <p>Collaborative motivation system: Badge achievements for classroom participation, peer encouragement features, and healthy competition leaderboards—fostering positive social comparison and classroom collaboration without grade-based pressure.</p>
+                                <h3>Badges and encouragement</h3>
+                                <p>Badges for taking part in class, ways for classmates to encourage each other, and leaderboards based on study habits rather than grades.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -82,8 +82,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Real-Time Learning Analytics</h3>
-                                <p>Intelligent progress insights: Personal study habit tracking, learning trend visualization, and goal completion monitoring for students, teachers, and parents—enabling data-driven learning decisions while maintaining student privacy and autonomy.</p>
+                                <h3>Progress everyone can see</h3>
+                                <p>Students, teachers and parents each see study habits, trends and finished goals, while student privacy is kept.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
@@ -93,8 +93,8 @@ class ZhiKeFeaturesSlider {
                     <div class="zhike-feature-slide">
                         <div class="zhike-feature-content">
                             <div class="zhike-feature-text">
-                                <h3>Unified Student Experience</h3>
-                                <p>Consistent cross-version interface: Flexible grid framework accommodating different student plans and device capabilities while maintaining identical core functionality—ensuring equitable learning experiences regardless of hardware or subscription level.</p>
+                                <h3>One pad for every student</h3>
+                                <p>A flexible grid fits different plans and devices but keeps the same core features, so no student gets a lesser version because of their hardware or subscription.</p>
                             </div>
                         </div>
                         <div class="zhike-feature-visual">
