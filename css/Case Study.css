@@ -370,12 +370,9 @@ body {
     letter-spacing: var(--letter-spacing-normal);
 }
 
-.before-box h3 {
-    color: #ef4444;
-}
-
+.before-box h3,
 .after-box h3 {
-    color: #22c55e;
+    color: var(--text-color);
 }
 
 .info-list {
@@ -2096,5 +2093,55 @@ button:focus {
     }
     .next-project-nav {
         padding: 3rem 1.5rem;
+    }
+}
+
+/* Research cards on mobile: each card shows its own problem line and quote,
+   because the shared hover panel would sit below all four cards */
+.insight-inline {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #research .research-insights {
+        grid-template-columns: 1fr;
+    }
+
+    #research .problem {
+        display: none;
+    }
+
+    #research .insight-item,
+    #research .insight-item:hover,
+    #research .insight-item.selected {
+        cursor: default;
+        transform: none;
+        box-shadow: none;
+        border-color: var(--border-color);
+    }
+
+    .insight-inline {
+        display: block;
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--border-color);
+    }
+
+    .insight-inline-problem {
+        font-weight: var(--weight-semibold);
+        margin: 0 0 var(--space-xs);
+    }
+
+    .insight-inline blockquote {
+        font-style: italic;
+        color: var(--text-color-secondary);
+        line-height: 1.6;
+        margin: 0 0 var(--space-xs);
+    }
+
+    .insight-inline cite {
+        font-size: var(--font-size-sm);
+        font-style: normal;
+        color: var(--text-color-secondary);
     }
 }

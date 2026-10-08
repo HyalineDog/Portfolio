@@ -429,7 +429,8 @@ if (emailLink) {
 
 // Solution video scroll-triggered autoplay
 const solutionVideo = document.getElementById('solution-video');
-if (solutionVideo) {
+// On some pages #solution-video is an animated image, which has no play()/pause()
+if (solutionVideo && solutionVideo.tagName === 'VIDEO') {
   // Ensure video is ready
   solutionVideo.addEventListener('loadeddata', () => {
     console.log('Solution video loaded and ready');
