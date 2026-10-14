@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "qnrkti9ttn");
+    </script>
+    <title>EDH Deck Grader - Jinnan Chen</title>
+    <meta name="description" content="Case study of EDH Deck Grader - a Commander deck analyzer that tells players which cards to change, not just what score they got">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jinnanchen.com/EDH%20Deck%20Grader.html" />
+    <meta property="og:title" content="EDH Deck Grader - Jinnan Chen" />
+    <meta property="og:description" content="Case study: designing and building a Magic: The Gathering Commander deck analyzer that explains every number and names the cards to change." />
+    <meta property="og:image" content="https://jinnanchen.com/assets/figma_assets/EDH%20Deck%20Grader/Social%20Preview.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+
+    <!-- Fonts and Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/microsoft-fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/Case Study.css">
+    <link rel="stylesheet" href="css/blur-effects.css">
+    <link rel="stylesheet" href="css/island-navigation.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        /* Laptop-framed screenshots are transparent PNG/WebP: drop the default image border and panel */
+        .device-shot { width: 100%; height: auto; display: block; border: 0; border-radius: 0; background: none; box-shadow: none; }
+        #features .gamification-visual { background: none; border-radius: 0; }
+        .comparison-box .device-shot { margin-bottom: 1rem; }
+
+        /* Ramp vs. draw chart */
+        .split-chart { --ramp: #cd710f; --draw: #2a78d6; max-width: 760px; margin: var(--space-xl) 0 0; }
+        [data-theme="dark"] .split-chart { --ramp: #cf7118; --draw: #4a8ee0; }
+        .split-legend { display: flex; gap: 1.5rem; font-size: var(--font-size-sm); color: var(--text-color-secondary); margin-bottom: 1rem; }
+        .split-legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+        .split-row { display: grid; grid-template-columns: 9.5rem 1fr 4.5rem; align-items: center; gap: 1rem; margin-bottom: 0.75rem; font-size: var(--font-size-sm); }
+        .split-row .label { color: var(--text-color); font-weight: var(--weight-medium); }
+        .split-row .value { color: var(--text-color-secondary); text-align: right; font-variant-numeric: tabular-nums; }
+        .split-bar { display: flex; gap: 2px; height: 20px; }
+        .split-bar i { display: block; height: 100%; }
+        .split-bar .ramp { background: var(--ramp); border-radius: 4px 0 0 4px; }
+        .split-bar .draw { background: var(--draw); border-radius: 0 4px 4px 0; }
+        .split-bar i:hover { filter: brightness(1.15); }
+        .split-note { color: var(--text-color-secondary); font-size: var(--font-size-sm); margin-top: 0.5rem; }
+        @media (max-width: 600px) { .split-row { grid-template-columns: 1fr 3.5rem; } .split-row .label { grid-column: 1 / -1; margin-bottom: -0.5rem; } }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" aria-hidden="true"></div>
+
+    <a href="#main" class="skip-to-main">Skip to main content</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <!-- Logo -->
+            <h1 id="logo">
+                <a href="index.html">
+                    <img src="./assets/logo.svg" alt="logo for Jinnan Chen"><span class="logo-text"> Jinnan Chen</span>
+                </a>
+            </h1>
+            <!-- Navbar links -->
+            <ul class="nav-menu">
+                <!-- Main navigation group -->
+                <div class="nav-group">
+                    <li><a class="nav-link" href="index.html#projects">PROJECTS</a></li>
+                    <li><a class="nav-link" href="about.html">ABOUT</a></li>
+                    <li><a class="nav-link" href="mailto:cjn259@gmail.com" target="_blank">EMAIL <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></li>
+                    <li>
+                        <a class="nav-link btn btn-primary" href="https://drive.google.com/file/d/1-fOHhvsnmpDeC0DLTEuXlhJuekqLCZVk/view?usp=drive_link" target="_blank">
+                            RESUME <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </li>
+                </div>
+
+                <!-- Theme toggle separated -->
+                <li class="theme-toggle-item">
+                    <div class="theme-switch">
+                        <input type="checkbox" id="switch">
+                        <label class="toggle-icons" for="switch">
+                            <img class="moon" src="assets/moon.svg" alt="Dark mode">
+                            <img class="sun" src="assets/sun.svg" alt="Light mode">
+                        </label>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Hamburger menu -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+    <!-- Hero Section -->
+    <header id="hero">
+        <section class="header-container" id="main">
+            <div class="case-study-hero">
+                <div class="hero-image animate fly-in-up delay-5">
+                    <img src="assets/figma_assets/EDH Deck Grader/Hero Results.webp" alt="EDH Deck Grader results page on a laptop: power score, verdict, bracket and a performance breakdown table" class="project-hero-img device-shot">
+                </div>
+                <h1 class="animate fly-in-up delay-1">EDH Deck Grader</h1>
+                <div class="content-text">
+                    <h2 class="animate fly-in-up delay-2">Players didn't need another score. They needed to know which cards to change.</h2>
+                    <p class="animate fly-in-up delay-3">A Commander deck grader that explains every number and names the cards to swap.</p>
+                </div>
+                <div class="project-meta animate fly-in-up delay-4">
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Product Designer &amp; Builder</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duration</span>
+                        <span class="meta-value">7 months</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tools</span>
+                        <span class="meta-value">Figma, React, FastAPI, Claude Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- TL;DR Section -->
+    <section class="section" id="tldr">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">TL;DR</h2>
+            </div>
+            <div class="tldr-prose">
+                <p><strong>Deck tools show what's in your deck, not what to change.</strong> I built a grader that sets targets for your commander, shows its math, and names the cards to cut and add.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section -->
+    <section class="section" id="challenge">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle highlighted">The Challenge</p>
+                <h2 class="section-title">A 100-card puzzle with no answer key</h2>
+            </div>
+            <div class="research-insights">
+                <div class="insight-item">
+                    <div class="insight-stat">99</div>
+                    <p>cards plus a commander, no duplicates</p>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-stat">32k+</div>
+                    <p>legal cards to choose from</p>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-stat">5</div>
+                    <p>power brackets to match your table</p>
+                </div>
+            </div>
+            <div class="challenge-grid">
+                <div class="challenge-card">
+                    <h3>Counts, no targets</h3>
+                    <p>"9 ramp cards" means nothing without knowing the right number for this commander.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>Scores, no reasons</h3>
+                    <p>"7/10" doesn't tell you what to edit.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>Advice, no cards</h3>
+                    <p>"Add more removal" leaves the hard part to you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After Section -->
+    <section class="section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle highlighted">Iteration</p>
+                <h2 class="section-title">From "configure, then analyze" to "paste, then correct"</h2>
+            </div>
+            <div class="simple-comparison">
+                <div class="comparison-box before-box">
+                    <h3>Before: Figma mock</h3>
+                    <img src="assets/figma_assets/EDH Deck Grader/Before Figma Mock.webp" class="device-shot" loading="lazy" alt="Early Figma mock on a laptop: a form with an archetype dropdown and 16 theme tiles beside an empty results panel">
+                    <ul class="info-list">
+                        <li>16 theme tiles to pick up front</li>
+                        <li>Results squeezed into half the screen</li>
+                        <li>30 seconds at 0% loading</li>
+                    </ul>
+                </div>
+                <div class="comparison-box after-box">
+                    <h3>After: shipped</h3>
+                    <img src="assets/figma_assets/EDH Deck Grader/After Input.webp" class="device-shot" loading="lazy" alt="Shipped input screen on a laptop: only a commander field and a decklist">
+                    <ul class="info-list">
+                        <li>Just a commander and a decklist</li>
+                        <li>Themes auto-detected, editable after</li>
+                        <li>Live progress while it runs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Idea Section -->
+    <section class="section" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle highlighted">The Key Idea</p>
+                <h2 class="section-title">Targets that move with the commander</h2>
+                <p class="section-lede">Ramp and draw share 24 slots. The commander's mana cost decides the split.</p>
+            </div>
+            <figure class="split-chart" aria-labelledby="split-caption">
+                <div class="split-legend" aria-hidden="true">
+                    <span style="--c: var(--ramp)">Ramp</span>
+                    <span style="--c: var(--draw)">Card draw</span>
+                </div>
+                <div class="split-row">
+                    <span class="label">1–2 mana commander</span>
+                    <div class="split-bar"><i class="ramp" style="flex: 8" title="Ramp: 8"></i><i class="draw" style="flex: 16" title="Card draw: 16"></i></div>
+                    <span class="value">8 / 16</span>
+                </div>
+                <div class="split-row">
+                    <span class="label">4 mana commander</span>
+                    <div class="split-bar"><i class="ramp" style="flex: 12" title="Ramp: 12"></i><i class="draw" style="flex: 12" title="Card draw: 12"></i></div>
+                    <span class="value">12 / 12</span>
+                </div>
+                <div class="split-row">
+                    <span class="label">5+ mana commander</span>
+                    <div class="split-bar"><i class="ramp" style="flex: 14" title="Ramp: 14"></i><i class="draw" style="flex: 10" title="Card draw: 10"></i></div>
+                    <span class="value">14 / 10</span>
+                </div>
+                <figcaption class="split-note" id="split-caption">Target ramp / card draw slots by commander mana cost (the "Time Walking" model).</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle highlighted">Key Features</p>
+                <h2 class="section-title">What shipped</h2>
+            </div>
+
+            <div class="gamification-tabs">
+                <div class="tab-controller" data-tab="recs" data-active="true">
+                    <span class="tab-icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></span>
+                    <h3>Cuts &amp; Adds</h3>
+                    <p>Real card names, not categories</p>
+                </div>
+                <div class="tab-controller" data-tab="cards">
+                    <span class="tab-icon"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
+                    <h3>Suggestions</h3>
+                    <p>Source badges and hover zoom</p>
+                </div>
+                <div class="tab-controller" data-tab="sim">
+                    <span class="tab-icon"><i class="fas fa-chart-area" aria-hidden="true"></i></span>
+                    <h3>Simulator</h3>
+                    <p>Test against 8 opponent types</p>
+                </div>
+                <div class="tab-controller" data-tab="builder">
+                    <span class="tab-icon"><i class="fas fa-hammer" aria-hidden="true"></i></span>
+                    <h3>Deck Builder</h3>
+                    <p>Same engine, live goals</p>
+                </div>
+            </div>
+
+            <div class="gamification-cards-container">
+                <div class="tab-content" data-tab="recs" data-active="true">
+                    <div class="gamification-visual">
+                        <img src="assets/figma_assets/EDH Deck Grader/Cuts and Adds.webp" class="device-shot" alt="Strategic Recommendations on a laptop: named cards to cut and named cards to add per category" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="cards">
+                    <div class="gamification-visual">
+                        <img src="assets/figma_assets/EDH Deck Grader/Card Suggestions.webp" class="device-shot" alt="Card suggestion tiles on a laptop with Engine Pick badges, synergy scores and an enlarged hover preview" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="sim">
+                    <div class="gamification-visual">
+                        <img src="assets/figma_assets/EDH Deck Grader/Battle Simulator.webp" class="device-shot" alt="Battle Simulation Results on a laptop: win rate, combat profile radar and threat curve" loading="lazy" />
+                    </div>
+                </div>
+                <div class="tab-content" data-tab="builder">
+                    <div class="gamification-visual">
+                        <img src="assets/figma_assets/EDH Deck Grader/Deck Builder.webp" class="device-shot" alt="Deck Builder on a laptop: added cards with source badges and a sticky deck panel of goals to hit" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="section" id="research">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle highlighted">After Launch</p>
+                <h2 class="section-title">One wrong call loses the whole page</h2>
+                <p class="section-lede">Players checked the grader against what they already knew. These fixes won the trust back.</p>
+            </div>
+            <div class="research-insights" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+                    <p><strong>"Cut your mana rocks"</strong><br>Staples now go last in the cut list.</p>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-mountain" aria-hidden="true"></i></div>
+                    <p><strong>Lands counted as ramp</strong><br>A card-data request was failing silently.</p>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-random" aria-hidden="true"></i></div>
+                    <p><strong>Looting isn't card draw</strong><br>Cards are now judged by net cards gained.</p>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-balance-scale" aria-hidden="true"></i></div>
+                    <p><strong>Wrong bracket</strong><br>Now uses the official Game Changers list.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section" id="results">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Results</h2>
+                <!-- TODO(Jinnan): if you have usage data (Vercel Analytics, Clarity), swap a card for decks graded or return visits. -->
+            </div>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">32k+</div>
+                    <div class="result-label">cards judged by one engine</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">2,446</div>
+                    <div class="result-label">community card tags shown, up from ~1,500</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">8</div>
+                    <div class="result-label">opponent types in the simulator</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">AA</div>
+                    <div class="result-label">WCAG contrast after an accessibility audit</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Learnings -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What I Learned</h2>
+            </div>
+            <div class="content-text">
+                <div class="learning-cards">
+                    <div class="learning-card">
+                        <h4>Show the target, not just the score.</h4>
+                        <p>A visible target turns a low grade into a to-do list.</p>
+                    </div>
+                    <div class="learning-card">
+                        <h4>Silent failures look like bad design.</h4>
+                        <p>Players blamed the grader, not the data.</p>
+                    </div>
+                    <div class="learning-card">
+                        <h4>With an AI pair, my job was judgement.</h4>
+                        <p>Building got cheap. Deciding what "correct" means didn't.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <!-- Tech grid background -->
+            <div class="footer-bg-grid" aria-hidden="true"></div>
+
+            <!-- Main footer content -->
+            <div class="footer-content">
+                <div class="footer-main">
+                    <h3 class="footer-title">Get in touch</h3>
+                    <a href="mailto:cjn259@gmail.com" class="footer-email" aria-label="Send email to Jinnan Chen">cjn259@gmail.com <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                </div>
+
+                <!-- Social links -->
+                <div class="social" role="navigation" aria-label="Social media links">
+                    <a href="https://www.linkedin.com/in/jinnan-kit-chen/" target="_blank" rel="noopener noreferrer" aria-label="Visit Jinnan Chen's LinkedIn profile (opens in new tab)">
+                        <img src="./assets/linkedin-icon.svg" alt="LinkedIn logo" role="img">
+                    </a>
+                    <a href="https://github.com/HyalineDog?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="Visit Jinnan Chen's GitHub repositories (opens in new tab)">
+                        <img src="./assets/github-icon.svg" alt="GitHub logo" role="img">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tech accent line -->
+            <div class="footer-accent-line"></div>
+
+            <!-- Attribution -->
+            <div class="attribution" role="contentinfo">
+                <p>
+                    Portfolio by Jinnan Chen with
+                    <i class="fas fa-heart" aria-label="love" role="img"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Next Project Navigation -->
+    <section class="next-project-nav">
+        <div class="container">
+            <p class="next-project-label">Next Case Study</p>
+            <a href="Zhike Classroom Platform.html" class="next-project-link">
+                <span class="next-project-title">Interactive Presentation</span>
+                <i class="fas fa-arrow-right next-project-arrow"></i>
+            </a>
+        </div>
+    </section>
+
+    <script src="js/gamification-tabs.js"></script>
+    <script src="js/insight-hover-system.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/island-navigation.js"></script>
+    <script src="js/case-study-enhancements.js"></script>
+</body>
+</html>
